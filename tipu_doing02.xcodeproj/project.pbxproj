@@ -1,0 +1,462 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		18A6F61D89CEDB5D763C81B9 /* Pods_tipu_doing02.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CF7091A8BC25335E052CDB /* Pods_tipu_doing02.framework */; };
+		747744AD2070291F00B09E66 /* CalendarListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747744AC2070291F00B09E66 /* CalendarListViewController.swift */; };
+		74BB55F120700D05004C99A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB55F020700D05004C99A8 /* AppDelegate.swift */; };
+		74BB55F620700D05004C99A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74BB55F420700D05004C99A8 /* Main.storyboard */; };
+		74BB55F820700D07004C99A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74BB55F720700D07004C99A8 /* Assets.xcassets */; };
+		74BB55FB20700D07004C99A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74BB55F920700D07004C99A8 /* LaunchScreen.storyboard */; };
+		74BB560320700DA7004C99A8 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB560220700DA7004C99A8 /* ParentViewController.swift */; };
+		74BB560520700DD5004C99A8 /* TabySegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB560420700DD5004C99A8 /* TabySegmentedControl.swift */; };
+		74BB560720700DFC004C99A8 /* FirstTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB560620700DFC004C99A8 /* FirstTabViewController.swift */; };
+		74BB560920700E0A004C99A8 /* SecondTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB560820700E0A004C99A8 /* SecondTabViewController.swift */; };
+		74BB560B20701108004C99A8 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB560A20701108004C99A8 /* CustomCell.swift */; };
+		74BB560D207015C0004C99A8 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB560C207015C0004C99A8 /* ListTableViewCell.swift */; };
+		74BB560F2070213C004C99A8 /* ListDesign.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 74BB560E2070213C004C99A8 /* ListDesign.xcdatamodel */; };
+		74BB561120702270004C99A8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB561020702270004C99A8 /* DetailViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2A56BD5D293C0AEC7390A979 /* Pods-tipu_doing02.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tipu_doing02.release.xcconfig"; path = "Pods/Target Support Files/Pods-tipu_doing02/Pods-tipu_doing02.release.xcconfig"; sourceTree = "<group>"; };
+		62674B5035A729B37D1AAE3B /* Pods-tipu_doing02.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tipu_doing02.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tipu_doing02/Pods-tipu_doing02.debug.xcconfig"; sourceTree = "<group>"; };
+		747744AC2070291F00B09E66 /* CalendarListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarListViewController.swift; sourceTree = "<group>"; };
+		74BB55ED20700D05004C99A8 /* tipu_doing02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tipu_doing02.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		74BB55F020700D05004C99A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		74BB55F520700D05004C99A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		74BB55F720700D07004C99A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		74BB55FA20700D07004C99A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		74BB55FC20700D07004C99A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74BB560220700DA7004C99A8 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
+		74BB560420700DD5004C99A8 /* TabySegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabySegmentedControl.swift; sourceTree = "<group>"; };
+		74BB560620700DFC004C99A8 /* FirstTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTabViewController.swift; sourceTree = "<group>"; };
+		74BB560820700E0A004C99A8 /* SecondTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabViewController.swift; sourceTree = "<group>"; };
+		74BB560A20701108004C99A8 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		74BB560C207015C0004C99A8 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		74BB560E2070213C004C99A8 /* ListDesign.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ListDesign.xcdatamodel; sourceTree = "<group>"; };
+		74BB561020702270004C99A8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		B5CF7091A8BC25335E052CDB /* Pods_tipu_doing02.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tipu_doing02.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		74BB55EA20700D05004C99A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18A6F61D89CEDB5D763C81B9 /* Pods_tipu_doing02.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		272B1E508511FFA4C3F417FF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				62674B5035A729B37D1AAE3B /* Pods-tipu_doing02.debug.xcconfig */,
+				2A56BD5D293C0AEC7390A979 /* Pods-tipu_doing02.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		74BB55E420700D05004C99A8 = {
+			isa = PBXGroup;
+			children = (
+				74BB55EF20700D05004C99A8 /* tipu_doing02 */,
+				74BB55EE20700D05004C99A8 /* Products */,
+				272B1E508511FFA4C3F417FF /* Pods */,
+				ADB19B0F4CF930684A7DD3D9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		74BB55EE20700D05004C99A8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				74BB55ED20700D05004C99A8 /* tipu_doing02.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		74BB55EF20700D05004C99A8 /* tipu_doing02 */ = {
+			isa = PBXGroup;
+			children = (
+				74BB55F020700D05004C99A8 /* AppDelegate.swift */,
+				74BB560220700DA7004C99A8 /* ParentViewController.swift */,
+				74BB560420700DD5004C99A8 /* TabySegmentedControl.swift */,
+				74BB560620700DFC004C99A8 /* FirstTabViewController.swift */,
+				74BB560820700E0A004C99A8 /* SecondTabViewController.swift */,
+				74BB561020702270004C99A8 /* DetailViewController.swift */,
+				747744AC2070291F00B09E66 /* CalendarListViewController.swift */,
+				74BB560E2070213C004C99A8 /* ListDesign.xcdatamodel */,
+				74BB560C207015C0004C99A8 /* ListTableViewCell.swift */,
+				74BB55F420700D05004C99A8 /* Main.storyboard */,
+				74BB55F920700D07004C99A8 /* LaunchScreen.storyboard */,
+				74BB55FC20700D07004C99A8 /* Info.plist */,
+				74BB55F720700D07004C99A8 /* Assets.xcassets */,
+				74BB560A20701108004C99A8 /* CustomCell.swift */,
+			);
+			path = tipu_doing02;
+			sourceTree = "<group>";
+		};
+		ADB19B0F4CF930684A7DD3D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5CF7091A8BC25335E052CDB /* Pods_tipu_doing02.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		74BB55EC20700D05004C99A8 /* tipu_doing02 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74BB55FF20700D07004C99A8 /* Build configuration list for PBXNativeTarget "tipu_doing02" */;
+			buildPhases = (
+				C8DF1D8A2DB588E1CD7D3750 /* [CP] Check Pods Manifest.lock */,
+				74BB55E920700D05004C99A8 /* Sources */,
+				74BB55EA20700D05004C99A8 /* Frameworks */,
+				74BB55EB20700D05004C99A8 /* Resources */,
+				E8BD37977C68FCFEB8D997BE /* [CP] Embed Pods Frameworks */,
+				E6F20819636AD33A18C94711 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tipu_doing02;
+			productName = tipu_doing02;
+			productReference = 74BB55ED20700D05004C99A8 /* tipu_doing02.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		74BB55E520700D05004C99A8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = JunHee;
+				TargetAttributes = {
+					74BB55EC20700D05004C99A8 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+				};
+			};
+			buildConfigurationList = 74BB55E820700D05004C99A8 /* Build configuration list for PBXProject "tipu_doing02" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 74BB55E420700D05004C99A8;
+			productRefGroup = 74BB55EE20700D05004C99A8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				74BB55EC20700D05004C99A8 /* tipu_doing02 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		74BB55EB20700D05004C99A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74BB55FB20700D07004C99A8 /* LaunchScreen.storyboard in Resources */,
+				74BB55F820700D07004C99A8 /* Assets.xcassets in Resources */,
+				74BB55F620700D05004C99A8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C8DF1D8A2DB588E1CD7D3750 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tipu_doing02-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6F20819636AD33A18C94711 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tipu_doing02/Pods-tipu_doing02-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8BD37977C68FCFEB8D997BE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-tipu_doing02/Pods-tipu_doing02-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tipu_doing02/Pods-tipu_doing02-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		74BB55E920700D05004C99A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74BB561120702270004C99A8 /* DetailViewController.swift in Sources */,
+				74BB560F2070213C004C99A8 /* ListDesign.xcdatamodel in Sources */,
+				74BB560D207015C0004C99A8 /* ListTableViewCell.swift in Sources */,
+				74BB560520700DD5004C99A8 /* TabySegmentedControl.swift in Sources */,
+				74BB560920700E0A004C99A8 /* SecondTabViewController.swift in Sources */,
+				74BB560720700DFC004C99A8 /* FirstTabViewController.swift in Sources */,
+				74BB55F120700D05004C99A8 /* AppDelegate.swift in Sources */,
+				74BB560B20701108004C99A8 /* CustomCell.swift in Sources */,
+				747744AD2070291F00B09E66 /* CalendarListViewController.swift in Sources */,
+				74BB560320700DA7004C99A8 /* ParentViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		74BB55F420700D05004C99A8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				74BB55F520700D05004C99A8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		74BB55F920700D07004C99A8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				74BB55FA20700D07004C99A8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		74BB55FD20700D07004C99A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		74BB55FE20700D07004C99A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		74BB560020700D07004C99A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62674B5035A729B37D1AAE3B /* Pods-tipu_doing02.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CVBG7H8SWG;
+				INFOPLIST_FILE = tipu_doing02/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.junhee.tipu-doing02";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		74BB560120700D07004C99A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A56BD5D293C0AEC7390A979 /* Pods-tipu_doing02.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CVBG7H8SWG;
+				INFOPLIST_FILE = tipu_doing02/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.junhee.tipu-doing02";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		74BB55E820700D05004C99A8 /* Build configuration list for PBXProject "tipu_doing02" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74BB55FD20700D07004C99A8 /* Debug */,
+				74BB55FE20700D07004C99A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		74BB55FF20700D07004C99A8 /* Build configuration list for PBXNativeTarget "tipu_doing02" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74BB560020700D07004C99A8 /* Debug */,
+				74BB560120700D07004C99A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 74BB55E520700D05004C99A8 /* Project object */;
+}
