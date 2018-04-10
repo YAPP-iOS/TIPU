@@ -136,11 +136,26 @@ class FirstTabViewController: UIViewController {
             if let sendData = willSendData{
                 next.receivedData = sendData
             }
-            present(next, animated: true, completion: nil)
+//            present(next, animated: true, completion: nil)
             //보내면 됨++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             
         }
         
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "aaa" {
+            if let des = segue.destination as? CalendarListViewController {
+                
+                // willSendData = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil)
+                
+                
+                if let sendData = willSendData{
+                    des.receivedData = sendData
+                    print("보내는게 있나요?\(sendData)")
+                }
+                
+            }
+        }
     }
     
     /* CELL EVENTS */
