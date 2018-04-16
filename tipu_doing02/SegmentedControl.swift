@@ -1,5 +1,5 @@
 //
-//  TabySegmentedControl.swift
+//  SegmentedControl.swift
 //  tipu_doing02
 //
 //  Created by JunHee on 01/04/2018.
@@ -8,22 +8,20 @@
 
 import UIKit
 
-class TabySegmentedControl: UISegmentedControl {
+@IBDesignable
+class SegmentedControl: UISegmentedControl {
     
-    //    func drawRect(){
-    //        super.drawRect()
-    //        initUI()
-    //    }
     
     func initUI(){
-        setupBackground()
-//        setupFonts()
+//        setupBackground()
+                setupFonts()
     }
     
     func setupBackground(){
-        let backgroundImage = UIImage(named: "segmented_unselected_bg")
+        let backgroundImage = UIImage(named: "no")
         let dividerImage = UIImage(named: "segmented_separator_bg")
         let backgroundImageSelected = UIImage(named: "segmented_selected_bg")
+        
         
         self.setBackgroundImage(backgroundImage, for: UIControlState(), barMetrics: .default)
         self.setBackgroundImage(backgroundImageSelected, for: .highlighted, barMetrics: .default)
@@ -33,19 +31,13 @@ class TabySegmentedControl: UISegmentedControl {
         self.setDividerImage(dividerImage, forLeftSegmentState: .selected, rightSegmentState: UIControlState(), barMetrics: .default)
         self.setDividerImage(dividerImage, forLeftSegmentState: UIControlState(), rightSegmentState: UIControlState(), barMetrics: .default)
     }
-//
-//    func setupFonts(){
-//        let font = UIFont.systemFont(ofSize: 16.0)
-//
-//
-//        let normalTextAttributes = [
-//            NSForegroundColorAttributeName: UIColor.black,
-//            NSFontAttributeName: font
-//        ]
-//
-//        self.setTitleTextAttributes(normalTextAttributes, for: UIControlState())
-//        self.setTitleTextAttributes(normalTextAttributes, for: .highlighted)
-//        self.setTitleTextAttributes(normalTextAttributes, for: .selected)
-//    }
+    
+    func setupFonts(){
+        let titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+        self.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        self.setTitleTextAttributes(titleTextAttributes, for: .selected)
+    }
     
 }
+
+

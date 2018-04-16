@@ -10,16 +10,18 @@ import UIKit
 
 class ParentViewController: UIViewController {
     
-    
     enum TabIndex : Int {
         case firstChildTab = 0
         case secondChildTab = 1
     }
     
-    @IBOutlet weak var segmentedControl: TabySegmentedControl!
+    @IBOutlet var animatedLine: UIView!
+    @IBOutlet var TIPU: UILabel!
+    @IBOutlet weak var segmentedControl: SegmentedControl!
     @IBOutlet weak var contentView: UIView!
     
     var currentViewController: UIViewController?
+    var flag:Int?
     lazy var firstChildTabVC: UIViewController? = {
         let firstChildTabVC = self.storyboard?.instantiateViewController(withIdentifier: "FirstViewControllerId")
         return firstChildTabVC
@@ -31,13 +33,26 @@ class ParentViewController: UIViewController {
     }()
     
     
-    // MARK: - View Controller Lifecycle
+    func moveRight(view: UIView) {
+        view.center.x += 130
+    }
+    
+    func moveLeft(view: UIView) {
+        view.center.x -= 130
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         segmentedControl.initUI()
         segmentedControl.selectedSegmentIndex = TabIndex.firstChildTab.rawValue
+//        segmentedControl.selectItemAt(index: 2, animated: false)
         displayCurrentTab(TabIndex.firstChildTab.rawValue)
+        
+        TIPU.textColor =
+            UIColor(red: CGFloat(247/255.0), green: CGFloat(82/255.0), blue: CGFloat(135/255.0), alpha: CGFloat(1.0))
+        flag = 0
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -49,6 +64,24 @@ class ParentViewController: UIViewController {
     
     // MARK: - Switching Tabs Functions
     @IBAction func switchTabs(_ sender: UISegmentedControl) {
+        
+        let duration: Double = 0.5
+        //왼쪽으로
+        if(sender.selectedSegmentIndex==0 && flag == 1){
+            UIView.animate(withDuration: duration, animations: {
+                self.moveLeft(view: self.animatedLine)
+            })
+            flag = 0
+        }else if(sender.selectedSegmentIndex==1 && flag == 0){
+            
+            //오른쪽으로
+            UIView.animate(withDuration: duration) {
+                self.moveRight(view: self.animatedLine)
+            }
+            flag = 1
+        }
+        
+        
         self.currentViewController!.view.removeFromSuperview()
         self.currentViewController!.removeFromParentViewController()
         

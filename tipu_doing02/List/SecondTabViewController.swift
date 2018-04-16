@@ -59,6 +59,7 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
 
 
     @objc func refresher(_ sender: Any) {
+        
         // 테이블 뷰 새로고침
         let context = self.getContext()
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
@@ -101,8 +102,6 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
 
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return perform.count
     }

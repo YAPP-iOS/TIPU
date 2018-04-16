@@ -13,6 +13,5 @@ class CustomCell: JTAppleCell {
     @IBOutlet weak var dateLabel : UILabel!
     @IBOutlet weak var selectedView : UIView!
     @IBOutlet weak var ticket : UILabel!
-    @IBOutlet weak var pinkDots : UIImageView!
-    @IBOutlet weak var grayDots : UIImageView!
+    @IBOutlet weak var dots : UIImageView!
 }

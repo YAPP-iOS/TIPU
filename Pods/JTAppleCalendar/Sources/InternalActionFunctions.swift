@@ -207,14 +207,16 @@ extension JTAppleCalendarView {
                 startOfMonthCache = startMonth
                 endOfMonthCache   = endMonth
                 // Create the parameters for the date format generator
-                let parameters = ConfigurationParameters(startDate: startOfMonthCache,
-                                                         endDate: endOfMonthCache,
-                                                         numberOfRows: validConfig.numberOfRows,
-                                                         calendar: calendar,
-                                                         generateInDates: validConfig.generateInDates,
-                                                         generateOutDates: validConfig.generateOutDates,
-                                                         firstDayOfWeek: validConfig.firstDayOfWeek,
-                                                         hasStrictBoundaries: validConfig.hasStrictBoundaries)
+                let parameters = ConfigurationParameters(
+                    startDate: startOfMonthCache,
+                    endDate: endOfMonthCache,
+                    numberOfRows: validConfig.numberOfRows,
+                    calendar: calendar,
+                    generateInDates: validConfig.generateInDates,
+                    //generateOutDates: validConfig.generateOutDates,
+                    generateOutDates: .tillEndOfRow,
+                    firstDayOfWeek: validConfig.firstDayOfWeek,
+                    hasStrictBoundaries: validConfig.hasStrictBoundaries)
                 
                 let generatedData = dateGenerator.setupMonthInfoDataForStartAndEndDate(parameters)
                 months = generatedData.months
