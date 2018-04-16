@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jkt-if-l0W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1uS-YO-BKm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,112 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Parent View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ParentViewController" customModule="tipu_doing02" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-<<<<<<< HEAD
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MD7-vF-Avr" userLabel="ContentView">
-                                <rect key="frame" x="0.0" y="123" width="375" height="544"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIPU" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayj-ZD-eY3">
-                                <rect key="frame" x="166" y="35" width="38" height="20"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" red="1" green="0.10204433309567629" blue="0.89521171190733684" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04u-qZ-5L9">
-                                <rect key="frame" x="0.0" y="66" width="375" height="1"/>
-                                <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="0.5" id="RQl-rv-wbD"/>
-                                </constraints>
-                            </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="kGC-zw-rS4" customClass="SegmentedControl" customModule="tipu_doing02" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="73" width="375" height="37"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="Aj0-3l-5Wf"/>
-                                </constraints>
-=======
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MD7-vF-Avr" userLabel="ContentView">
-                                <rect key="frame" x="0.0" y="122" width="375" height="545"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kGC-zw-rS4" customClass="TabySegmentedControl" customModule="tipu_doing02" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
->>>>>>> fb3897e5604d6abe6778703b889f48c692c9d41d
-                                <segments>
-                                    <segment title="공연 달력">
-                                        <size key="contentOffset" width="30" height="0.0"/>
-                                    </segment>
-                                    <segment title="공연리스트">
-                                        <size key="contentOffset" width="-30" height="0.0"/>
-                                    </segment>
-                                </segments>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="switchTabs:" destination="BYZ-38-t0r" eventType="valueChanged" id="AdP-eY-X8H"/>
-                                </connections>
-                            </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rmm-0S-Fuh">
-                                <rect key="frame" x="0.0" y="112" width="375" height="1"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="0.5" id="i0U-pI-6iS"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8W-sa-P4d">
-                                <rect key="frame" x="91" y="113" width="64" height="2"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="4DM-5z-FCf"/>
-                                    <constraint firstAttribute="height" constant="2" id="scR-l7-OUS"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="MD7-vF-Avr" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="122-Jx-VzC"/>
-                            <constraint firstItem="04u-qZ-5L9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2Z4-aP-HMP"/>
-                            <constraint firstItem="MD7-vF-Avr" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3V6-aS-3sq"/>
-                            <constraint firstItem="04u-qZ-5L9" firstAttribute="top" secondItem="ayj-ZD-eY3" secondAttribute="bottom" constant="11" id="9kz-1J-Buj"/>
-                            <constraint firstItem="ayj-ZD-eY3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="Joc-Yi-uaK"/>
-                            <constraint firstItem="V8W-sa-P4d" firstAttribute="top" secondItem="Rmm-0S-Fuh" secondAttribute="bottom" id="R4K-nc-0gd"/>
-                            <constraint firstItem="kGC-zw-rS4" firstAttribute="top" secondItem="04u-qZ-5L9" secondAttribute="bottom" constant="6" id="Rjk-7C-cTs"/>
-                            <constraint firstItem="MD7-vF-Avr" firstAttribute="top" secondItem="Rmm-0S-Fuh" secondAttribute="bottom" constant="10" id="Ssc-Et-8Xt"/>
-                            <constraint firstItem="V8W-sa-P4d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="91" id="VxQ-Sm-EAu"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ayj-ZD-eY3" secondAttribute="trailing" constant="171" id="bgD-Kk-MxR"/>
-                            <constraint firstItem="Rmm-0S-Fuh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="e5I-2n-eLP"/>
-                            <constraint firstItem="Rmm-0S-Fuh" firstAttribute="top" secondItem="04u-qZ-5L9" secondAttribute="bottom" constant="45" id="fQK-Ol-1e8"/>
-                            <constraint firstItem="MD7-vF-Avr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gFV-Kr-Cdh"/>
-                            <constraint firstItem="kGC-zw-rS4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="j85-5D-7fc"/>
-                            <constraint firstItem="kGC-zw-rS4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nE5-YU-aU9"/>
-                            <constraint firstAttribute="trailing" secondItem="04u-qZ-5L9" secondAttribute="trailing" id="ubS-G7-eYt"/>
-                            <constraint firstItem="ayj-ZD-eY3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="166" id="v2l-w7-ox6"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rmm-0S-Fuh" secondAttribute="trailing" id="x5C-VC-gxo"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="LHT-df-zhX"/>
-                    <connections>
-                        <outlet property="TIPU" destination="ayj-ZD-eY3" id="OVK-gZ-8wP"/>
-                        <outlet property="animatedLine" destination="V8W-sa-P4d" id="dbg-a3-JcA"/>
-                        <outlet property="contentView" destination="MD7-vF-Avr" id="0yy-jz-dfy"/>
-                        <outlet property="segmentedControl" destination="kGC-zw-rS4" id="5x9-x2-x8N"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1076" y="132.68365817091455"/>
-        </scene>
         <!--Calendar List View Controller-->
         <scene sceneID="6rY-E8-jF6">
             <objects>
@@ -693,22 +587,105 @@
             <point key="canvasLocation" x="2060" y="860"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="lUd-qZ-BaD">
+        <scene sceneID="6gC-Fj-iCl">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jkt-if-l0W" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="f4u-03-WaJ">
+                <navigationController id="1uS-YO-BKm" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NDc-8L-Sdm">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="1hU-Oi-Pdg"/>
+                        <segue destination="E2P-bs-lms" kind="relationship" relationship="rootViewController" id="nir-YS-nqZ"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AlW-kW-NiM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TTL-hR-hRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+            <point key="canvasLocation" x="-118" y="133"/>
+        </scene>
+        <!--TIPU-->
+        <scene sceneID="5JN-hr-VBZ">
+            <objects>
+                <viewController id="E2P-bs-lms" customClass="ParentViewController" customModule="tipu_doing02" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SXg-0t-dWx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFQ-bk-rZY" userLabel="ContentView">
+                                <rect key="frame" x="0.0" y="121" width="375" height="546"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jTG-Kp-MCh">
+                                <rect key="frame" x="0.0" y="64" width="375" height="1"/>
+                                <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="L3R-WQ-Req"/>
+                                </constraints>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="UMX-4c-5n6" customClass="SegmentedControl" customModule="tipu_doing02" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="71" width="375" height="37"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Q8b-6s-aG4"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="공연 달력">
+                                        <size key="contentOffset" width="30" height="0.0"/>
+                                    </segment>
+                                    <segment title="공연리스트">
+                                        <size key="contentOffset" width="-30" height="0.0"/>
+                                    </segment>
+                                </segments>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="switchTabs:" destination="E2P-bs-lms" eventType="valueChanged" id="RMu-n7-cvJ"/>
+                                </connections>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0j-JW-ReU">
+                                <rect key="frame" x="0.0" y="110" width="375" height="1"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="BBF-o4-Q56"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCB-EC-jDp">
+                                <rect key="frame" x="91" y="111" width="64" height="2"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="Ea8-qn-0Sl"/>
+                                    <constraint firstAttribute="height" constant="2" id="c0t-xQ-zkZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="NXL-lg-cH0" firstAttribute="trailing" secondItem="i0j-JW-ReU" secondAttribute="trailing" id="0j9-ZF-uv0"/>
+                            <constraint firstItem="jTG-Kp-MCh" firstAttribute="top" secondItem="NXL-lg-cH0" secondAttribute="top" id="CW6-IH-Xhc"/>
+                            <constraint firstItem="XFQ-bk-rZY" firstAttribute="trailing" secondItem="NXL-lg-cH0" secondAttribute="trailing" id="FeC-Hw-8Ve"/>
+                            <constraint firstItem="dCB-EC-jDp" firstAttribute="top" secondItem="i0j-JW-ReU" secondAttribute="bottom" id="LMR-dS-Age"/>
+                            <constraint firstItem="UMX-4c-5n6" firstAttribute="leading" secondItem="NXL-lg-cH0" secondAttribute="leading" id="NBw-qP-qtc"/>
+                            <constraint firstItem="jTG-Kp-MCh" firstAttribute="leading" secondItem="SXg-0t-dWx" secondAttribute="leading" id="TCr-u6-qM1"/>
+                            <constraint firstItem="XFQ-bk-rZY" firstAttribute="leading" secondItem="NXL-lg-cH0" secondAttribute="leading" id="TsN-wx-hHi"/>
+                            <constraint firstItem="XFQ-bk-rZY" firstAttribute="top" secondItem="i0j-JW-ReU" secondAttribute="bottom" constant="10" id="Z0C-iF-jl5"/>
+                            <constraint firstAttribute="trailing" secondItem="jTG-Kp-MCh" secondAttribute="trailing" id="c4d-FC-EHC"/>
+                            <constraint firstItem="i0j-JW-ReU" firstAttribute="top" secondItem="jTG-Kp-MCh" secondAttribute="bottom" constant="45" id="d49-Hy-JKs"/>
+                            <constraint firstItem="XFQ-bk-rZY" firstAttribute="bottom" secondItem="NXL-lg-cH0" secondAttribute="bottom" id="dLO-Kw-PBE"/>
+                            <constraint firstItem="dCB-EC-jDp" firstAttribute="leading" secondItem="NXL-lg-cH0" secondAttribute="leading" constant="91" id="dOs-is-9Tg"/>
+                            <constraint firstItem="i0j-JW-ReU" firstAttribute="leading" secondItem="SXg-0t-dWx" secondAttribute="leading" id="nmM-fN-94k"/>
+                            <constraint firstItem="UMX-4c-5n6" firstAttribute="top" secondItem="jTG-Kp-MCh" secondAttribute="bottom" constant="6" id="yNQ-3m-oI1"/>
+                            <constraint firstItem="UMX-4c-5n6" firstAttribute="trailing" secondItem="NXL-lg-cH0" secondAttribute="trailing" id="zia-Yx-8ib"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NXL-lg-cH0"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="TIPU" leftItemsSupplementBackButton="YES" id="0UB-lD-pSY"/>
+                    <connections>
+                        <outlet property="animatedLine" destination="dCB-EC-jDp" id="PCG-ka-Wnk"/>
+                        <outlet property="contentView" destination="XFQ-bk-rZY" id="HrC-QQ-gVD"/>
+                        <outlet property="segmentedControl" destination="UMX-4c-5n6" id="aZH-fI-zSG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VQQ-GT-Uaq" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="697" y="133"/>
         </scene>
     </scenes>
     <resources>

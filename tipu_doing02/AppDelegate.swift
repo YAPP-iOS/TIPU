@@ -51,6 +51,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        //To change Navigation Bar Background Color
+        UINavigationBar.appearance().barTintColor = .white
+        
+        //To change Back button title & icon color
+        //UINavigationBar.appearance().tintColor = .black
+        
+        //To change Navigation Bar Title Color
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red: CGFloat(247/255.0), green: CGFloat(82/255.0), blue: CGFloat(135/255.0), alpha: CGFloat(1.0))]
+        UINavigationBar.appearance().isTranslucent = false
+        
+
+
+        
+        
         // 앱이 처음 시작될 때 실행
         if let theString = UIPasteboard.general.string {
             arr = theString.components(separatedBy: "\n")

@@ -50,8 +50,12 @@ class ParentViewController: UIViewController {
 //        segmentedControl.selectItemAt(index: 2, animated: false)
         displayCurrentTab(TabIndex.firstChildTab.rawValue)
         
-        TIPU.textColor =
-            UIColor(red: CGFloat(247/255.0), green: CGFloat(82/255.0), blue: CGFloat(135/255.0), alpha: CGFloat(1.0))
+//        TIPU.textColor =
+//            UIColor(red: CGFloat(247/255.0), green: CGFloat(82/255.0), blue: CGFloat(135/255.0), alpha: CGFloat(1.0))
+        
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+ 
+        
         flag = 0
     }
     
