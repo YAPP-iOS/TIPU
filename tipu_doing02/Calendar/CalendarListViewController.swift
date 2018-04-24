@@ -15,8 +15,9 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet var tableview: UITableView!
     @IBOutlet var cell_counter: UILabel!
     @IBOutlet var date_mmdd: UILabel!
-    //임시
-//    let xx = "2018-04-01"
+    
+    
+    var curDate:String = ""
     var dateyymmdd: String?
     
     var perform: [NSManagedObject] = []
@@ -37,6 +38,8 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         // Do any additional setup after loading the view.
         tableview.delegate = self
         tableview.dataSource = self
+        print("###############")
+        print(curDate)
         
         // 새로고침
 //        refresh = UIRefreshControl()

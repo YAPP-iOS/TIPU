@@ -46,23 +46,6 @@ class FirstTabViewController: UIViewController {
         self.initCalendar()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.fetchDatas()
-        self.initCalendar()
-    }
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-    }
-    
-    func getContext () -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
-    }
-    
     func fetchDatas(){
         let context = self.getContext()
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
@@ -70,6 +53,11 @@ class FirstTabViewController: UIViewController {
             datas = try context.fetch(fetchRequest)
         } catch let error as NSError {
             print("fetch fail \(error), \(error.userInfo)") }
+    }
+    
+    func getContext () -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
     }
     
     func setWeekColor(){
@@ -88,7 +76,18 @@ class FirstTabViewController: UIViewController {
         calendarView.visibleDates{ dateSegment in
             self.setupCalendarView(dateSegment : dateSegment)
         }
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.fetchDatas()
+        self.initCalendar()
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
     }
     
     func setupCalendarView(dateSegment : DateSegmentInfo){
@@ -128,6 +127,8 @@ class FirstTabViewController: UIViewController {
     
     func handleCellSelection(cell: CustomCell, cellState: CellState){
         
+        
+        
         formatter.dateFormat = "yyyy MM dd"
         let todaysDateString = self.formatter.string(from : todaysDate)
         let monthDateString = self.formatter.string(from : cellState.date)
@@ -146,18 +147,16 @@ class FirstTabViewController: UIViewController {
             
             cell.dateLabel.textColor = UIColor(red: CGFloat(255/255.0), green: CGFloat(255/255.0), blue: CGFloat(255/255.0), alpha: CGFloat(1.0))
             
+            //to datail
+            //이 셀의 날짜
+            let date : String = formatter.string(from : cellState.date)
+            let parsedDate : String = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil) //2018-04-23
+            willSendData = parsedDate
+            
         }else{
             cell.selectedView.backgroundColor = UIColor.clear
         }
         
-//         TO DO
-//         Move to detail
-//        if(cellState.isSelected){
-//            let date : String = formatter.string(from : cellState.date)
-//            willSendData = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil)
-//
-//
-//        }
         
     }
     
@@ -169,9 +168,6 @@ class FirstTabViewController: UIViewController {
         let date : String = formatter.string(from : cellState.date)
         let parsedDate : String = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil) //2018-04-23
         willSendData = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil)
-        print("hnadleCellEvent")
-        print(parsedDate)
-        
         
         //현재 날짜의 티켓들
         var ticketsOfcurrenDate: [NSManagedObject] = []
@@ -184,7 +180,6 @@ class FirstTabViewController: UIViewController {
                 }
             }
         }
-        
         
         // 이 셀의 날짜와 같은 티켓이, 디비에 없으면
         if(ticketsOfcurrenDate.count==0){
@@ -256,21 +251,27 @@ class FirstTabViewController: UIViewController {
         
     }
     
-    // detailview로 이동
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "tocalendarlist" {
-            if let destination = segue.destination as? CalendarListViewController {
-                if let send = willSendData {
-                    //print(send)
-                    destination.receivedData = send
-                }
-            }
+
+    // 특정 날짜 선택하면 실행되는 메소드
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is CalendarListViewController
+        {
+            let vc = segue.destination as? CalendarListViewController
+            vc?.curDate = willSendData!
         }
     }
     
     
     
 }
+
+
+
+
+
+
+
 
 
 
