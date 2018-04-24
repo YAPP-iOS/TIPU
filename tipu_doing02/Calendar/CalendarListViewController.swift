@@ -33,16 +33,16 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(receivedData)
+        //print(receivedData)
         // Do any additional setup after loading the view.
         tableview.delegate = self
         tableview.dataSource = self
         
         // 새로고침
-        refresh = UIRefreshControl()
-        refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refresh.addTarget(self, action: #selector(refresher), for: .valueChanged)
-        tableview.addSubview(refresh)
+//        refresh = UIRefreshControl()
+//        refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
+//        refresh.addTarget(self, action: #selector(refresher), for: .valueChanged)
+//        tableview.addSubview(refresh)
         date_mmdd.text = dateyymmdd
     }
     
@@ -55,38 +55,39 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    @objc func refresher(_ sender: Any) {
-        
-        // 테이블 뷰 새로고침
-        let context = self.getContext()
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
-        fetchRequest.predicate = NSPredicate(format: "deadline contains[c] %@", dateyymmdd!)
-        
-        //정렬
-        let sortDescriptor = NSSortDescriptor (key: "saveDate", ascending: false)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        do {
-            perform = try context.fetch(fetchRequest)
-            print("fetch")
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)") }
-        self.tableview.reloadData()
-        
-        
-        // 이 앱을 통해 저장한 이전의 모든 알림 삭제
-        
-        refresh.endRefreshing()
-    }
+//    @objc func refresher(_ sender: Any) {
+//
+//        // 테이블 뷰 새로고침
+//        let context = self.getContext()
+//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
+//        fetchRequest.predicate = NSPredicate(format: "deadline contains[c] %@", dateyymmdd!)
+//
+//        //정렬
+//        let sortDescriptor = NSSortDescriptor (key: "saveDate", ascending: false)
+//        fetchRequest.sortDescriptors = [sortDescriptor]
+//
+//        do {
+//            perform = try context.fetch(fetchRequest)
+//            print("fetch")
+//        } catch let error as NSError {
+//            print("Could not fetch. \(error), \(error.userInfo)") }
+//        self.tableview.reloadData()
+//
+//
+//        // 이 앱을 통해 저장한 이전의 모든 알림 삭제
+//
+//        refresh.endRefreshing()
+//    }
     
     // View가 보여질 때 자료를 DB에서 가져오도록 한다
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print(receivedData)
         let context = self.getContext()
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
         //날짜에 맞는 값 가져오기
-        print("@@@@@@@@@@@\(receivedData)")
+        print("recive\(receivedData)")
         fetchRequest.predicate = NSPredicate(format: "deadline contains[c] %@", receivedData)
         
             
@@ -188,19 +189,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
             
         }
     }
-    
-//    //detailview로 이동.
-//    override func prepare (for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toCalendarListView" {
-//            if let destination = segue.destination as? CalendarListViewController {
-//                if let selectedIndex =  {
-//                    destination.detailinfo = perform[selectedIndex]
-//                }
-//                
-//            }
-//            
-//        }
-//    }
     
 
     override func didReceiveMemoryWarning() {

@@ -52,6 +52,7 @@ class FirstTabViewController: UIViewController {
         self.initCalendar()
     }
     
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -137,7 +138,7 @@ class FirstTabViewController: UIViewController {
             cell.selectedView.layer.cornerRadius = cell.selectedView.frame.size.width/2
             cell.selectedView.clipsToBounds = true
             
-            if(todaysDateString == monthDateString  ){
+            if(todaysDateString == monthDateString){
                 cell.selectedView.backgroundColor = UIColor(patternImage: UIImage(named: "pinkCircle.png")!)
             }else{
                 cell.selectedView.backgroundColor = UIColor(patternImage: UIImage(named: "blackCircle.png")!)
@@ -149,27 +150,28 @@ class FirstTabViewController: UIViewController {
             cell.selectedView.backgroundColor = UIColor.clear
         }
         
-        // TO DO
-        // Move to detail
-        //        if(cellState.isSelected){
-        //            let date : String = formatter.string(from : cellState.date)
-        //            willSendData = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil)
-        //            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //            let next = storyboard.instantiateViewController(withIdentifier: "CalendarListViewController") as! CalendarListViewController
-        //            if let sendData = willSendData{
-        //                next.receivedData = sendData
-        //            }
-        //            present(next, animated: true, completion: nil)
-        //
-        //        }
+//         TO DO
+//         Move to detail
+//        if(cellState.isSelected){
+//            let date : String = formatter.string(from : cellState.date)
+//            willSendData = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil)
+//
+//
+//        }
         
     }
+    
+    
     
     func handleCellEvents(cell: CustomCell, cellState: CellState){
         
         //이 셀의 날짜
         let date : String = formatter.string(from : cellState.date)
         let parsedDate : String = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil) //2018-04-23
+        willSendData = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil)
+        print("hnadleCellEvent")
+        print(parsedDate)
+        
         
         //현재 날짜의 티켓들
         var ticketsOfcurrenDate: [NSManagedObject] = []
@@ -242,7 +244,7 @@ class FirstTabViewController: UIViewController {
                 cell.dots.isHidden = false
                 cell.dots.image = UIImage(named: "pinkDots")
                 
-                //하나라도 입금 안한 티켓이 있으면
+                // 하나라도 입금 안한 티켓이 있으면
                 if(depositFlag==false){
                     cell.ticket.backgroundColor = UIColor(red: CGFloat(252/255.0), green: CGFloat(82/255.0), blue: CGFloat(140/255.0), alpha: CGFloat(1.0))
                 }else{
@@ -254,7 +256,25 @@ class FirstTabViewController: UIViewController {
         
     }
     
+    // detailview로 이동
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "tocalendarlist" {
+            if let destination = segue.destination as? CalendarListViewController {
+                if let send = willSendData {
+                    //print(send)
+                    destination.receivedData = send
+                }
+            }
+        }
+    }
+    
+    
+    
 }
+
+
+
+
 
 
 // DataSource
