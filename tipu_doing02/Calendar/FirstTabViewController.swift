@@ -127,15 +127,13 @@ class FirstTabViewController: UIViewController {
     
     func handleCellSelection(cell: CustomCell, cellState: CellState){
         
-        
-        
         formatter.dateFormat = "yyyy MM dd"
         let todaysDateString = self.formatter.string(from : todaysDate)
         let monthDateString = self.formatter.string(from : cellState.date)
         
         if(cellState.isSelected){
             
-            // make to circle
+            // make circle on a date
             cell.selectedView.layer.cornerRadius = cell.selectedView.frame.size.width/2
             cell.selectedView.clipsToBounds = true
             
@@ -147,8 +145,7 @@ class FirstTabViewController: UIViewController {
             
             cell.dateLabel.textColor = UIColor(red: CGFloat(255/255.0), green: CGFloat(255/255.0), blue: CGFloat(255/255.0), alpha: CGFloat(1.0))
             
-            //to datail
-            //이 셀의 날짜
+            // move to datail
             let date : String = formatter.string(from : cellState.date)
             let parsedDate : String = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil) //2018-04-23
             willSendData = parsedDate
@@ -259,6 +256,7 @@ class FirstTabViewController: UIViewController {
         {
             let vc = segue.destination as? CalendarListViewController
             vc?.curDate = willSendData!
+            print(willSendData!)
         }
     }
     

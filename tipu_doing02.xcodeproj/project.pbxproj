@@ -69,8 +69,8 @@
 			isa = PBXGroup;
 			children = (
 				74BB560620700DFC004C99A8 /* FirstTabViewController.swift */,
-				74BB560A20701108004C99A8 /* CustomCell.swift */,
 				747744AC2070291F00B09E66 /* CalendarListViewController.swift */,
+				74BB560A20701108004C99A8 /* CustomCell.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
