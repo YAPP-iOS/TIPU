@@ -26,7 +26,7 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
     var perform: [NSManagedObject] = []
     var refresh: UIRefreshControl!
     
-
+    
     var eventStore: EKEventStore?
     
     func getContext () -> NSManagedObjectContext {
@@ -42,10 +42,10 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
         tableview.delegate = self
         tableview.dataSource = self
-       
+        
         // 새로고침
         refresh = UIRefreshControl()
         refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -56,8 +56,8 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
     
     class Responder : NSObject { @objc func segmentedControlValueChanged ( _ sender : UISegmentedControl ) {} }
     
-
-
+    
+    
     @objc func refresher(_ sender: Any) {
         
         // 테이블 뷰 새로고침
@@ -70,7 +70,7 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         
         do {
             perform = try context.fetch(fetchRequest)
-            print("fetch")
+            
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)") }
         self.tableview.reloadData()
@@ -85,7 +85,7 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidAppear(animated)
         let context = self.getContext()
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
-    
+        
         
         //정렬
         let sortDescriptor = NSSortDescriptor (key: "saveDate", ascending: false)
@@ -93,15 +93,15 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         
         do {
             perform = try context.fetch(fetchRequest)
-            print(perform)
-            print("fetch")
+            
+            
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)") }
         self.tableview.reloadData()
         
     }
     
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return perform.count
     }
@@ -123,7 +123,7 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         var sub:String = ""
         if let nameLabel = perform.value(forKey: "name") as? String {
             display = nameLabel
-            print(nameLabel)
+            
         }
         if let deadline = perform.value(forKey: "deadline") as? String {
             let text = deadline.components(separatedBy: " ")
@@ -200,11 +200,11 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
             if let destination = segue.destination as? DetailViewController {
                 if let selectedIndex = self.tableview.indexPathsForSelectedRows?.first?.row {
                     destination.detailinfo = perform[selectedIndex]
-
+                    
                 }
-
+                
             }
-
+            
         }
     }
     

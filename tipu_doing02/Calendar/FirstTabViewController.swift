@@ -36,17 +36,43 @@ class FirstTabViewController: UIViewController {
     let todaysDate = Date()
     var willSendData : String?
     var datas: [NSManagedObject] = []
-    var perform: [NSManagedObject] = []
     
-    
+    // View did load
     override func viewDidLoad() {
+        
+        
         super.viewDidLoad()
         self.fetchDatas()
         self.setWeekColor()
         self.initCalendar()
     }
     
+    // Appear
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.fetchDatas()
+        self.setWeekColor()
+        self.initCalendar()
+    }
+    
+    // Disappear
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        
+    }
+    
+    // 데이터 가져오기 위한 설정
+    func getContext () -> NSManagedObjectContext {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
+    
+    // 데이터 가져오기
     func fetchDatas(){
+        
         let context = self.getContext()
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
         do {
@@ -55,12 +81,9 @@ class FirstTabViewController: UIViewController {
             print("fetch fail \(error), \(error.userInfo)") }
     }
     
-    func getContext () -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
-    }
-    
+    // 일~토 색 설정
     func setWeekColor(){
+        
         weekView.backgroundColor = UIColor(red: CGFloat(250/255.0), green: CGFloat(250/255.0), blue: CGFloat(250/255.0), alpha: CGFloat(1.0))
         sun.textColor = UIColor(red: CGFloat(156/255.0), green: CGFloat(156/255.0), blue: CGFloat(156/255.0), alpha: CGFloat(1.0))
         mon.textColor = UIColor(red: CGFloat(156/255.0), green: CGFloat(156/255.0), blue: CGFloat(156/255.0), alpha: CGFloat(1.0))
@@ -71,26 +94,19 @@ class FirstTabViewController: UIViewController {
         sat.textColor = UIColor(red: CGFloat(156/255.0), green: CGFloat(156/255.0), blue: CGFloat(156/255.0), alpha: CGFloat(1.0))
     }
     
+    // 스크롤, 뷰 설정
     func initCalendar(){
+        
         calendarView.scrollToDate(todaysDate, animateScroll: false)
-        calendarView.visibleDates{ dateSegment in
-            self.setupCalendarView(dateSegment : dateSegment)
+        calendarView.visibleDates{
+            dateSegment in self.setupCalendarView(dateSegment : dateSegment)
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.fetchDatas()
-        self.initCalendar()
-    }
     
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-    }
-    
+    // 월, 연도
     func setupCalendarView(dateSegment : DateSegmentInfo){
+        
         guard let date = dateSegment.monthDates.first?.date else{return}
         self.formatter.dateFormat = "yyyy"
         self.year.text = self.formatter.string(from: date)
@@ -99,7 +115,9 @@ class FirstTabViewController: UIViewController {
         self.month.text = self.formatter.string(from: date)
     }
     
+    // 셀 구성
     func configureCell(cell: JTAppleCell?, cellState: CellState){
+        
         guard let myCustomCell = cell as? CustomCell else {return}
         handleCellTextColor(cell: myCustomCell, cellState: cellState)
         handleCellVisibility(cell: myCustomCell, cellState: cellState)
@@ -107,7 +125,11 @@ class FirstTabViewController: UIViewController {
         handleCellEvents(cell: myCustomCell, cellState: cellState)
     }
     
+    // 날짜 색깔
     func handleCellTextColor(cell: CustomCell, cellState: CellState){
+        
+        
+        
         formatter.dateFormat = "yyyy MM dd"
         let todaysDateString = self.formatter.string(from : todaysDate)
         let monthDateString = self.formatter.string(from : cellState.date)
@@ -121,11 +143,18 @@ class FirstTabViewController: UIViewController {
         }
     }
     
+    // 이번달에 해당하는 날짜만 보임
     func handleCellVisibility(cell: CustomCell, cellState: CellState){
+        
         cell.isHidden = cellState.dateBelongsTo == .thisMonth ? false : true
     }
     
+    // 날짜 누르면
+    // 1. 동그라미가 생김
+    // 2. 상세 화면으로 이동
     func handleCellSelection(cell: CustomCell, cellState: CellState){
+        
+        
         
         formatter.dateFormat = "yyyy MM dd"
         let todaysDateString = self.formatter.string(from : todaysDate)
@@ -133,7 +162,7 @@ class FirstTabViewController: UIViewController {
         
         if(cellState.isSelected){
             
-            // make circle on a date
+            // 1. 동그라미가 생김
             cell.selectedView.layer.cornerRadius = cell.selectedView.frame.size.width/2
             cell.selectedView.clipsToBounds = true
             
@@ -142,13 +171,8 @@ class FirstTabViewController: UIViewController {
             }else{
                 cell.selectedView.backgroundColor = UIColor(patternImage: UIImage(named: "blackCircle.png")!)
             }
-            
             cell.dateLabel.textColor = UIColor(red: CGFloat(255/255.0), green: CGFloat(255/255.0), blue: CGFloat(255/255.0), alpha: CGFloat(1.0))
             
-            // move to datail
-            let date : String = formatter.string(from : cellState.date)
-            let parsedDate : String = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil) //2018-04-23
-            willSendData = parsedDate
             
         }else{
             cell.selectedView.backgroundColor = UIColor.clear
@@ -157,14 +181,8 @@ class FirstTabViewController: UIViewController {
         
     }
     
-    
-    
+    // 날짜에 해당 하는 티켓 정보 보여주기
     func handleCellEvents(cell: CustomCell, cellState: CellState){
-        
-        //이 셀의 날짜
-        let date : String = formatter.string(from : cellState.date)
-        let parsedDate : String = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil) //2018-04-23
-        willSendData = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil)
         
         //현재 날짜의 티켓들
         var ticketsOfcurrenDate: [NSManagedObject] = []
@@ -242,38 +260,22 @@ class FirstTabViewController: UIViewController {
                 }else{
                     cell.ticket.backgroundColor = UIColor(red: CGFloat(187/255.0), green: CGFloat(186/255.0), blue: CGFloat(186/255.0), alpha: CGFloat(1.0))
                 }
-                
             }
         }
         
     }
     
-
+    
     // 특정 날짜 선택하면 실행되는 메소드
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if segue.destination is CalendarListViewController
-        {
+        if segue.destination is CalendarListViewController{
             let vc = segue.destination as? CalendarListViewController
             vc?.curDate = willSendData!
-            print(willSendData!)
         }
     }
     
-    
-    
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 // DataSource
@@ -289,7 +291,6 @@ extension FirstTabViewController: JTAppleCalendarViewDataSource {
 
 // Delegate
 extension FirstTabViewController: JTAppleCalendarViewDelegate{
-    
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         let myCustomCell = cell as! CustomCell
         sharedFunctionToConfigureCell(cell: myCustomCell, cellState: cellState, date: date)
@@ -320,6 +321,20 @@ extension FirstTabViewController: JTAppleCalendarViewDelegate{
     }
     
     func calendar(_ calendar: JTAppleCalendarView, shouldSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) -> Bool {
+        
+        // 선택한 cell 의 날짜
+        let formatter : DateFormatter = {
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = Calendar.current.timeZone
+            dateFormatter.locale = Calendar.current.locale
+            dateFormatter.dateFormat = "yyyy MM dd"
+            return dateFormatter
+        }()
+        let date : String = formatter.string(from : cellState.date)
+        let parsedDate : String = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil) //2018-04-23
+        willSendData = parsedDate
+        
+        // 셀의 날짜가 이번달이면
         if cellState.dateBelongsTo == .thisMonth {
             return true
         } else {

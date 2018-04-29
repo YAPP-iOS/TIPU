@@ -27,6 +27,9 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("============ calendar list ===============")
+        print(curDate)
+        
         // Do any additional setup after loading the view.
         tableview.delegate = self
         tableview.dataSource = self

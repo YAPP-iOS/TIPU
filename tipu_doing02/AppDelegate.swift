@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 
                 var b = arr[7].components(separatedBy: ["▶",":"])
-                print(b)
+                
                 let deadline = b[2]
                 object.setValue(deadline, forKey: "deadline")
                 
@@ -111,10 +111,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // 클립보드 초기화
                 UIPasteboard.general.string = ""
                 
-                print("문자 분석")
+                
                 do {
                     try context.save()
-                    print("saved!")
+                    
                 } catch let error as NSError {
                     print("Could not save \(error), \(error.userInfo)")
                 }
@@ -125,7 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.eventStore!.requestAccess(to: EKEntityType.reminder, completion:
                         {(isAccessible,errors) in })
                     
-                    print("설정 완료")
+                    
                 }
                 
                 
@@ -144,7 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        print("first")
+        
         return true
     }
     
@@ -178,7 +178,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 object.setValue(title, forKey: "name")
                 
                 var b = arr[7].components(separatedBy: ["▶",":"])
-                print(b)
                 let deadline = b[2]
                 object.setValue(deadline, forKey: "deadline")
                 
@@ -202,10 +201,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // 클립보드 초기화
                 UIPasteboard.general.string = ""
                 
-                print("문자 분석")
+                
                 do {
                     try context.save()
-                    print("saved!")
                 } catch let error as NSError {
                     print("Could not save \(error), \(error.userInfo)")
                 }
@@ -216,7 +214,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.eventStore!.requestAccess(to: EKEntityType.reminder, completion:
                         {(isAccessible,errors) in })
                     
-                    print("설정 완료")
+                    
                 }
                 
                 
@@ -235,7 +233,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        print("background->foreground")
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
