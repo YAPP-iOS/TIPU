@@ -52,6 +52,7 @@ class ParentViewController: UIViewController {
         displayCurrentTab(0)
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         flag = 0
+
     }
     
     //Will

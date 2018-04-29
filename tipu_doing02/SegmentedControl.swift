@@ -11,6 +11,8 @@ import UIKit
 @IBDesignable
 class SegmentedControl: UISegmentedControl {
     
+    
+    
     func setupFonts(){
         let titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         self.setTitleTextAttributes(titleTextAttributes, for: .normal)

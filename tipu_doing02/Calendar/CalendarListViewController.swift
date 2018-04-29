@@ -12,6 +12,9 @@ import EventKit
 
 class CalendarListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
+    @IBOutlet var date: UILabel!
+    @IBOutlet var count: UILabel!
     @IBOutlet var tableview: UITableView!
     
     var curDate:String = ""
@@ -27,10 +30,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("============ calendar list ===============")
-        print(curDate)
-        
-        // Do any additional setup after loading the view.
         tableview.delegate = self
         tableview.dataSource = self
         
@@ -40,9 +39,46 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refresh.addTarget(self, action: #selector(refresher), for: .valueChanged)
         tableview.addSubview(refresh)
+        
+        // navagation bar
+        self.navigationItem.title = "TIPU"
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
+    
+        
+        // get data from DB
+        let context = self.getContext()
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
+        fetchRequest.predicate = NSPredicate(format: "deadline contains[c] %@", curDate)
+        
+        // sorting
+        let sortDescriptor = NSSortDescriptor (key: "saveDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        do {
+            perform = try context.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        // reload
+        self.tableview.reloadData()
+        
+        
+        // 날짜, 개수
+        let arr = curDate.components(separatedBy: "-")
+        let monthStr = arr[1]
+        let dateStr = arr[2]
+        let monthInt : Int = Int(monthStr)!
+        let dateInt : Int = Int(dateStr)!
+        self.date.text = "\(monthInt)월 \(dateInt)일"
+        self.count.text = "총 \(perform.count) 개"
+        
+        
+        tableview.backgroundColor = UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
+        
+        
+        
     }
-    
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return perform.count
@@ -93,6 +129,8 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
             print("Could not fetch. \(error), \(error.userInfo)")
             
         }
+        
+
         
         self.tableview.reloadData()
     }
@@ -185,6 +223,8 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
 }
 
 
