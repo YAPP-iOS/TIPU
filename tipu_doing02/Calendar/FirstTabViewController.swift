@@ -52,7 +52,7 @@ class FirstTabViewController: UIViewController {
         super.viewWillAppear(animated)
 //        self.fetchDatas()
 //        self.setWeekColor()
-//        self.initCalendar()
+        self.initCalendar()
     }
     
     // Disappear
@@ -252,6 +252,32 @@ class FirstTabViewController: UIViewController {
     
     // 특정 날짜 선택하면 실행되는 메소드
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        
+        
+        // get data from DB
+        let context = self.getContext()
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
+        fetchRequest.predicate = NSPredicate(format: "deadline contains[c] %@", willSendData!)
+        
+        do {
+            let count = try context.fetch(fetchRequest).count
+            if(count==0){
+
+                // 공연 없을 때
+                let alert = UIAlertController(title: "알림", message: "예매된 공연이 없습니다.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+
+                self.present(alert, animated: true)
+                
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        
+        
+        
+        // 공연 있을 때
         if segue.destination is CalendarListViewController{
             let vc = segue.destination as? CalendarListViewController
             vc?.curDate = willSendData!
@@ -291,7 +317,6 @@ extension FirstTabViewController: JTAppleCalendarViewDelegate{
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         configureCell(cell: cell, cellState: cellState)
-//        cell?.bounce()
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
