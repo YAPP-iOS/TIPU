@@ -39,6 +39,7 @@ class FirstTabViewController: UIViewController {
     
     // View did load
     override func viewDidLoad() {
+        print("viewDidLoad")
         super.viewDidLoad()
         self.fetchDatas()
         self.setWeekColor()
@@ -47,18 +48,17 @@ class FirstTabViewController: UIViewController {
     
     // Appear
     override func viewWillAppear(_ animated: Bool) {
+        print("FTC : viewWillAppear")
         super.viewWillAppear(animated)
-        
-        self.fetchDatas()
-        self.setWeekColor()
-        self.initCalendar()
+//        self.fetchDatas()
+//        self.setWeekColor()
+//        self.initCalendar()
     }
     
     // Disappear
     override func viewWillDisappear(_ animated: Bool) {
-        
+        print("viewWillDisappear")
         super.viewWillDisappear(animated)
-        
     }
     
     // 데이터 가져오기 위한 설정
@@ -251,8 +251,7 @@ class FirstTabViewController: UIViewController {
     
     
     // 특정 날짜 선택하면 실행되는 메소드
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.destination is CalendarListViewController{
             let vc = segue.destination as? CalendarListViewController
             vc?.curDate = willSendData!
@@ -292,7 +291,7 @@ extension FirstTabViewController: JTAppleCalendarViewDelegate{
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         configureCell(cell: cell, cellState: cellState)
-        cell?.bounce()
+//        cell?.bounce()
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {

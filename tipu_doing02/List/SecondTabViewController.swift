@@ -12,35 +12,20 @@ import EventKit
 
 class SecondTabViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("Second VC will appear")
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print("Second VC will disappear")
-    }
-    
+    @IBOutlet var tableview: UITableView!
     
     var perform: [NSManagedObject] = []
     var refresh: UIRefreshControl!
-    
-    
     var eventStore: EKEventStore?
+        let buttonBar = UIView()
     
     func getContext () -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
     }
     
-    
-    @IBOutlet var tableview: UITableView!
-    
-    let buttonBar = UIView()
-    
-    
     override func viewDidLoad() {
+        print("Second VC viewdidload")
         super.viewDidLoad()
         
         tableview.delegate = self
@@ -51,7 +36,14 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refresh.addTarget(self, action: #selector(refresher), for: .valueChanged)
         tableview.addSubview(refresh)
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     class Responder : NSObject { @objc func segmentedControlValueChanged ( _ sender : UISegmentedControl ) {} }
@@ -194,24 +186,19 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    
     override func prepare (for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailView" {
             if let destination = segue.destination as? DetailViewController {
                 if let selectedIndex = self.tableview.indexPathsForSelectedRows?.first?.row {
                     destination.detailinfo = perform[selectedIndex]
-                    
                 }
-                
             }
             
         }
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     

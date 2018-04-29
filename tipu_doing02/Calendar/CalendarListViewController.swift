@@ -74,18 +74,19 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         self.count.text = "총 \(perform.count) 개"
         
         
+        // tableview backgrond
         tableview.backgroundColor = UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
-        
-        
         
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return perform.count
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    
     @objc func refresher(_ sender: Any) {
         
         // 테이블 뷰 새로고침
@@ -129,8 +130,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
             print("Could not fetch. \(error), \(error.userInfo)")
             
         }
-        
-
         
         self.tableview.reloadData()
     }

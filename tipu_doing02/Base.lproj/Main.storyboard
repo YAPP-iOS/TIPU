@@ -520,7 +520,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCB-EC-jDp">
-                                <rect key="frame" x="91" y="111" width="64" height="2"/>
+                                <rect key="frame" x="100" y="111" width="64" height="2"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="Ea8-qn-0Sl"/>
@@ -541,7 +541,7 @@
                             <constraint firstAttribute="trailing" secondItem="jTG-Kp-MCh" secondAttribute="trailing" id="c4d-FC-EHC"/>
                             <constraint firstItem="i0j-JW-ReU" firstAttribute="top" secondItem="jTG-Kp-MCh" secondAttribute="bottom" constant="45" id="d49-Hy-JKs"/>
                             <constraint firstItem="XFQ-bk-rZY" firstAttribute="bottom" secondItem="NXL-lg-cH0" secondAttribute="bottom" id="dLO-Kw-PBE"/>
-                            <constraint firstItem="dCB-EC-jDp" firstAttribute="leading" secondItem="NXL-lg-cH0" secondAttribute="leading" constant="91" id="dOs-is-9Tg"/>
+                            <constraint firstItem="dCB-EC-jDp" firstAttribute="leading" secondItem="NXL-lg-cH0" secondAttribute="leading" constant="100" id="dOs-is-9Tg"/>
                             <constraint firstItem="i0j-JW-ReU" firstAttribute="leading" secondItem="SXg-0t-dWx" secondAttribute="leading" id="nmM-fN-94k"/>
                             <constraint firstItem="UMX-4c-5n6" firstAttribute="top" secondItem="jTG-Kp-MCh" secondAttribute="bottom" constant="6" id="yNQ-3m-oI1"/>
                             <constraint firstItem="UMX-4c-5n6" firstAttribute="trailing" secondItem="NXL-lg-cH0" secondAttribute="trailing" id="zia-Yx-8ib"/>

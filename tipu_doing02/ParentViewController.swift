@@ -6,6 +6,9 @@
 //  Copyright © 2018 JunHee. All rights reserved.
 //
 
+//view did load
+//displayCurrentTab
+//viewControllerForSelectedSegmentIndex
 import UIKit
 
 class ParentViewController: UIViewController {
@@ -21,9 +24,10 @@ class ParentViewController: UIViewController {
     @IBOutlet weak var segmentedControl: SegmentedControl!
     @IBOutlet weak var contentView: UIView!
     
-    //변수
+    // 변수
     var currentViewController: UIViewController?
-    var flag:Int?
+    var flag:Int? = 0
+    
     lazy var firstChildTabVC: UIViewController? = {
         let firstChildTabVC = self.storyboard?.instantiateViewController(withIdentifier: "FirstViewControllerId")
         return firstChildTabVC
@@ -36,11 +40,11 @@ class ParentViewController: UIViewController {
     
     //세그먼트 에니메이션
     func moveRight(view: UIView) {
-        view.center.x += 130
+        view.center.x += 147
     }
     
     func moveLeft(view: UIView) {
-        view.center.x -= 130
+        view.center.x -= 147
     }
     
     
@@ -51,12 +55,17 @@ class ParentViewController: UIViewController {
         segmentedControl.selectedSegmentIndex = 0
         displayCurrentTab(0)
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-        flag = 0
-
+    }
+    
+    // Appear
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+        super.viewWillAppear(animated)
     }
     
     //Will
     override func viewWillDisappear(_ animated: Bool) {
+        print("viewWillDisappear")
         super.viewWillDisappear(animated)
         if let currentViewController = currentViewController {
             currentViewController.viewWillDisappear(animated)
@@ -65,31 +74,39 @@ class ParentViewController: UIViewController {
     
     // 세그먼트 컨트롤의 탭 이동
     @IBAction func switchTabs(_ sender: UISegmentedControl) {
+        print("switchTabs")
+        
         
         let duration: Double = 0.5
         
         //왼쪽으로
         if(sender.selectedSegmentIndex==0 && flag == 1){
+            
             UIView.animate(withDuration: duration, animations: {
                 self.moveLeft(view: self.animatedLine)
+                print("move left")
             })
             flag = 0
         }else if(sender.selectedSegmentIndex==1 && flag == 0){
             
+            
             //오른쪽으로
             UIView.animate(withDuration: duration) {
                 self.moveRight(view: self.animatedLine)
+                print("move right")
             }
             flag = 1
         }
         
-        self.currentViewController!.view.removeFromSuperview()
+        //self.currentViewController!.view.removeFromSuperview()
         self.currentViewController!.removeFromParentViewController()
         displayCurrentTab(sender.selectedSegmentIndex)
     }
     
     // 현재 탭을 화면에 보여준다
     func displayCurrentTab(_ tabIndex: Int){
+        
+        print("displayCurrentTab")
         
         if let vc = viewControllerForSelectedSegmentIndex(tabIndex) {
             self.addChildViewController(vc)
@@ -102,6 +119,9 @@ class ParentViewController: UIViewController {
     
     // 세그먼트의 인덱스에 맞는 뷰컨트롤러를 가져온다
     func viewControllerForSelectedSegmentIndex(_ index: Int) -> UIViewController? {
+        
+        print("viewControllerForSelectedSegmentIndex")
+        
         var vc: UIViewController?
         switch index {
         case TabIndex.firstChildTab.rawValue :
