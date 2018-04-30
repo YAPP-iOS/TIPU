@@ -4,7 +4,6 @@
 //
 //  Created by JunHee on 01/04/2018.
 //  Copyright © 2018 JunHee. All rights reserved.
-//
 
 import UIKit
 import JTAppleCalendar
@@ -34,31 +33,32 @@ class FirstTabViewController: UIViewController {
         return dateFormatter
     }()
     let todaysDate = Date()
+    var tempDate = Date()
     var willSendData : String?
     var datas: [NSManagedObject] = []
     
     // View did load
     override func viewDidLoad() {
-        print("viewDidLoad")
+        print("FirstTabViewCon : viewDidLoad")
         super.viewDidLoad()
         self.fetchDatas()
         self.setWeekColor()
-        self.initCalendar()
+        self.initCalendar(date : todaysDate)
     }
     
     // Appear
     override func viewWillAppear(_ animated: Bool) {
-        print("FTC : viewWillAppear")
-        super.viewWillAppear(animated)
+        print("FirstTabViewCon : viewWillAppear")
+//        super.viewWillAppear(animated)
 //        self.fetchDatas()
 //        self.setWeekColor()
-        self.initCalendar()
+        self.initCalendar(date: tempDate)
     }
     
     // Disappear
     override func viewWillDisappear(_ animated: Bool) {
-        print("viewWillDisappear")
-        super.viewWillDisappear(animated)
+        print("FirstTabViewCon : viewWillDisappear")
+//        super.viewWillDisappear(animated)
     }
     
     // 데이터 가져오기 위한 설정
@@ -93,8 +93,8 @@ class FirstTabViewController: UIViewController {
     }
     
     // 스크롤, 뷰 설정
-    func initCalendar(){
-        calendarView.scrollToDate(todaysDate, animateScroll: false)
+    func initCalendar(date : Date){
+        calendarView.scrollToDate(date, animateScroll: false)
         calendarView.visibleDates{
             dateSegment in self.setupCalendarView(dateSegment : dateSegment)
         }
@@ -274,9 +274,6 @@ class FirstTabViewController: UIViewController {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         
-        
-        
-        
         // 공연 있을 때
         if segue.destination is CalendarListViewController{
             let vc = segue.destination as? CalendarListViewController
@@ -329,6 +326,9 @@ extension FirstTabViewController: JTAppleCalendarViewDelegate{
     
     func calendar(_ calendar: JTAppleCalendarView, shouldSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) -> Bool {
         
+        
+        tempDate = Calendar.current.date(byAdding: .day, value: 1, to: cellState.date)!
+        
         // 선택한 cell 의 날짜
         let formatter : DateFormatter = {
             let dateFormatter = DateFormatter()
@@ -338,6 +338,7 @@ extension FirstTabViewController: JTAppleCalendarViewDelegate{
             return dateFormatter
         }()
         let date : String = formatter.string(from : cellState.date)
+        
         let parsedDate : String = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil) //2018-04-23
         willSendData = parsedDate
         
@@ -347,19 +348,5 @@ extension FirstTabViewController: JTAppleCalendarViewDelegate{
         } else {
             return false
         }
-    }
-}
-
-extension UIView {
-    func bounce() {
-        self.transform = CGAffineTransform(scaleX: 0.5 , y:0.5)
-        UIView.animate(
-            withDuration: 0.5,
-            delay: 0, usingSpringWithDamping: 0.3,
-            initialSpringVelocity: 0.1,
-            options: UIViewAnimationOptions.beginFromCurrentState,
-            animations: {
-                self.transform = CGAffineTransform(scaleX: 1 , y:1)
-        })
     }
 }

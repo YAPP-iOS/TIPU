@@ -43,6 +43,7 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        print("SecondTabViewCon : viewWillDisappear")
         super.viewWillDisappear(animated)
     }
     

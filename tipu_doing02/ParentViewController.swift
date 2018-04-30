@@ -59,17 +59,17 @@ class ParentViewController: UIViewController {
     
     // Appear
     override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
+        print("FirstTabViewCon : viewWillAppear")
         super.viewWillAppear(animated)
     }
     
     //Will
     override func viewWillDisappear(_ animated: Bool) {
-        print("viewWillDisappear")
-        super.viewWillDisappear(animated)
-        if let currentViewController = currentViewController {
-            currentViewController.viewWillDisappear(animated)
-        }
+        print("parerntViewController : viewWillDisappear")
+//        super.viewWillDisappear(animated)
+//        if let currentViewController = currentViewController {
+//            currentViewController.viewWillDisappear(animated)
+//        }
     }
     
     // 세그먼트 컨트롤의 탭 이동

@@ -43,7 +43,7 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         // navagation bar
         self.navigationItem.title = "TIPU"
         self.navigationController?.navigationBar.backgroundColor = UIColor.clear
-    
+        
         
         // get data from DB
         let context = self.getContext()
@@ -220,11 +220,5 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-    
 }
-
-
-
