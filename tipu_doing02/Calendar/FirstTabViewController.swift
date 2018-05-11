@@ -100,7 +100,6 @@ class FirstTabViewController: UIViewController {
         }
     }
     
-    
     // 월, 연도
     func setupCalendarView(dateSegment : DateSegmentInfo){
         guard let date = dateSegment.monthDates.first?.date else{return}
