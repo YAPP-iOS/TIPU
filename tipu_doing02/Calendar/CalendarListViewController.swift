@@ -125,7 +125,7 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         
         do {
             perform = try context.fetch(fetchRequest)
-            
+            print(perform)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
             

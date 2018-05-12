@@ -50,32 +50,30 @@ class ParentViewController: UIViewController {
     
     //Did
     override func viewDidLoad() {
+        print("parentVC : viewDidLoad")
         super.viewDidLoad()
         segmentedControl.setupFonts()
         segmentedControl.selectedSegmentIndex = 0
         displayCurrentTab(0)
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        
+        
+        let n : Int = segmentedControl.selectedSegmentIndex.distance(to: 10)
+        
+        print(n)
     }
+    
     
     // Appear
     override func viewWillAppear(_ animated: Bool) {
-        print("FirstTabViewCon : viewWillAppear")
+        print("parentVC : viewWillAppear")
         super.viewWillAppear(animated)
     }
     
-    //Will
-    override func viewWillDisappear(_ animated: Bool) {
-        print("parerntViewController : viewWillDisappear")
-//        super.viewWillDisappear(animated)
-//        if let currentViewController = currentViewController {
-//            currentViewController.viewWillDisappear(animated)
-//        }
-    }
     
     // 세그먼트 컨트롤의 탭 이동
     @IBAction func switchTabs(_ sender: UISegmentedControl) {
-        print("switchTabs")
-        
+        print("parentVC : switchTabs")
         
         let duration: Double = 0.5
         
@@ -98,7 +96,6 @@ class ParentViewController: UIViewController {
             flag = 1
         }
         
-        //self.currentViewController!.view.removeFromSuperview()
         self.currentViewController!.removeFromParentViewController()
         displayCurrentTab(sender.selectedSegmentIndex)
     }
@@ -106,7 +103,7 @@ class ParentViewController: UIViewController {
     // 현재 탭을 화면에 보여준다
     func displayCurrentTab(_ tabIndex: Int){
         
-        print("displayCurrentTab")
+        print("parentVC : displayCurrentTab")
         
         if let vc = viewControllerForSelectedSegmentIndex(tabIndex) {
             self.addChildViewController(vc)
@@ -120,7 +117,7 @@ class ParentViewController: UIViewController {
     // 세그먼트의 인덱스에 맞는 뷰컨트롤러를 가져온다
     func viewControllerForSelectedSegmentIndex(_ index: Int) -> UIViewController? {
         
-        print("viewControllerForSelectedSegmentIndex")
+        print("parentVC : viewControllerForSelectedSegmentIndex")
         
         var vc: UIViewController?
         switch index {

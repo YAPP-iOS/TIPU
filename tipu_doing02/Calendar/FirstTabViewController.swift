@@ -15,7 +15,6 @@ class FirstTabViewController: UIViewController {
     @IBOutlet var calendarView: JTAppleCalendarView!
     @IBOutlet var year: UILabel!
     @IBOutlet var month: UILabel!
-    @IBOutlet var weekView: UIView!
     @IBOutlet var sun: UILabel!
     @IBOutlet var mon: UILabel!
     @IBOutlet var tue: UILabel!
@@ -23,6 +22,7 @@ class FirstTabViewController: UIViewController {
     @IBOutlet var thu: UILabel!
     @IBOutlet var fri: UILabel!
     @IBOutlet var sat: UILabel!
+    @IBOutlet var weekView: UIStackView!
     
     // VARIABLES
     let formatter : DateFormatter = {
@@ -82,7 +82,8 @@ class FirstTabViewController: UIViewController {
     // 일~토 색 설정
     func setWeekColor(){
         
-        weekView.backgroundColor = UIColor(red: CGFloat(250/255.0), green: CGFloat(250/255.0), blue: CGFloat(250/255.0), alpha: CGFloat(1.0))
+        weekView.addBackground(color: UIColor(red: CGFloat(250/255.0), green: CGFloat(250/255.0), blue: CGFloat(250/255.0), alpha: CGFloat(1.0)))
+
         sun.textColor = UIColor(red: CGFloat(156/255.0), green: CGFloat(156/255.0), blue: CGFloat(156/255.0), alpha: CGFloat(1.0))
         mon.textColor = UIColor(red: CGFloat(156/255.0), green: CGFloat(156/255.0), blue: CGFloat(156/255.0), alpha: CGFloat(1.0))
         tue.textColor = UIColor(red: CGFloat(156/255.0), green: CGFloat(156/255.0), blue: CGFloat(156/255.0), alpha: CGFloat(1.0))
@@ -252,7 +253,6 @@ class FirstTabViewController: UIViewController {
     // 특정 날짜 선택하면 실행되는 메소드
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         
-        
         // get data from DB
         let context = self.getContext()
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
@@ -348,4 +348,15 @@ extension FirstTabViewController: JTAppleCalendarViewDelegate{
             return false
         }
     }
+}
+
+
+extension UIStackView {
+    func addBackground(color: UIColor) {
+        let subView = UIView(frame: bounds)
+        subView.backgroundColor = color
+        subView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        insertSubview(subView, at: 0)
+    }
+    
 }
