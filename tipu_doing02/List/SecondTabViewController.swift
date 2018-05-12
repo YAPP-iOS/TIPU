@@ -124,49 +124,24 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
             
         }
         
-        // cell 이미지 변경
+        // cell button image 설정
         if let image = perform.value(forKey: "deposit") as? Bool {
             if image == true {
-                cell.ticketImage?.image = UIImage(named:"ticket.png")
+                cell.ticketBtn?.setImage(UIImage(named: "list_ok"), for: .normal)
+                cell.ticketBtn.tag = indexPath.row
             }
             else {
-                cell.ticketImage.image = UIImage(named:"ticket2.png")
+                cell.ticketBtn?.setImage(UIImage(named: "list_notyet"), for: .normal)
+                cell.ticketBtn.tag = indexPath.row
             }
         }
+        
+        cell.ticketBtn.addTarget(self, action: #selector(clickTicketImg), for: .touchUpInside)
         
         cell.titleText.text = display
         cell.deadlineText.text = sub
         
         return cell
-    }
-    
-    //왼쪽 swipe 입금 전 입금완료
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
-        ->   UISwipeActionsConfiguration? {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "List Cell") as! ListTableViewCell
-            let perform = self.perform[indexPath.row]
-            guard var deposit = perform.value(forKey: "deposit") as? Bool else {
-                return nil
-            }
-            
-            let title: String = deposit ? "입금 전" : "입금완료"
-            let action = UIContextualAction(style: .normal, title: title) { action, view, completionHandler in
-                if deposit == false {
-                    deposit = true
-                    cell.ticketImage?.image = UIImage(named:"ticket.png")
-                } else {
-                    deposit = false
-                    cell.ticketImage?.image = UIImage(named:"ticket2.png")
-                }
-                perform.setValue(deposit, forKey: "deposit")
-                completionHandler(true)
-                self.tableview.reloadData()
-                
-            }
-            action.backgroundColor = deposit ? .red : .blue
-            let configuration = UISwipeActionsConfiguration(actions: [action])
-            configuration.performsFirstActionWithFullSwipe = false
-            return configuration
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -185,6 +160,21 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         } else if editingStyle == .insert {
             
         }
+    }
+    
+    //ticket button click 설정
+    @IBAction func clickTicketImg(_ sender: UIButton) {
+        let perform = self.perform[sender.tag]
+        if var deposit = perform.value(forKey: "deposit") as? Bool {
+            if deposit == true {
+                deposit = false
+            }
+            else{
+                deposit = true
+            }
+            perform.setValue(deposit, forKey: "deposit")
+        }
+        self.tableview.reloadData()
     }
     
     override func prepare (for segue: UIStoryboardSegue, sender: Any?) {
