@@ -10,6 +10,7 @@
 //displayCurrentTab
 //viewControllerForSelectedSegmentIndex
 import UIKit
+import SnapKit
 
 class ParentViewController: UIViewController {
     
@@ -40,29 +41,31 @@ class ParentViewController: UIViewController {
     
     //세그먼트 에니메이션
     func moveRight(view: UIView) {
-        view.center.x += 147
+        view.center.x += segmentedControl.frame.width / 2
     }
     
     func moveLeft(view: UIView) {
-        view.center.x -= 147
+        view.center.x -= segmentedControl.frame.width / 2
     }
-    
     
     //Did
     override func viewDidLoad() {
         print("parentVC : viewDidLoad")
         super.viewDidLoad()
+        
         segmentedControl.setupFonts()
         segmentedControl.selectedSegmentIndex = 0
         displayCurrentTab(0)
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         
-        
-        let n : Int = segmentedControl.selectedSegmentIndex.distance(to: 10)
-        
-        print(n)
+        //set location animate line
+        self.animatedLine.snp.makeConstraints { (make) -> Void in
+            make.width.equalTo(64)
+            make.height.equalTo(2)
+            make.centerX.equalTo(segmentedControl.frame.width/4)
+            
+        }
     }
-    
     
     // Appear
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +78,7 @@ class ParentViewController: UIViewController {
     @IBAction func switchTabs(_ sender: UISegmentedControl) {
         print("parentVC : switchTabs")
         
-        let duration: Double = 0.5
+        let duration: Double = 0.45
         
         //왼쪽으로
         if(sender.selectedSegmentIndex==0 && flag == 1){
