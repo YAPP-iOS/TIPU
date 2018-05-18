@@ -1,18 +1,18 @@
 PODS:
   - JTAppleCalendar (7.1.5)
+  - PKHUD (5.0.0)
   - SnapKit (4.0.0)
-  - Toaster (2.1.1)
 
 DEPENDENCIES:
   - JTAppleCalendar (~> 7.0)
+  - PKHUD (~> 5.0)
   - SnapKit (~> 4.0.0)
-  - Toaster
 
 SPEC CHECKSUMS:
   JTAppleCalendar: 2d4f974f9f3c8b4964d51ca1f6e004883c031fbe
+  PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
 
-PODFILE CHECKSUM: b9e75d6396268d965632f87fe8245ef8f6ca8436
+PODFILE CHECKSUM: 071c2eee5e7175ce306d6b167389c67bbb0d82b5
 
 COCOAPODS: 1.4.0

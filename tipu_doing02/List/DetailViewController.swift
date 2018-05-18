@@ -10,7 +10,7 @@ import UIKit
 
 import UIKit
 import CoreData
-import Toaster
+import PKHUD
 
 class DetailViewController: UIViewController {
     
@@ -98,7 +98,9 @@ class DetailViewController: UIViewController {
             //계좌번호만 받기 위해서 자르기
             let array = copy_accountNumber?.components(separatedBy: " | ")
             UIPasteboard.general.string = array![1]
-            Toast(text: "계좌번호를 복사했습니다!").show()
+            HUD.flash(.success, delay: 1.0)
+            print("복사했음")
+//            Toast(text: "계좌번호를 복사했습니다!").show()
         } else if longPressGestureRecognizer.state == .ended {
         }
         
@@ -138,6 +140,7 @@ class DetailViewController: UIViewController {
                 text3_accountholder.textColor = UIColor.white
                 text4_money.textColor = UIColor.white
                 depositbutton.setTitle("입금을 완료하였습니다.", for: UIControlState.normal)
+                
                 
             }
             else {
