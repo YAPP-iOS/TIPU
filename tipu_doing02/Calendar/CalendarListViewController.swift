@@ -187,7 +187,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         let predicate = NSPredicate(format: "account contains[c] %@", accountNum)
         
         fetchRequest.predicate = predicate
-        print(fetchRequest.predicate as Any)
         do {
             let test = try context.fetch(fetchRequest)
             let objectUpdate = test[0] as! NSManagedObject
@@ -201,7 +200,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
             }
             do{
                 try context.save()
-                
             }
             catch
             {
@@ -232,8 +230,7 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         } else if editingStyle == .insert {
             
         }
-    }
-    
+    }    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

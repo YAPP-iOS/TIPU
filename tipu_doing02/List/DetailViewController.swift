@@ -125,7 +125,7 @@ class DetailViewController: UIViewController {
                 // 입금 완료
                 print("입금 완료")
                 depositbutton.setTitle("입금을 완료하였습니다.", for: UIControlState.normal)
-                ticketimage.image = UIImage(named:"pink_ticket")
+                ticketimage.image = UIImage(named:"detail_paid")
                 self.view.backgroundColor = UIColor.black
                 depositbutton.backgroundColor = UIColor.white
                 depositbutton.setTitleColor(UIColor.darkGray, for: UIControlState.normal)
@@ -151,7 +151,7 @@ class DetailViewController: UIViewController {
                 // 미입금
                 print("미입금")
                 depositbutton.setTitle("입금 완료하기", for: UIControlState.normal)
-                ticketimage.image = UIImage(named:"white_ticket")
+                ticketimage.image = UIImage(named:"detail_not_paid")
                 self.view.backgroundColor = UIColor.white
                 depositbutton.backgroundColor = UIColor(red:1, green:82/255, blue:140/255, alpha:1)
                 depositbutton.setTitleColor(UIColor.white, for: UIControlState.normal)
