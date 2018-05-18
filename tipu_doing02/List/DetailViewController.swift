@@ -42,21 +42,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //        titlelabel.adjustsFontSizeToFitWidth = true
-        //        deadlinelabel.adjustsFontSizeToFitWidth = true
-        //        accountlabel.adjustsFontSizeToFitWidth = true
-        //        accountholderlabel.adjustsFontSizeToFitWidth = true
-        //        moneylabel.adjustsFontSizeToFitWidth = true
-        //        text1.adjustsFontSizeToFitWidth = true
-        //        text2_account.adjustsFontSizeToFitWidth = true
-        //        text3_accountholder.adjustsFontSizeToFitWidth = true
-        //        text4_money.adjustsFontSizeToFitWidth = true
-        
         //계좌번호 long press시 copy되도록 함.
-        //        accountlabel.translatesAutoresizingMaskIntoConstraints = false
-        //        accountlabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        //        accountlabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressLabel(longPressGestureRecognizer:)))
         accountlabel.addGestureRecognizer(longPressGestureRecognizer)
         accountlabel.isUserInteractionEnabled = true

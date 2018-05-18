@@ -154,50 +154,67 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
             sub = text[1]+" "+text[2]+" 까지"
         }
         
-        // cell 이미지 변경
+        //계좌번호만 알아내도록 자르기
+        let account_origin: String = perform.value(forKey: "account") as! String
+        let array = account_origin.components(separatedBy: " | ")
+        let accountNum = Int(array[1])
+        print("계좌!!!\(accountNum!)")
+        
+        
+        // cell button image 설정
         if let image = perform.value(forKey: "deposit") as? Bool {
             if image == true {
-                cell.ticketImage?.image = UIImage(named:"paid")
+                cell.ticketBtn?.setImage(UIImage(named: "paid"), for: .normal)
+                cell.ticketBtn?.tag = Int(accountNum!)
             }
             else {
-                cell.ticketImage.image = UIImage(named:"not_paid")
+                 cell.ticketBtn?.setImage(UIImage(named: "not_paid"), for: .normal)
+                cell.ticketBtn?.tag = Int(accountNum!)
             }
         }
+        
+        cell.ticketBtn?.addTarget(self, action: #selector(clickTicketBtn), for: .touchUpInside)
         
         cell.titleText.text = display
         cell.deadlineText.text = sub
         
         return cell
     }
-    
-    //왼쪽 swipe 입금 전 입금완료
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
-        ->   UISwipeActionsConfiguration? {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "List Cell") as! ListTableViewCell
-            let perform = self.perform[indexPath.row]
-            guard var deposit = perform.value(forKey: "deposit") as? Bool else {
-                return nil
-            }
-            
-            let title: String = deposit ? "입금 전" : "입금완료"
-            let action = UIContextualAction(style: .normal, title: title) { action, view, completionHandler in
-                if deposit == false {
-                    deposit = true
-                    cell.ticketImage?.image = UIImage(named:"paid")
-                } else {
+    @IBAction func clickTicketBtn(_ sender: UIButton) {
+        let context = getContext()
+        let accountNum = String(sender.tag)
+        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "Perform")
+        let predicate = NSPredicate(format: "account contains[c] %@", accountNum)
+        
+        fetchRequest.predicate = predicate
+        print(fetchRequest.predicate as Any)
+        do {
+            let test = try context.fetch(fetchRequest)
+            let objectUpdate = test[0] as! NSManagedObject
+            if var deposit = objectUpdate.value(forKey: "deposit") as? Bool {
+                if deposit == true {
                     deposit = false
-                    cell.ticketImage?.image = UIImage(named:"not_paid")
+                } else{
+                    deposit = true
                 }
-                perform.setValue(deposit, forKey: "deposit")
-                completionHandler(true)
-                self.tableview.reloadData()
+                objectUpdate.setValue(deposit, forKey: "deposit")
+            }
+            do{
+                try context.save()
                 
             }
-            action.backgroundColor = deposit ? .red : .blue
-            let configuration = UISwipeActionsConfiguration(actions: [action])
-            configuration.performsFirstActionWithFullSwipe = false
-            return configuration
+            catch
+            {
+                print(error)
+            }
+            self.tableview.reloadData()
+        }
+        catch{
+            print(error)
+        }
+
     }
+    
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {

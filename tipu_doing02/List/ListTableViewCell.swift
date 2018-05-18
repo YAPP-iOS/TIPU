@@ -12,7 +12,6 @@ class ListTableViewCell: UITableViewCell {
 
     @IBOutlet var cellView: UIView!
     @IBOutlet var titleText: UILabel!
-    @IBOutlet var ticketImage: UIImageView!
     @IBOutlet var deadlineText: UILabel!
     @IBOutlet var bar: UIView!
     @IBOutlet var rightarrow: UIImageView!

@@ -127,11 +127,11 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         // cell button image 설정
         if let image = perform.value(forKey: "deposit") as? Bool {
             if image == true {
-                cell.ticketBtn?.setImage(UIImage(named: "list_ok"), for: .normal)
+                cell.ticketBtn?.setImage(UIImage(named: "paid"), for: .normal)
                 cell.ticketBtn.tag = indexPath.row
             }
             else {
-                cell.ticketBtn?.setImage(UIImage(named: "list_notyet"), for: .normal)
+                cell.ticketBtn?.setImage(UIImage(named: "not_paid"), for: .normal)
                 cell.ticketBtn.tag = indexPath.row
             }
         }
