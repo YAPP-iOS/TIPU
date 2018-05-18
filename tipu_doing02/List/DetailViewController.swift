@@ -87,7 +87,7 @@ class DetailViewController: UIViewController {
                 accountlabel.textColor = UIColor.white
                 accountholderlabel.textColor = UIColor.white
                 moneylabel.textColor = UIColor.white
-                text1.text = "입금이 완료되었습니다."
+                text1.text = "입금이 완료되었습니다"
                 text1.textColor = UIColor.white
                 text2_account.textColor = UIColor.white
                 text3_accountholder.textColor = UIColor.white
