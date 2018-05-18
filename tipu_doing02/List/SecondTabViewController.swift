@@ -120,7 +120,7 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         if let deadline = perform.value(forKey: "deadline") as? String {
             let text = deadline.components(separatedBy: " ")
-            sub = text[1]+" "+text[2]+" 까지"
+            sub = "입금기한 | "+text[1]+" "+text[2]+" 까지"
             
         }
         
