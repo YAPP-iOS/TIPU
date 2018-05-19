@@ -94,6 +94,30 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
+    //테이블 뷰 업데이트~.~
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableview.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            print("데이터 들어옴")
+            tableview.insertRows(at: [newIndexPath!], with: .fade)
+        case .delete:
+            tableview.deleteRows(at: [indexPath!], with: .fade)
+        case .update:
+            tableview.reloadRows(at: [indexPath!], with: .fade)
+        case .move:
+            tableview.moveRow(at: indexPath!, to: newIndexPath!)
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableview.endUpdates()
+    }
+    //끝~~~~
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return perform.count

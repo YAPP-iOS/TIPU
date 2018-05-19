@@ -80,6 +80,8 @@ class DetailViewController: UIViewController {
             make.width.lessThanOrEqualTo((superView?.layoutMarginsGuide)!)
             make.center.equalTo((superView?.layoutMarginsGuide)!)
             make.left.equalTo((superView?.layoutMarginsGuide)!)
+            make.right.equalTo((superView?.layoutMarginsGuide)!)
+//            make.left.equalTo(0)
         }
 
         //입금상태 변경 버튼
@@ -88,10 +90,8 @@ class DetailViewController: UIViewController {
             make.height.equalTo(60)
             make.bottom.equalTo(0)
         }
-        
-        
     }
-    
+
     @objc private func longPressLabel (longPressGestureRecognizer: UILongPressGestureRecognizer) {
         if longPressGestureRecognizer.state == .began {
             let copy_accountNumber = accountlabel.text

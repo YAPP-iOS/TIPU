@@ -400,7 +400,7 @@
                                                     <state key="normal" title="Button" image="not_paid"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="입금 기한" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjx-4W-89v">
-                                                    <rect key="frame" x="112" y="52" width="233" height="19"/>
+                                                    <rect key="frame" x="113" y="52" width="233" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="ix1-Za-qQI"/>
                                                     </constraints>
@@ -419,12 +419,12 @@
                                                 <constraint firstItem="HJr-2G-7yl" firstAttribute="centerY" secondItem="Af4-UW-vPO" secondAttribute="centerY" constant="9" id="PFM-TM-Njn"/>
                                                 <constraint firstItem="Af4-UW-vPO" firstAttribute="top" secondItem="y6z-sr-cLH" secondAttribute="top" constant="31" id="VZe-xT-kF8"/>
                                                 <constraint firstAttribute="trailing" secondItem="obF-jx-ARC" secondAttribute="trailing" constant="38" id="aSK-M3-dG3"/>
-                                                <constraint firstAttribute="trailing" secondItem="rjx-4W-89v" secondAttribute="trailing" constant="9" id="eCH-xT-s4G"/>
+                                                <constraint firstAttribute="trailing" secondItem="rjx-4W-89v" secondAttribute="trailing" constant="8" id="eCH-xT-s4G"/>
                                                 <constraint firstAttribute="bottom" secondItem="gH8-bi-CF5" secondAttribute="bottom" constant="17" id="h04-k7-ayK"/>
                                                 <constraint firstItem="rjx-4W-89v" firstAttribute="top" secondItem="obF-jx-ARC" secondAttribute="bottom" constant="8" id="h1l-Sy-Ro4"/>
                                                 <constraint firstItem="obF-jx-ARC" firstAttribute="leading" secondItem="HJr-2G-7yl" secondAttribute="trailing" constant="20" id="hfn-sC-Eq2"/>
                                                 <constraint firstItem="gH8-bi-CF5" firstAttribute="leading" secondItem="y6z-sr-cLH" secondAttribute="leading" constant="22" id="koZ-SW-IIn"/>
-                                                <constraint firstItem="obF-jx-ARC" firstAttribute="leading" secondItem="rjx-4W-89v" secondAttribute="leading" id="tMN-nk-Won"/>
+                                                <constraint firstItem="obF-jx-ARC" firstAttribute="leading" secondItem="rjx-4W-89v" secondAttribute="leading" constant="-1" id="tMN-nk-Won"/>
                                                 <constraint firstAttribute="trailing" secondItem="Af4-UW-vPO" secondAttribute="trailing" constant="9" id="wGf-9l-qUL"/>
                                                 <constraint firstItem="HJr-2G-7yl" firstAttribute="leading" secondItem="gH8-bi-CF5" secondAttribute="trailing" constant="14" id="xWI-Yz-68Z"/>
                                             </constraints>
@@ -627,12 +627,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8IA-2j-EbH">
-                                        <rect key="frame" x="20" y="59" width="309" height="1"/>
+                                        <rect key="frame" x="20" y="59" width="300" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hik-LF-Ogj">
-                                        <rect key="frame" x="20" y="114" width="309" height="1"/>
+                                        <rect key="frame" x="20" y="114" width="300" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
@@ -651,7 +651,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FY9-Yd-bYE">
-                                        <rect key="frame" x="20" y="167" width="309" height="1"/>
+                                        <rect key="frame" x="20" y="167" width="300" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
