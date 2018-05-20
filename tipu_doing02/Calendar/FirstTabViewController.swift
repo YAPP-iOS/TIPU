@@ -39,6 +39,7 @@ class FirstTabViewController: UIViewController {
     var datas: [NSManagedObject] = []
     
     
+    //예매하고 다시 돌아왔을 때
     @objc func refresher(_ sender: Any) {
         
         // 캘린더 새로고침
@@ -57,21 +58,21 @@ class FirstTabViewController: UIViewController {
     
     // View did load
     override func viewDidLoad() {
-        print("FirstTabViewCon : viewDidLoad")
         super.viewDidLoad()
         self.fetchDatas()
         self.setWeekColor()
         self.initCalendar(date : todaysDate)
+        print("FirstTabViewCon : viewDidLoad")
     
     }
     
     // Appear
     override func viewWillAppear(_ animated: Bool) {
-        print("FirstTabViewCon : viewWillAppear")
         super.viewWillAppear(animated)
         calendarView.reloadData()
         self.fetchDatas()
         self.initCalendar(date: tempDate)
+        print("FirstTabViewCon : viewWillAppear")
     }
     
     // Disappear
@@ -266,13 +267,15 @@ class FirstTabViewController: UIViewController {
             }else{
                 // 지금 시간 기준으로 이후
                 cell.dots.isHidden = false
-                cell.dots.image = UIImage(named: "pinkDots")
+                
                 
                 // 하나라도 입금 안한 티켓이 있으면
                 if(depositFlag==false){
                     cell.ticket.backgroundColor = UIColor(red: CGFloat(252/255.0), green: CGFloat(82/255.0), blue: CGFloat(140/255.0), alpha: CGFloat(1.0))
+                    cell.dots.image = UIImage(named: "pinkDots")
                 }else{
                     cell.ticket.backgroundColor = UIColor(red: CGFloat(187/255.0), green: CGFloat(186/255.0), blue: CGFloat(186/255.0), alpha: CGFloat(1.0))
+                    cell.dots.image = UIImage(named: "grayDots")
                 }
             }
         }

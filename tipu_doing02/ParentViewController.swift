@@ -119,17 +119,12 @@ class ParentViewController: UIViewController {
     
     // 세그먼트의 인덱스에 맞는 뷰컨트롤러를 가져온다
     func viewControllerForSelectedSegmentIndex(_ index: Int) -> UIViewController? {
-        
         print("parentVC : viewControllerForSelectedSegmentIndex")
-        
         var vc: UIViewController?
         switch index {
-        case TabIndex.firstChildTab.rawValue :
-            vc = firstChildTabVC
-        case TabIndex.secondChildTab.rawValue :
-            vc = secondChildTabVC
-        default:
-            return nil
+        case TabIndex.firstChildTab.rawValue : vc = firstChildTabVC
+        case TabIndex.secondChildTab.rawValue : vc = secondChildTabVC
+        default: return nil
         }
         
         return vc
