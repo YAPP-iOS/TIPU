@@ -41,6 +41,7 @@ class FirstTabViewController: UIViewController {
     
     //예매하고 다시 돌아왔을 때
     @objc func refresher(_ sender: Any) {
+
         self.fetchDatas()
         self.initCalendar(date : tempDate)
 //        // 캘린더 새로고침
@@ -52,6 +53,8 @@ class FirstTabViewController: UIViewController {
 //        } catch let error as NSError {
 //            print("Could not fetch. \(error), \(error.userInfo)") }
 //        self.calendarView.reloadData()
+
+
         
         print("refresh")
     }
