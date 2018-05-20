@@ -6,9 +6,6 @@
 //  Copyright © 2018 JunHee. All rights reserved.
 //
 
-//view did load
-//displayCurrentTab
-//viewControllerForSelectedSegmentIndex
 import UIKit
 import SnapKit
 
@@ -132,8 +129,6 @@ class ParentViewController: UIViewController {
 
         case TabIndex.firstChildTab.rawValue :
             vc = firstChildTabVC
-            let first = vc as! FirstTabViewController
-            first.refresher((Any).self)
         case TabIndex.secondChildTab.rawValue :
             vc = secondChildTabVC
             

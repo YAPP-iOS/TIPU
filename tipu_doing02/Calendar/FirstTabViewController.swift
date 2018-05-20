@@ -41,21 +41,8 @@ class FirstTabViewController: UIViewController {
     
     //예매하고 다시 돌아왔을 때
     @objc func refresher(_ sender: Any) {
-
         self.fetchDatas()
         self.initCalendar(date : tempDate)
-//        // 캘린더 새로고침
-//        let context = self.getContext()
-//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
-//
-//        do {
-//            datas = try context.fetch(fetchRequest)
-//        } catch let error as NSError {
-//            print("Could not fetch. \(error), \(error.userInfo)") }
-//        self.calendarView.reloadData()
-
-
-        
         print("refresh")
     }
     
@@ -66,16 +53,14 @@ class FirstTabViewController: UIViewController {
         self.fetchDatas()
         self.setWeekColor()
         self.initCalendar(date : todaysDate)
-        print("FirstTabViewCon : viewDidLoad")
-        
     }
     
     // Appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-////        calendarView.reloadData()
-//        self.fetchDatas()
-//        self.initCalendar(date: tempDate)
+        calendarView.reloadData()
+        self.fetchDatas()
+        self.initCalendar(date: tempDate)
         print("FirstTabViewCon : viewWillAppear")
     }
     
@@ -128,9 +113,7 @@ class FirstTabViewController: UIViewController {
     // 월, 연도
     func setupCalendarView(dateSegment : DateSegmentInfo){
         
-        
-        
-        // VARIABLES
+    
         let formatter : DateFormatter = {
             let dateFormatter = DateFormatter()
             dateFormatter.timeZone = Calendar.current.timeZone
@@ -139,26 +122,17 @@ class FirstTabViewController: UIViewController {
             return dateFormatter
         }()
         
-        
-        
-        //2018-05-02 15:00:00 +0000
-        
         guard let date = dateSegment.monthDates.first?.date else{return}
         formatter.dateFormat = "yyyy"
         self.year.text = formatter.string(from: date)
         
         formatter.dateFormat = "MMMM"
         self.month.text = formatter.string(from: date)
-        print(formatter.string(from: date))
+        
         
         formatter.dateFormat = "yyyy-MM-dd"
-        print(formatter.string(from: date))
         formatter.timeZone = TimeZone(abbreviation: "GMT+0:00")
-        
-        
-        tempDate = formatter.date(from: formatter.string(from: date))!
-        tempDate = Calendar.current.date(byAdding: .day, value: 1, to: tempDate)!
-        
+        tempDate = Calendar.current.date(byAdding: .day, value: 1, to: formatter.date(from: formatter.string(from: date))!)!
     }
     
     // 셀 구성
@@ -380,11 +354,7 @@ extension FirstTabViewController: JTAppleCalendarViewDelegate{
     
     func calendar(_ calendar: JTAppleCalendarView, shouldSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) -> Bool {
         
-        print(cellState.date)
         tempDate = Calendar.current.date(byAdding: .day, value: 1, to: cellState.date)!
-        print("))))))))))))))))")
-        print(tempDate)
-        print("))))))))))))))))")
         
         // 선택한 cell 의 날짜
         let formatter : DateFormatter = {

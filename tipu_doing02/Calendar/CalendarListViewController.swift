@@ -125,7 +125,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         
         do {
             perform = try context.fetch(fetchRequest)
-            print(perform)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
             
@@ -158,7 +157,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         let account_origin: String = perform.value(forKey: "account") as! String
         let array = account_origin.components(separatedBy: " | ")
         let accountNum = Int(array[1])
-        print("계좌!!!\(accountNum!)")
         
         
         // cell button image 설정
@@ -221,7 +219,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
             context.delete(perform[indexPath.row])
             do {
                 try context.save()
-                print("deleted!")
             } catch let error as NSError {
                 print("Could not delete \(error), \(error.userInfo)") }
             // 배열에서 해당 자료 삭제
