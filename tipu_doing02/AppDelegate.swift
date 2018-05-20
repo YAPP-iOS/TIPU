@@ -202,6 +202,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 UIPasteboard.general.string = ""
                 
                 
+                let toastLabel = UILabel(frame: CGRect(x: (self.window?.rootViewController?.view.frame.size.width)!/2 - 110, y: (self.window?.rootViewController?.view.frame.size.height)!-100, width: 230, height: 35))
+                toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+                toastLabel.textColor = UIColor.white
+                toastLabel.textAlignment = .center;
+                toastLabel.font = UIFont(name: " ", size: 10.0)
+                toastLabel.text = "새로운 티켓이 추가되었습니다"
+                toastLabel.alpha = 1.0
+                toastLabel.layer.cornerRadius = 10;
+                toastLabel.clipsToBounds  =  true
+                self.window?.rootViewController?.view.addSubview(toastLabel)
+//                self.view.addSubview(toastLabel)
+                UIView.animate(withDuration: 4.0, delay: 0.05, options: .curveEaseOut, animations: {
+                    toastLabel.alpha = 0.0
+                }, completion: {(isCompleted) in
+                    toastLabel.removeFromSuperview()
+                })
+                
+              
+                
                 do {
                     try context.save()
                 } catch let error as NSError {

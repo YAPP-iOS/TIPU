@@ -46,6 +46,12 @@ class DetailViewController: UIViewController {
         accountlabel.addGestureRecognizer(longPressGestureRecognizer)
         accountlabel.isUserInteractionEnabled = true
         
+        titlelabel.adjustsFontSizeToFitWidth = true
+        deadlinelabel.adjustsFontSizeToFitWidth = true
+        accountlabel.adjustsFontSizeToFitWidth = true
+        accountholderlabel.adjustsFontSizeToFitWidth = true
+        moneylabel.adjustsFontSizeToFitWidth = true
+        
         //snapkit
         let superView = self.view
         //티켓 이미지
