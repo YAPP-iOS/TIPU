@@ -75,77 +75,129 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // 복사한 문자 분석 후 추가
             if (arr[0] == "[인터파크_입금요청]") {
-                print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+                
                 let context = self.getContext()
                 let entity = NSEntityDescription.entity(forEntityName: "Perform", in: context)
                 
-                // perform record를 새로 생성함
-                let object = NSManagedObject(entity: entity!, insertInto: context)
                 
-                object.setValue(Date(), forKey: "saveDate")
-                object.setValue(false, forKey: "deposit")
+                //=========================================기존 코어데이터 디비
+                var datas: [NSManagedObject] = []
+                let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
+                do {
+                    datas = try context.fetch(fetchRequest)
+                } catch let error as NSError {
+                    print("fetch fail \(error), \(error.userInfo)") }
                 
-                var a = arr[5].components(separatedBy: ["▶",":"])
-                let title = a[2]
-                object.setValue(title, forKey: "name")
                 
-                
-                var b = arr[7].components(separatedBy: ["▶",":"])
-                
-                let deadline = b[2]
-                object.setValue(deadline, forKey: "deadline")
-                
-                var alarmtime = b[2].components(separatedBy: [" ","-","시","분"])
-                year = Int(alarmtime[1])
-                month = Int(alarmtime[2])
-                day = Int(alarmtime[3])
-           
-                
+                // ============================ㄱ{좌 중복 체크
+                var accountFlag: Bool = true
                 
                 var c = arr[9].components(separatedBy: ["▶",":"])
-                let account = c[2] + " | " + arr[10]
-                object.setValue(account, forKey: "account")
+                for data in datas{
+                    if let account = data.value(forKey: "account") as? String {
+                        if(account.contains(c[2] + " | " + arr[10])){
+                            accountFlag = false
+                            break
+                        }
+                    }
+                }
                 
-                var d = arr[11].components(separatedBy: ["▶",":"])
-                let accountholder = d[2]
-                object.setValue(accountholder, forKey: "accountholder")
-                
-                var e = arr[12].components(separatedBy: ["▶",":"])
-                let money = e[2]
-                object.setValue(money, forKey: "money")
-                
-                // 클립보드 초기화
-                UIPasteboard.general.string = ""
-                
-                
-                do {
-                    try context.save()
+                // 가상계좌가 중복안되면
+                if(accountFlag){
+                    // perform record를 새로 생성함
+                    let object = NSManagedObject(entity: entity!, insertInto: context)
                     
-                } catch let error as NSError {
-                    print("Could not save \(error), \(error.userInfo)")
-                }
-                
-                // 미리 알림 설정
-                if self.eventStore == nil {
-                    self.eventStore = EKEventStore()
-                    self.eventStore!.requestAccess(to: EKEntityType.reminder, completion:
-                        {(isAccessible,errors) in })
+                    object.setValue(Date(), forKey: "saveDate")
+                    object.setValue(false, forKey: "deposit")
                     
+                    var a = arr[5].components(separatedBy: ["▶",":"])
+                    let title = a[2]
+                    object.setValue(title, forKey: "name")
+                    
+                    var b = arr[7].components(separatedBy: ["▶",":"])
+                    let deadline = b[2]
+                    object.setValue(deadline, forKey: "deadline")
+                    
+                    var alarmtime = b[2].components(separatedBy: [" ","-","시","분"])
+                    year = Int(alarmtime[1])
+                    month = Int(alarmtime[2])
+                    day = Int(alarmtime[3])
+                    
+                    //                var c = arr[9].components(separatedBy: ["▶",":"])
+                    let account = c[2] + " | " + arr[10]
+                    object.setValue(account, forKey: "account")
+                    
+                    
+                    var d = arr[11].components(separatedBy: ["▶",":"])
+                    let accountholder = d[2]
+                    object.setValue(accountholder, forKey: "accountholder")
+                    
+                    var e = arr[12].components(separatedBy: ["▶",":"])
+                    let money = e[2]
+                    object.setValue(money, forKey: "money")
+                    
+                    // 클립보드 초기화
+                    UIPasteboard.general.string = ""
+                    
+                    
+                    // 테이블뷰 자동 새로고침
+                    let root = self.window?.rootViewController as! UINavigationController
+                    let parent = root.viewControllers.first as! ParentViewController
+                    let first = parent.firstChildTabVC as! FirstTabViewController
+                    let second = parent.secondChildTabVC as! SecondTabViewController
+                    first.refresher((Any).self)
+                    second.refresher((Any).self)
+                    
+                    // 새로운 항목 토스트
+                    let toastLabel = UILabel(frame: CGRect(x: (self.window?.rootViewController?.view.frame.size.width)!/2 - 110, y: (self.window?.rootViewController?.view.frame.size.height)!-100, width: 230, height: 35))
+                    toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+                    toastLabel.textColor = UIColor.white
+                    toastLabel.textAlignment = .center;
+                    toastLabel.font = UIFont(name:"", size: 10.0)
+                    toastLabel.text = "새로운 티켓이 추가되었습니다"
+                    toastLabel.alpha = 1.0
+                    toastLabel.layer.cornerRadius = 10;
+                    toastLabel.clipsToBounds  =  true
+                    self.window?.rootViewController?.view.addSubview(toastLabel)
+                    UIView.animate(withDuration: 4.0, delay: 0.05, options: .curveEaseOut, animations: {
+                        toastLabel.alpha = 0.0
+                    }, completion: {(isCompleted) in
+                        toastLabel.removeFromSuperview()
+                    })
+                    
+                    
+                    do {
+                        try context.save()
+                    } catch let error as NSError {
+                        print("Could not save \(error), \(error.userInfo)")
+                    }
+                    
+                    // 미리 알림 설정
+                    if self.eventStore == nil {
+                        self.eventStore = EKEventStore()
+                        self.eventStore!.requestAccess(to: EKEntityType.reminder, completion:
+                            {(isAccessible,errors) in })
+                    }
+                    
+                    
+                    let reminder = EKReminder(eventStore: self.eventStore!)
+                    reminder.title = "\(title) 입금을 완료해 주세요."
+                    reminder.calendar = self.eventStore!.defaultCalendarForNewReminders()
+                    
+                    let alarm = EKAlarm(absoluteDate: getCalcDate(year: year!, month: month!, day: day!, hour: 21, min: 00, sec: 00))
+                    reminder.addAlarm(alarm)
+                    
+                    do {
+                        try self.eventStore!.save(reminder, commit: true)
+                    } catch {
+                        NSLog("알람 설정 실패")
+                    }
+                    
+                }else{
+                    print("가상 계좌 중복")
                 }
                 
                 
-                let reminder = EKReminder(eventStore: self.eventStore!)
-                reminder.title = "\(title) 입금을 완료해 주세요."
-                reminder.calendar = self.eventStore!.defaultCalendarForNewReminders()
-                
-                let alarm = EKAlarm(absoluteDate: getCalcDate(year: year!, month: month!, day: day!, hour: 21, min: 00, sec: 00))
-                reminder.addAlarm(alarm)
-                
-                do {
-                    try self.eventStore!.save(reminder, commit: true)
-                } catch {
-                    NSLog("알람 설정 실패")
-                }
             }
         }
         
@@ -185,7 +237,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     datas = try context.fetch(fetchRequest)
                 } catch let error as NSError {
                     print("fetch fail \(error), \(error.userInfo)") }
-                
            
                 
                 // ============================ㄱ{좌 중복 체크
@@ -295,9 +346,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }else{
                     print("가상 계좌 중복")
                 }
-       
-                
-                
+    
                 
             }
         }
