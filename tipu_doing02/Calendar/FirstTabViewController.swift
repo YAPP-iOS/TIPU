@@ -23,6 +23,7 @@ class FirstTabViewController: UIViewController {
     @IBOutlet var fri: UILabel!
     @IBOutlet var sat: UILabel!
     @IBOutlet var weekView: UIStackView!
+    var refresh: UIRefreshControl!
     
     // VARIABLES
     let formatter : DateFormatter = {
@@ -37,6 +38,23 @@ class FirstTabViewController: UIViewController {
     var willSendData : String?
     var datas: [NSManagedObject] = []
     
+    
+    @objc func refresher(_ sender: Any) {
+        
+        // 캘린더 새로고침
+        let context = self.getContext()
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
+        
+        do {
+            datas = try context.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)") }
+        self.calendarView.reloadData()
+        
+        print("refresh")
+    }
+    
+    
     // View did load
     override func viewDidLoad() {
         print("FirstTabViewCon : viewDidLoad")
@@ -44,21 +62,22 @@ class FirstTabViewController: UIViewController {
         self.fetchDatas()
         self.setWeekColor()
         self.initCalendar(date : todaysDate)
+    
     }
     
     // Appear
     override func viewWillAppear(_ animated: Bool) {
         print("FirstTabViewCon : viewWillAppear")
-//        super.viewWillAppear(animated)
-//        self.fetchDatas()
-//        self.setWeekColor()
+        super.viewWillAppear(animated)
+        calendarView.reloadData()
+        self.fetchDatas()
         self.initCalendar(date: tempDate)
     }
     
     // Disappear
     override func viewWillDisappear(_ animated: Bool) {
         print("FirstTabViewCon : viewWillDisappear")
-//        super.viewWillDisappear(animated)
+        super.viewWillDisappear(animated)
     }
     
     // 데이터 가져오기 위한 설정
@@ -103,12 +122,23 @@ class FirstTabViewController: UIViewController {
     
     // 월, 연도
     func setupCalendarView(dateSegment : DateSegmentInfo){
-        guard let date = dateSegment.monthDates.first?.date else{return}
-        self.formatter.dateFormat = "yyyy"
-        self.year.text = self.formatter.string(from: date)
         
-        self.formatter.dateFormat = "MMMM"
-        self.month.text = self.formatter.string(from: date)
+        // VARIABLES
+        let formatter : DateFormatter = {
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = Calendar.current.timeZone
+            dateFormatter.locale = Calendar.current.locale
+            dateFormatter.dateFormat = "yyyy MM dd"
+            return dateFormatter
+        }()
+        
+        
+        guard let date = dateSegment.monthDates.first?.date else{return}
+        formatter.dateFormat = "yyyy"
+        self.year.text = formatter.string(from: date)
+        
+        formatter.dateFormat = "MMMM"
+        self.month.text = formatter.string(from: date)
     }
     
     // 셀 구성
@@ -279,6 +309,7 @@ class FirstTabViewController: UIViewController {
             vc?.curDate = willSendData!
         }
     }
+
 }
 
 
@@ -349,6 +380,7 @@ extension FirstTabViewController: JTAppleCalendarViewDelegate{
         }
     }
 }
+
 
 
 extension UIStackView {

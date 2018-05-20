@@ -13,12 +13,14 @@ import EventKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+
     func getContext () -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
     }
     
     var window: UIWindow?
+    var first: FirstTabViewController?
     var second: SecondTabViewController?
     var eventStore: EKEventStore?
     
@@ -158,6 +160,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // 앱이 background에서 foreground로 이동 될때 실행 (아직 foreground에서 실행중이진 않음)
         
+        print("rr")
+        first?.calendarView.reloadData()
+        
+        
         if let theString = UIPasteboard.general.string {
             arr = theString.components(separatedBy: "\n")
             
@@ -204,7 +210,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // 테이블뷰 자동 새로고침
                 let root = self.window?.rootViewController as! UINavigationController
                 let parent = root.viewControllers.first as! ParentViewController
+                let first = parent.firstChildTabVC as! FirstTabViewController
                 let second = parent.secondChildTabVC as! SecondTabViewController
+                first.refresher((Any).self)
                 second.refresher((Any).self)
                 
                 // 새로운 항목 토스트

@@ -80,7 +80,7 @@ class ParentViewController: UIViewController {
         
         let duration: Double = 0.45
         
-        //왼쪽으로
+        //에니메이션
         if(sender.selectedSegmentIndex==0 && flag == 1){
             
             UIView.animate(withDuration: duration, animations: {
