@@ -204,6 +204,7 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
                 print(error)
             }
             self.tableview.reloadData()
+        
         }
         catch{
             print(error)
@@ -224,6 +225,11 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
             // 배열에서 해당 자료 삭제
             perform.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            
+            self.count.text = "총 \(tableView.numberOfSections-1) 개"
+    
+            
         } else if editingStyle == .insert {
             
         }
