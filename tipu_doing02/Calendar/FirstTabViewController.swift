@@ -50,7 +50,7 @@ class FirstTabViewController: UIViewController {
             datas = try context.fetch(fetchRequest)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)") }
-        self.calendarView.reloadData()
+        self.calendarView?.reloadData()
         
         print("refresh")
     }

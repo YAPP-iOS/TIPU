@@ -103,7 +103,7 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
             
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)") }
-        self.tableview.reloadData()
+        self.tableview?.reloadData()
         
         
         // 이 앱을 통해 저장한 이전의 모든 알림 삭제
