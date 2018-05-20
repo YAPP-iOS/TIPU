@@ -128,6 +128,10 @@ class ParentViewController: UIViewController {
             vc = firstChildTabVC
         case TabIndex.secondChildTab.rawValue :
             vc = secondChildTabVC
+            
+            let second = vc as! SecondTabViewController
+            second.refresher((Any).self)
+
         default:
             return nil
         }
