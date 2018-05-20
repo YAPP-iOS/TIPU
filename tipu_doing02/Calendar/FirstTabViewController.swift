@@ -119,8 +119,8 @@ class FirstTabViewController: UIViewController {
     
     // 스크롤, 뷰 설정
     func initCalendar(date : Date){
-        calendarView.scrollToDate(date, animateScroll: false)
-        calendarView.visibleDates{
+        calendarView?.scrollToDate(date, animateScroll: false)
+        calendarView?.visibleDates{
             dateSegment in self.setupCalendarView(dateSegment : dateSegment)
         }
     }
