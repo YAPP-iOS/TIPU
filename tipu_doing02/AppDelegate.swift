@@ -13,7 +13,7 @@ import EventKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-
+    
     func getContext () -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
@@ -52,9 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-
     
-
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         //To change Navigation Bar Background Color
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red: CGFloat(247/255.0), green: CGFloat(82/255.0), blue: CGFloat(135/255.0), alpha: CGFloat(1.0))]
         UINavigationBar.appearance().isTranslucent = false
         
-   
+        
         
         // 앱이 처음 시작될 때 실행
         if let theString = UIPasteboard.general.string {
@@ -99,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 year = Int(alarmtime[1])
                 month = Int(alarmtime[2])
                 day = Int(alarmtime[3])
-           
+                
                 
                 
                 var c = arr[9].components(separatedBy: ["▶",":"])
@@ -165,7 +165,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 앱이 background에서 foreground로 이동 될때 실행 (아직 foreground에서 실행중이진 않음)
         
         
-//        first?.calendarView.reloadData()
+        //        first?.calendarView.reloadData()
         
         
         if let theString = UIPasteboard.general.string {
@@ -186,9 +186,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 } catch let error as NSError {
                     print("fetch fail \(error), \(error.userInfo)") }
                 
-           
                 
-                // ============================ㄱ{좌 중복 체크
+                
+                // ============================계좌 중복 체크
                 var accountFlag: Bool = true
                 
                 var c = arr[9].components(separatedBy: ["▶",":"])
@@ -295,7 +295,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }else{
                     print("가상 계좌 중복")
                 }
-       
+                
                 
                 
                 
