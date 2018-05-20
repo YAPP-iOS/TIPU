@@ -60,8 +60,10 @@ class ParentViewController: UIViewController {
             make.width.equalTo(64)
             make.height.equalTo(2)
             make.centerX.equalTo(segmentedControl.frame.width/4)
-            
         }
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        
     }
     
     // Appear
