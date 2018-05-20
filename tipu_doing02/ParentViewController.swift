@@ -122,9 +122,17 @@ class ParentViewController: UIViewController {
         print("parentVC : viewControllerForSelectedSegmentIndex")
         var vc: UIViewController?
         switch index {
-        case TabIndex.firstChildTab.rawValue : vc = firstChildTabVC
-        case TabIndex.secondChildTab.rawValue : vc = secondChildTabVC
-        default: return nil
+
+        case TabIndex.firstChildTab.rawValue :
+            vc = firstChildTabVC
+        case TabIndex.secondChildTab.rawValue :
+            vc = secondChildTabVC
+            
+            let second = vc as! SecondTabViewController
+            second.refresher((Any).self)
+
+        default:
+            return nil
         }
         
         return vc
