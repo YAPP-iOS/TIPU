@@ -12,6 +12,7 @@ import UIKit
 import CoreData
 import PKHUD
 import SnapKit
+import Toaster
 class DetailViewController: UIViewController {
     
     var perform: [NSManagedObject] = []
@@ -68,7 +69,7 @@ class DetailViewController: UIViewController {
             moneylabel.font = UIFont.systemFont(ofSize: 10)
             
         case .iPhones_5_5s_5c_SE:
-            titlelabel.font = UIFont.systemFont(ofSize: 35)
+            titlelabel.font = UIFont.systemFont(ofSize: 32)
             text2_account.font = UIFont.systemFont(ofSize: 13)
             text3_accountholder.font = UIFont.systemFont(ofSize: 13)
             text4_money.font = UIFont.systemFont(ofSize: 13)
@@ -194,10 +195,9 @@ class DetailViewController: UIViewController {
             //계좌번호만 받기 위해서 자르기
             let array = copy_accountNumber?.components(separatedBy: " | ")
             UIPasteboard.general.string = array![1]
-            HUD.flash(.success, delay: 1.0)
             print("복사했음")
-            //            Toast(text: "계좌번호를 복사했습니다!").show()
-        } else if longPressGestureRecognizer.state == .ended {
+            Toast(text: "계좌번호를 복사했습니다!", delay: 1.0).show()
+//            Toast(text: "계좌번호를 복사했습니다!").show()
         }
         
     }

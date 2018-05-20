@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import EventKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var year:Int?
     var month:Int?
     var day:Int?
+    
+
     
     // 입금 기한
     func getCalcDate(year: Int, month: Int, day: Int, hour: Int, min: Int, sec: Int) -> Date {
@@ -66,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 
 
-        
+        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
         
         // 앱이 처음 시작될 때 실행
         if let theString = UIPasteboard.general.string {
@@ -154,7 +157,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // 앱이 background 상태일 때 실행
+        if UIPasteboard.general.string != nil {
+            notificating()
+        }
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -203,10 +208,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let money = e[2]
                 object.setValue(money, forKey: "money")
                 
+                
+                
                 // 클립보드 초기화
                 UIPasteboard.general.string = ""
                 print(self.window?.rootViewController is UINavigationController)
-                
+                notificating()
                 // 테이블뷰 자동 새로고침
                 let root = self.window?.rootViewController as! UINavigationController
                 let parent = root.viewControllers.first as! ParentViewController
@@ -215,22 +222,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 first.refresher((Any).self)
                 second.refresher((Any).self)
                 
-                // 새로운 항목 토스트
-                let toastLabel = UILabel(frame: CGRect(x: (self.window?.rootViewController?.view.frame.size.width)!/2 - 110, y: (self.window?.rootViewController?.view.frame.size.height)!-100, width: 230, height: 35))
-                toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-                toastLabel.textColor = UIColor.white
-                toastLabel.textAlignment = .center;
-                toastLabel.font = UIFont(name:"", size: 10.0)
-                toastLabel.text = "새로운 티켓이 추가되었습니다"
-                toastLabel.alpha = 1.0
-                toastLabel.layer.cornerRadius = 10;
-                toastLabel.clipsToBounds  =  true
-                self.window?.rootViewController?.view.addSubview(toastLabel)
-                UIView.animate(withDuration: 4.0, delay: 0.05, options: .curveEaseOut, animations: {
-                    toastLabel.alpha = 0.0
-                }, completion: {(isCompleted) in
-                    toastLabel.removeFromSuperview()
-                })
+                
+                
+                
+//                // 새로운 항목 토스트
+//                let toastLabel = UILabel(frame: CGRect(x: (self.window?.rootViewController?.view.frame.size.width)!/2 - 110, y: (self.window?.rootViewController?.view.frame.size.height)!-100, width: 230, height: 35))
+//                toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+//                toastLabel.textColor = UIColor.white
+//                toastLabel.textAlignment = .center;
+//                toastLabel.font = UIFont(name:"", size: 10.0)
+//                toastLabel.text = "새로운 티켓이 추가되었습니다"
+//                toastLabel.alpha = 1.0
+//                toastLabel.layer.cornerRadius = 10;
+//                toastLabel.clipsToBounds  =  true
+//                self.window?.rootViewController?.view.addSubview(toastLabel)
+//                UIView.animate(withDuration: 4.0, delay: 0.05, options: .curveEaseOut, animations: {
+//                    toastLabel.alpha = 0.0
+//                }, completion: {(isCompleted) in
+//                    toastLabel.removeFromSuperview()
+//                })
                 
               
                 
@@ -310,6 +320,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if context.hasChanges {
             do {
                 try context.save()
+                
             } catch {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
@@ -317,6 +328,74 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    func notificating(){
+        //local notification
+        UNUserNotificationCenter.current().getNotificationSettings { (notificationSettings) in
+            switch notificationSettings.authorizationStatus {
+            case .notDetermined:
+                // Request Authorization
+                self.requestAuthorization(completionHandler: { (success) in
+                    guard success else { return }
+                    // Schedule Local Notification
+                    self.scheduleLocalNotification()
+                    print("성공")
+                })
+            case .authorized:
+                // Schedule Local Notification
+                self.scheduleLocalNotification()
+                
+            case .denied:
+                //여기 alert로 알려주도록 하기 (예정)
+                print("Application Not Allowed to Display Notifications")
+            }
+        }
+    }
+    
+    private func scheduleLocalNotification() {
+        // Create Notification Content
+        let notificationContent = UNMutableNotificationContent()
+        
+        // Configure Notification Content
+        notificationContent.title = "TIPU"
+        notificationContent.body = "새 예매내역이 추가되었습니다."
+        print(notificationContent.body)
+        
+        // Add Trigger
+        let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 1.0, repeats: false)
+        
+        // Create Notification Request
+        let id = "insert"
+        
+        let notificationRequest = UNNotificationRequest(identifier: id, content: notificationContent, trigger: notificationTrigger)
+        
+        // Add Request to User Notification Center
+        UNUserNotificationCenter.current().add(notificationRequest) { (error) in
+            if let error = error {
+                print("Unable to Add Notification Request (\(error), \(error.localizedDescription))")
+            }
+            print("gooooooooooooood")
+        }
+        
+    }
+    
+    private func requestAuthorization(completionHandler: @escaping (_ success: Bool) -> ()) {
+        // Request Authorization
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge]) { (success, error) in
+            if let error = error {
+                print("Request Authorization Failed (\(error), \(error.localizedDescription))")
+            }
+            completionHandler(success)
+        }
+    }
+    
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert])
     }
     
 }

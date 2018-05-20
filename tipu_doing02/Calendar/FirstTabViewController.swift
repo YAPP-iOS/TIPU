@@ -62,7 +62,6 @@ class FirstTabViewController: UIViewController {
         self.fetchDatas()
         self.setWeekColor()
         self.initCalendar(date : todaysDate)
-    
     }
     
     // Appear
