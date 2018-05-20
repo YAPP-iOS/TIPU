@@ -50,6 +50,9 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
     class Responder : NSObject { @objc func segmentedControlValueChanged ( _ sender : UISegmentedControl ) {} }
     
     
+    func pppp() {
+        print("aaa")
+    }
     
     @objc func refresher(_ sender: Any) {
         
@@ -68,9 +71,8 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
             print("Could not fetch. \(error), \(error.userInfo)") }
         self.tableview.reloadData()
         
-        
-        // 이 앱을 통해 저장한 이전의 모든 알림 삭제
         refresh.endRefreshing()
+        print("refresh")
     }
     
     // View가 보여질 때 자료를 DB에서 가져오도록 한다

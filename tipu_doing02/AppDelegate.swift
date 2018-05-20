@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     var window: UIWindow?
-    
+    var second: SecondTabViewController?
     var eventStore: EKEventStore?
     
     var arr:[String] = []
@@ -125,7 +125,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.eventStore!.requestAccess(to: EKEntityType.reminder, completion:
                         {(isAccessible,errors) in })
                     
-                    
                 }
                 
                 
@@ -200,19 +199,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 // 클립보드 초기화
                 UIPasteboard.general.string = ""
+                print(self.window?.rootViewController is UINavigationController)
                 
+                // 테이블뷰 자동 새로고침
+                let root = self.window?.rootViewController as! UINavigationController
+                let parent = root.viewControllers.first as! ParentViewController
+                let second = parent.secondChildTabVC as! SecondTabViewController
+                second.refresher((Any).self)
                 
+                // 새로운 항목 토스트
                 let toastLabel = UILabel(frame: CGRect(x: (self.window?.rootViewController?.view.frame.size.width)!/2 - 110, y: (self.window?.rootViewController?.view.frame.size.height)!-100, width: 230, height: 35))
                 toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
                 toastLabel.textColor = UIColor.white
                 toastLabel.textAlignment = .center;
-                toastLabel.font = UIFont(name: " ", size: 10.0)
+                toastLabel.font = UIFont(name:"", size: 10.0)
                 toastLabel.text = "새로운 티켓이 추가되었습니다"
                 toastLabel.alpha = 1.0
                 toastLabel.layer.cornerRadius = 10;
                 toastLabel.clipsToBounds  =  true
                 self.window?.rootViewController?.view.addSubview(toastLabel)
-//                self.view.addSubview(toastLabel)
                 UIView.animate(withDuration: 4.0, delay: 0.05, options: .curveEaseOut, animations: {
                     toastLabel.alpha = 0.0
                 }, completion: {(isCompleted) in
@@ -232,8 +237,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.eventStore = EKEventStore()
                     self.eventStore!.requestAccess(to: EKEntityType.reminder, completion:
                         {(isAccessible,errors) in })
-                    
-                    
                 }
                 
                 
