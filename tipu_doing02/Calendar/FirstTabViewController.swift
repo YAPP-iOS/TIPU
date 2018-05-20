@@ -63,7 +63,7 @@ class FirstTabViewController: UIViewController {
         self.setWeekColor()
         self.initCalendar(date : todaysDate)
         print("FirstTabViewCon : viewDidLoad")
-    
+        
     }
     
     // Appear
@@ -103,7 +103,7 @@ class FirstTabViewController: UIViewController {
     func setWeekColor(){
         
         weekView.addBackground(color: UIColor(red: CGFloat(250/255.0), green: CGFloat(250/255.0), blue: CGFloat(250/255.0), alpha: CGFloat(1.0)))
-
+        
         sun.textColor = UIColor(red: CGFloat(156/255.0), green: CGFloat(156/255.0), blue: CGFloat(156/255.0), alpha: CGFloat(1.0))
         mon.textColor = UIColor(red: CGFloat(156/255.0), green: CGFloat(156/255.0), blue: CGFloat(156/255.0), alpha: CGFloat(1.0))
         tue.textColor = UIColor(red: CGFloat(156/255.0), green: CGFloat(156/255.0), blue: CGFloat(156/255.0), alpha: CGFloat(1.0))
@@ -211,6 +211,7 @@ class FirstTabViewController: UIViewController {
             }
         }
         
+        
         // 이 셀의 날짜와 같은 티켓이, 디비에 없으면
         if(ticketsOfcurrenDate.count==0){
             cell.ticket.isHidden = true
@@ -225,25 +226,23 @@ class FirstTabViewController: UIViewController {
             cell.dots.isHidden = true
             if let name = ticketsOfcurrenDate[0].value(forKey: "name") as? String {
                 cell.ticket.text = name
-                
             }
             
             if(cellState.date < todaysDate  ){
-                // 지금 시간 기준으로 이전
+                // 지금 시간 기준으로 이전이면 백그라운드 회색
                 cell.ticket.backgroundColor = UIColor(red: CGFloat(187/255.0), green: CGFloat(186/255.0), blue: CGFloat(186/255.0), alpha: CGFloat(1.0))
             }else{
-                // 지금 시간 기준으로 이후 - 입금 여부
+                // 지금 시간 기준으로 이후이면 입금처리 했으면 회색, 안했으면 핑크
                 if(isFinished){
                     cell.ticket.backgroundColor = UIColor(red: CGFloat(187/255.0), green: CGFloat(186/255.0), blue: CGFloat(186/255.0), alpha: CGFloat(1.0))
                 }else{
                     cell.ticket.backgroundColor = UIColor(red: CGFloat(252/255.0), green: CGFloat(82/255.0), blue: CGFloat(140/255.0), alpha: CGFloat(1.0))
                 }
-                
             }
         }else if(ticketsOfcurrenDate.count >= 2){
             // 이 셀의 날짜와 같은 티켓이 디비에 두 개 이상이면
             
-            //하나라도 입금 안한 티켓이 있으면
+            //하나라도 입금 안한 티켓이 있으면 depositFlag=false
             var depositFlag : Bool = true
             for ticket in ticketsOfcurrenDate{
                 depositFlag = (ticket.value(forKey: "deposit") as? Bool)!
@@ -251,23 +250,27 @@ class FirstTabViewController: UIViewController {
                     break
                 }
             }
+
             
             // INFO
             cell.ticket.isHidden = false
             if let name = ticketsOfcurrenDate[0].value(forKey: "name") as? String {
                 cell.ticket.text = name
             }
+            
+            //텍스트 색깔 : 흰색
             cell.ticket.textColor = UIColor(red: CGFloat(255/255.0), green: CGFloat(255/255.0), blue: CGFloat(255/255.0), alpha: CGFloat(1.0))
             
             // 지금 시간 기준으로 이전
             if(cellState.date < todaysDate  ){
+                //티켓 배경 : 회색
                 cell.ticket.backgroundColor = UIColor(red: CGFloat(187/255.0), green: CGFloat(186/255.0), blue: CGFloat(186/255.0), alpha: CGFloat(1.0))
                 cell.dots.isHidden = false
                 cell.dots.image = UIImage(named: "grayDots")
-            }else{
-                // 지금 시간 기준으로 이후
+            }
+            // 지금 시간 기준으로 이후
+            else{
                 cell.dots.isHidden = false
-                
                 
                 // 하나라도 입금 안한 티켓이 있으면
                 if(depositFlag==false){
@@ -293,15 +296,14 @@ class FirstTabViewController: UIViewController {
         
         do {
             let count = try context.fetch(fetchRequest).count
+            
+            // 공연 없을 때
             if(count==0){
-
-                // 공연 없을 때
                 let alert = UIAlertController(title: "알림", message: "예매된 공연이 없습니다.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
-
                 self.present(alert, animated: true)
-                
             }
+            
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -312,7 +314,7 @@ class FirstTabViewController: UIViewController {
             vc?.curDate = willSendData!
         }
     }
-
+    
 }
 
 
@@ -358,7 +360,6 @@ extension FirstTabViewController: JTAppleCalendarViewDelegate{
     }
     
     func calendar(_ calendar: JTAppleCalendarView, shouldSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) -> Bool {
-        
         
         tempDate = Calendar.current.date(byAdding: .day, value: 1, to: cellState.date)!
         

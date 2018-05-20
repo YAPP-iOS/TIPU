@@ -109,11 +109,18 @@ class ParentViewController: UIViewController {
         print("parentVC : displayCurrentTab")
         
         if let vc = viewControllerForSelectedSegmentIndex(tabIndex) {
+            
             self.addChildViewController(vc)
             vc.didMove(toParentViewController: self)
             vc.view.frame = self.contentView.bounds
             self.contentView.addSubview(vc.view)
             self.currentViewController = vc
+            
+            if(tabIndex==0){
+                let first = firstChildTabVC as! FirstTabViewController
+                first.refresher(self)
+                
+            }
         }
     }
     
