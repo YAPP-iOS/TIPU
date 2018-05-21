@@ -39,25 +39,17 @@ class FirstTabViewController: UIViewController {
     var datas: [NSManagedObject] = []
     
     
+    //예매하고 다시 돌아왔을 때
     @objc func refresher(_ sender: Any) {
-        
-        // 캘린더 새로고침
-        let context = self.getContext()
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
-        
-        do {
-            datas = try context.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)") }
-        self.calendarView.reloadData()
-        
+        calendarView.reloadData()
+        self.fetchDatas()
+        self.initCalendar(date : tempDate)
         print("refresh")
     }
     
     
     // View did load
     override func viewDidLoad() {
-        print("FirstTabViewCon : viewDidLoad")
         super.viewDidLoad()
         self.fetchDatas()
         self.setWeekColor()
@@ -66,11 +58,11 @@ class FirstTabViewController: UIViewController {
     
     // Appear
     override func viewWillAppear(_ animated: Bool) {
-        print("FirstTabViewCon : viewWillAppear")
         super.viewWillAppear(animated)
         calendarView.reloadData()
         self.fetchDatas()
         self.initCalendar(date: tempDate)
+        print("FirstTabViewCon : viewWillAppear")
     }
     
     // Disappear
@@ -101,7 +93,7 @@ class FirstTabViewController: UIViewController {
     func setWeekColor(){
         
         weekView.addBackground(color: UIColor(red: CGFloat(250/255.0), green: CGFloat(250/255.0), blue: CGFloat(250/255.0), alpha: CGFloat(1.0)))
-
+        
         sun.textColor = UIColor(red: CGFloat(156/255.0), green: CGFloat(156/255.0), blue: CGFloat(156/255.0), alpha: CGFloat(1.0))
         mon.textColor = UIColor(red: CGFloat(156/255.0), green: CGFloat(156/255.0), blue: CGFloat(156/255.0), alpha: CGFloat(1.0))
         tue.textColor = UIColor(red: CGFloat(156/255.0), green: CGFloat(156/255.0), blue: CGFloat(156/255.0), alpha: CGFloat(1.0))
@@ -113,8 +105,8 @@ class FirstTabViewController: UIViewController {
     
     // 스크롤, 뷰 설정
     func initCalendar(date : Date){
-        calendarView.scrollToDate(date, animateScroll: false)
-        calendarView.visibleDates{
+        calendarView?.scrollToDate(date, animateScroll: false)
+        calendarView?.visibleDates{
             dateSegment in self.setupCalendarView(dateSegment : dateSegment)
         }
     }
@@ -122,7 +114,7 @@ class FirstTabViewController: UIViewController {
     // 월, 연도
     func setupCalendarView(dateSegment : DateSegmentInfo){
         
-        // VARIABLES
+    
         let formatter : DateFormatter = {
             let dateFormatter = DateFormatter()
             dateFormatter.timeZone = Calendar.current.timeZone
@@ -131,13 +123,17 @@ class FirstTabViewController: UIViewController {
             return dateFormatter
         }()
         
-        
         guard let date = dateSegment.monthDates.first?.date else{return}
         formatter.dateFormat = "yyyy"
         self.year.text = formatter.string(from: date)
         
         formatter.dateFormat = "MMMM"
         self.month.text = formatter.string(from: date)
+        
+        
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.timeZone = TimeZone(abbreviation: "GMT+0:00")
+        tempDate = Calendar.current.date(byAdding: .day, value: 1, to: formatter.date(from: formatter.string(from: date))!)!
     }
     
     // 셀 구성
@@ -209,6 +205,7 @@ class FirstTabViewController: UIViewController {
             }
         }
         
+        
         // 이 셀의 날짜와 같은 티켓이, 디비에 없으면
         if(ticketsOfcurrenDate.count==0){
             cell.ticket.isHidden = true
@@ -223,25 +220,23 @@ class FirstTabViewController: UIViewController {
             cell.dots.isHidden = true
             if let name = ticketsOfcurrenDate[0].value(forKey: "name") as? String {
                 cell.ticket.text = name
-                
             }
             
             if(cellState.date < todaysDate  ){
-                // 지금 시간 기준으로 이전
+                // 지금 시간 기준으로 이전이면 백그라운드 회색
                 cell.ticket.backgroundColor = UIColor(red: CGFloat(187/255.0), green: CGFloat(186/255.0), blue: CGFloat(186/255.0), alpha: CGFloat(1.0))
             }else{
-                // 지금 시간 기준으로 이후 - 입금 여부
+                // 지금 시간 기준으로 이후이면 입금처리 했으면 회색, 안했으면 핑크
                 if(isFinished){
                     cell.ticket.backgroundColor = UIColor(red: CGFloat(187/255.0), green: CGFloat(186/255.0), blue: CGFloat(186/255.0), alpha: CGFloat(1.0))
                 }else{
                     cell.ticket.backgroundColor = UIColor(red: CGFloat(252/255.0), green: CGFloat(82/255.0), blue: CGFloat(140/255.0), alpha: CGFloat(1.0))
                 }
-                
             }
         }else if(ticketsOfcurrenDate.count >= 2){
             // 이 셀의 날짜와 같은 티켓이 디비에 두 개 이상이면
             
-            //하나라도 입금 안한 티켓이 있으면
+            //하나라도 입금 안한 티켓이 있으면 depositFlag=false
             var depositFlag : Bool = true
             for ticket in ticketsOfcurrenDate{
                 depositFlag = (ticket.value(forKey: "deposit") as? Bool)!
@@ -249,29 +244,35 @@ class FirstTabViewController: UIViewController {
                     break
                 }
             }
+
             
             // INFO
             cell.ticket.isHidden = false
             if let name = ticketsOfcurrenDate[0].value(forKey: "name") as? String {
                 cell.ticket.text = name
             }
+            
+            //텍스트 색깔 : 흰색
             cell.ticket.textColor = UIColor(red: CGFloat(255/255.0), green: CGFloat(255/255.0), blue: CGFloat(255/255.0), alpha: CGFloat(1.0))
             
             // 지금 시간 기준으로 이전
             if(cellState.date < todaysDate  ){
+                //티켓 배경 : 회색
                 cell.ticket.backgroundColor = UIColor(red: CGFloat(187/255.0), green: CGFloat(186/255.0), blue: CGFloat(186/255.0), alpha: CGFloat(1.0))
                 cell.dots.isHidden = false
                 cell.dots.image = UIImage(named: "grayDots")
-            }else{
-                // 지금 시간 기준으로 이후
+            }
+            // 지금 시간 기준으로 이후
+            else{
                 cell.dots.isHidden = false
-                cell.dots.image = UIImage(named: "pinkDots")
                 
                 // 하나라도 입금 안한 티켓이 있으면
                 if(depositFlag==false){
                     cell.ticket.backgroundColor = UIColor(red: CGFloat(252/255.0), green: CGFloat(82/255.0), blue: CGFloat(140/255.0), alpha: CGFloat(1.0))
+                    cell.dots.image = UIImage(named: "pinkDots")
                 }else{
                     cell.ticket.backgroundColor = UIColor(red: CGFloat(187/255.0), green: CGFloat(186/255.0), blue: CGFloat(186/255.0), alpha: CGFloat(1.0))
+                    cell.dots.image = UIImage(named: "grayDots")
                 }
             }
         }
@@ -289,15 +290,14 @@ class FirstTabViewController: UIViewController {
         
         do {
             let count = try context.fetch(fetchRequest).count
+            
+            // 공연 없을 때
             if(count==0){
-
-                // 공연 없을 때
                 let alert = UIAlertController(title: "알림", message: "예매된 공연이 없습니다.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
-
                 self.present(alert, animated: true)
-                
             }
+            
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -308,7 +308,7 @@ class FirstTabViewController: UIViewController {
             vc?.curDate = willSendData!
         }
     }
-
+    
 }
 
 
@@ -354,7 +354,6 @@ extension FirstTabViewController: JTAppleCalendarViewDelegate{
     }
     
     func calendar(_ calendar: JTAppleCalendarView, shouldSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) -> Bool {
-        
         
         tempDate = Calendar.current.date(byAdding: .day, value: 1, to: cellState.date)!
         

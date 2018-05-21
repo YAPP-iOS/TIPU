@@ -103,7 +103,7 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
             
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)") }
-        self.tableview.reloadData()
+        self.tableview?.reloadData()
         
         
         // 이 앱을 통해 저장한 이전의 모든 알림 삭제
@@ -125,7 +125,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         
         do {
             perform = try context.fetch(fetchRequest)
-            print(perform)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
             
@@ -158,7 +157,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         let account_origin: String = perform.value(forKey: "account") as! String
         let array = account_origin.components(separatedBy: " | ")
         let accountNum = Int(array[1])
-        print("계좌!!!\(accountNum!)")
         
         
         // cell button image 설정
@@ -206,6 +204,7 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
                 print(error)
             }
             self.tableview.reloadData()
+        
         }
         catch{
             print(error)
@@ -221,12 +220,16 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
             context.delete(perform[indexPath.row])
             do {
                 try context.save()
-                print("deleted!")
             } catch let error as NSError {
                 print("Could not delete \(error), \(error.userInfo)") }
             // 배열에서 해당 자료 삭제
             perform.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            
+            self.count.text = "총 \(tableView.numberOfSections-1) 개"
+    
+            
         } else if editingStyle == .insert {
             
         }

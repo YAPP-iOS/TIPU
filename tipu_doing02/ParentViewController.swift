@@ -6,9 +6,6 @@
 //  Copyright © 2018 JunHee. All rights reserved.
 //
 
-//view did load
-//displayCurrentTab
-//viewControllerForSelectedSegmentIndex
 import UIKit
 import SnapKit
 
@@ -63,8 +60,10 @@ class ParentViewController: UIViewController {
             make.width.equalTo(64)
             make.height.equalTo(2)
             make.centerX.equalTo(segmentedControl.frame.width/4)
-            
         }
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        
     }
     
     // Appear
@@ -109,25 +108,35 @@ class ParentViewController: UIViewController {
         print("parentVC : displayCurrentTab")
         
         if let vc = viewControllerForSelectedSegmentIndex(tabIndex) {
+            
             self.addChildViewController(vc)
             vc.didMove(toParentViewController: self)
             vc.view.frame = self.contentView.bounds
             self.contentView.addSubview(vc.view)
             self.currentViewController = vc
+            
+            if(tabIndex==0){
+                let first = firstChildTabVC as! FirstTabViewController
+                first.refresher(self)
+                
+            }
         }
     }
     
     // 세그먼트의 인덱스에 맞는 뷰컨트롤러를 가져온다
     func viewControllerForSelectedSegmentIndex(_ index: Int) -> UIViewController? {
-        
         print("parentVC : viewControllerForSelectedSegmentIndex")
-        
         var vc: UIViewController?
         switch index {
+
         case TabIndex.firstChildTab.rawValue :
             vc = firstChildTabVC
         case TabIndex.secondChildTab.rawValue :
             vc = secondChildTabVC
+            
+            let second = vc as! SecondTabViewController
+            second.refresher((Any).self)
+
         default:
             return nil
         }

@@ -74,7 +74,7 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
             print("Could not fetch. \(error), \(error.userInfo)") }
         self.tableview.reloadData()
         
-        refresh.endRefreshing()
+        refresh?.endRefreshing()
         print("refresh")
     }
     
@@ -96,6 +96,8 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)") }
         self.tableview.reloadData()
+        
+        print("viewdidappear")
         
     }
     
