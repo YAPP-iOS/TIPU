@@ -31,7 +31,7 @@
                                 <color key="separatorColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="List Cell" rowHeight="100" id="mTT-hc-4b2" customClass="ListTableViewCell" customModule="tipu_doing02" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="List Cell" rowHeight="100" id="mTT-hc-4b2" customClass="ListTableViewCell" customModule="tipu_doing02" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mTT-hc-4b2" id="hQC-g0-sNn">
@@ -39,10 +39,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRM-kt-SQq">
-                                                    <rect key="frame" x="11" y="9" width="349" height="91"/>
+                                                    <rect key="frame" x="11" y="9" width="294" height="91"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공연 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrX-ou-6IM">
-                                                            <rect key="frame" x="112" y="15" width="203" height="27"/>
+                                                            <rect key="frame" x="112" y="15" width="148" height="27"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -52,7 +52,7 @@
                                                             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="FdZ-bK-UFi">
-                                                            <rect key="frame" x="313" y="31" width="31" height="16"/>
+                                                            <rect key="frame" x="258" y="31" width="31" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="31" id="x3H-it-tUI"/>
                                                             </constraints>
@@ -68,7 +68,7 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="입금 기한" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVJ-f2-R8V">
-                                                            <rect key="frame" x="112" y="45" width="209" height="19"/>
+                                                            <rect key="frame" x="112" y="45" width="154" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="19" id="2OT-P1-Kmo"/>
                                                             </constraints>

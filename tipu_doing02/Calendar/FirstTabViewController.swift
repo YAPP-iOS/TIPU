@@ -127,6 +127,7 @@ class FirstTabViewController: UIViewController {
         formatter.dateFormat = "yyyy"
         self.year.text = formatter.string(from: date)
         
+        formatter.locale = Locale(identifier: "en_US")
         formatter.dateFormat = "MMMM"
         self.month.text = formatter.string(from: date)
         
