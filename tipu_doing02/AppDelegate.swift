@@ -252,57 +252,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 var accountFlag: Bool = true
                 
                 var c = arr[9].components(separatedBy: ["▶",":"])
-                let account = c[2] + " | " + arr[10]
-                object.setValue(account, forKey: "account")
-                
-                var d = arr[11].components(separatedBy: ["▶",":"])
-                let accountholder = d[2]
-                object.setValue(accountholder, forKey: "accountholder")
-                
-                var e = arr[12].components(separatedBy: ["▶",":"])
-                let money = e[2]
-                object.setValue(money, forKey: "money")
-                
-                
-                
-                // 클립보드 초기화
-                UIPasteboard.general.string = ""
-                print(self.window?.rootViewController is UINavigationController)
-                notificating()
-                // 테이블뷰 자동 새로고침
-                let root = self.window?.rootViewController as! UINavigationController
-                let parent = root.viewControllers.first as! ParentViewController
-                let first = parent.firstChildTabVC as! FirstTabViewController
-                let second = parent.secondChildTabVC as! SecondTabViewController
-                first.refresher((Any).self)
-                second.refresher((Any).self)
-                
-                
-                
-                
-//                // 새로운 항목 토스트
-//                let toastLabel = UILabel(frame: CGRect(x: (self.window?.rootViewController?.view.frame.size.width)!/2 - 110, y: (self.window?.rootViewController?.view.frame.size.height)!-100, width: 230, height: 35))
-//                toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-//                toastLabel.textColor = UIColor.white
-//                toastLabel.textAlignment = .center;
-//                toastLabel.font = UIFont(name:"", size: 10.0)
-//                toastLabel.text = "새로운 티켓이 추가되었습니다"
-//                toastLabel.alpha = 1.0
-//                toastLabel.layer.cornerRadius = 10;
-//                toastLabel.clipsToBounds  =  true
-//                self.window?.rootViewController?.view.addSubview(toastLabel)
-//                UIView.animate(withDuration: 4.0, delay: 0.05, options: .curveEaseOut, animations: {
-//                    toastLabel.alpha = 0.0
-//                }, completion: {(isCompleted) in
-//                    toastLabel.removeFromSuperview()
-//                })
-                
-              
-                
-                do {
-                    try context.save()
-                } catch let error as NSError {
-                    print("Could not save \(error), \(error.userInfo)")
+                for data in datas{
+                    if let account = data.value(forKey: "account") as? String {
+                        if(account.contains(c[2] + " | " + arr[10])){
+                            accountFlag = false
+                            break
+                        }
+                    }
                 }
                 
                 // 가상계좌가 중복안되면
