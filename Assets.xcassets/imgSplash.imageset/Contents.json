@@ -2,17 +2,76 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "splash1334.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "splash1334@2x.png",
+      "filename" : "1125 - 2436@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "splash1334@3x.png",
+      "filename" : "1125 - 2436@3x-8.png",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "640 - 1336@2x.png",
+      "unassigned" : true,
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "750 - 1334@2x.png",
+      "unassigned" : true,
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "1242 - 2208@2x.png",
+      "unassigned" : true,
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "640 - 1336@3x-8.png",
+      "unassigned" : true,
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "640 - 1336@3x.png",
+      "unassigned" : true,
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "750 - 1334@3x-8.png",
+      "unassigned" : true,
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "750 - 1334@3x.png",
+      "unassigned" : true,
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "1125 - 2436@3x.png",
+      "unassigned" : true,
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "1242 - 2208@3x-8.png",
+      "unassigned" : true,
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "1242 - 2208@3x.png",
+      "unassigned" : true,
       "scale" : "3x"
     }
   ],
