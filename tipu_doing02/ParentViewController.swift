@@ -62,6 +62,7 @@ class ParentViewController: UIViewController {
             make.centerX.equalTo(segmentedControl.frame.width/4)
         }
         
+        //네비게이션 백 버튼 검정색으로
         self.navigationController?.navigationBar.tintColor = UIColor.black
         
     }
@@ -87,6 +88,8 @@ class ParentViewController: UIViewController {
                 print("move left")
             })
             flag = 0
+            
+        
         }else if(sender.selectedSegmentIndex==1 && flag == 0){
             
             

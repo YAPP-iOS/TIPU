@@ -12,11 +12,12 @@ import UIKit
 class SegmentedControl: UISegmentedControl {
 
     func setupFonts(){
-        let titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
-        self.setTitleTextAttributes(titleTextAttributes, for: .normal)
-        self.setTitleTextAttributes(titleTextAttributes, for: .selected)
+        let normalTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red: CGFloat(156/255.0), green: CGFloat(156/255.0), blue: CGFloat(156/255.0), alpha: CGFloat(1.0))]
+        let selectedTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red: CGFloat(45/255.0), green: CGFloat(45/255.0), blue: CGFloat(50/255.0), alpha: CGFloat(1.0))]
+        
+        self.setTitleTextAttributes(normalTitleTextAttributes, for: .normal)
+        self.setTitleTextAttributes(selectedTitleTextAttributes, for: .selected)
     }
     
 }
-
 
