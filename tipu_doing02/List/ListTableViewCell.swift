@@ -14,7 +14,6 @@ class ListTableViewCell: UITableViewCell {
     @IBOutlet var titleText: UILabel!
     @IBOutlet var deadlineText: UILabel!
     @IBOutlet var bar: UIView!
-    @IBOutlet var rightarrow: UIImageView!
     @IBOutlet var ticketBtn: UIButton!
     
     override func awakeFromNib() {
