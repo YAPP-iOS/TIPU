@@ -166,7 +166,7 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
                 cell.ticketBtn?.tag = Int(accountNum!)
             }
             else {
-                 cell.ticketBtn?.setImage(UIImage(named: "not_paid"), for: .normal)
+                cell.ticketBtn?.setImage(UIImage(named: "not_paid"), for: .normal)
                 cell.ticketBtn?.tag = Int(accountNum!)
             }
         }
@@ -204,16 +204,17 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
                 print(error)
             }
             self.tableview.reloadData()
-        
+            
         }
         catch{
             print(error)
         }
-
+        
     }
     
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
         if editingStyle == .delete {
             // Core Data 내의 해당 자료 삭제
             let context = getContext()
@@ -226,9 +227,8 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
             perform.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
-            
-            self.count.text = "총 \(tableView.numberOfSections-1) 개"
-    
+            // 테이블 뷰 개수
+            self.count.text = "총 \(Int(String(self.count.text![2]))!-1) 개"
             
         } else if editingStyle == .insert {
             
@@ -237,5 +237,11 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+}
+
+extension String {
+    subscript (i: Int) -> Character {
+        return self[index(startIndex, offsetBy: i)]
     }
 }
