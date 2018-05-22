@@ -45,7 +45,7 @@ class ParentViewController: UIViewController {
         view.center.x -= segmentedControl.frame.width / 2
     }
     
-    //Did
+    //viewDidLoad
     override func viewDidLoad() {
         print("parentVC : viewDidLoad")
         super.viewDidLoad()
