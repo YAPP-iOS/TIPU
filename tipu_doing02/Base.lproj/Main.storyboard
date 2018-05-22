@@ -32,11 +32,7 @@
                                 <color key="sectionIndexBackgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="List Cell" rowHeight="100" id="mTT-hc-4b2" customClass="ListTableViewCell" customModule="tipu_doing02" customModuleProvider="target">
-<<<<<<< HEAD
-                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
-=======
                                         <rect key="frame" x="0.0" y="28" width="320" height="100"/>
->>>>>>> 3e0cdbb38100be05bc1b6cb205dcadd0f32e2925
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mTT-hc-4b2" id="hQC-g0-sNn">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
@@ -385,13 +381,8 @@
                                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y6z-sr-cLH">
                                             <rect key="frame" x="11" y="9" width="354" height="91"/>
                                             <subviews>
-<<<<<<< HEAD
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공연 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obF-jx-ARC">
-                                                    <rect key="frame" x="110" y="21" width="204" height="29"/>
-=======
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="공연 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obF-jx-ARC">
-                                                    <rect key="frame" x="112" y="15" width="204" height="29"/>
->>>>>>> 3e0cdbb38100be05bc1b6cb205dcadd0f32e2925
+                                                    <rect key="frame" x="110" y="21" width="204" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="204" id="hIU-3S-wyi"/>
                                                     </constraints>
@@ -399,13 +390,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-<<<<<<< HEAD
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJr-2G-7yl">
-                                                    <rect key="frame" x="91" y="0.0" width="1" height="100"/>
-=======
                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HJr-2G-7yl">
-                                                    <rect key="frame" x="91" y="0.0" width="1" height="96"/>
->>>>>>> 3e0cdbb38100be05bc1b6cb205dcadd0f32e2925
+                                                    <rect key="frame" x="91" y="0.0" width="1" height="100"/>
                                                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="right-arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="Af4-UW-vPO">
@@ -421,13 +407,8 @@
                                                     </constraints>
                                                     <state key="normal" title="Button" image="not_paid"/>
                                                 </button>
-<<<<<<< HEAD
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="입금 기한" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjx-4W-89v">
-                                                    <rect key="frame" x="113" y="55" width="233" height="19"/>
-=======
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="입금 기한" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjx-4W-89v">
-                                                    <rect key="frame" x="113" y="52" width="233" height="19"/>
->>>>>>> 3e0cdbb38100be05bc1b6cb205dcadd0f32e2925
+                                                    <rect key="frame" x="113" y="55" width="233" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="ix1-Za-qQI"/>
                                                     </constraints>

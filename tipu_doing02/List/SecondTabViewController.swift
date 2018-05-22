@@ -37,17 +37,12 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         refresh.addTarget(self, action: #selector(refresher), for: .valueChanged)
         tableview.addSubview(refresh)
         
-<<<<<<< HEAD
-        
-        
-=======
-
         // tableview backgrond
         tableview.backgroundColor = UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
         
-        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+        
 
->>>>>>> 3e0cdbb38100be05bc1b6cb205dcadd0f32e2925
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
