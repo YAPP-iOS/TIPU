@@ -166,30 +166,32 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         switch deviceType {
             
         case .iPhone4_4S:
-            cell.titleText.font = UIFont.systemFont(ofSize: 15)
-            cell.deadlineText.font = UIFont.systemFont(ofSize: 10)
-            
+            cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 15)
+            cell.deadlineText.font = UIFont (name: "AppleSDGothicNeo-Light", size: 10)
             
         case .iPhones_5_5s_5c_SE:
-            cell.titleText.font = UIFont.systemFont(ofSize: 16.5)
-            cell.deadlineText.font = UIFont.systemFont(ofSize: 12)
+            cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 16.5)
+            cell.deadlineText.font = UIFont (name: "AppleSDGothicNeo-Light", size: 12)
             
         case .iPhones_6_6s_7_8:
-            cell.titleText.font = UIFont.systemFont(ofSize: 18.5)
-            cell.deadlineText.font = UIFont.systemFont(ofSize: 13)
+            cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 18.5)
+            cell.deadlineText.font = UIFont (name: "AppleSDGothicNeo-Light", size: 13)
             
         case .iPhones_6Plus_6sPlus_7Plus_8Plus:
-            cell.titleText.font = UIFont.systemFont(ofSize: 21.5)
-            cell.deadlineText.font = UIFont.systemFont(ofSize: 16)
+            cell.titleText.font = UIFont.systemFont(ofSize: 20.5)
+            cell.deadlineText.font = UIFont.systemFont(ofSize: 14)
+            
+            cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 20.5)
+            cell.deadlineText.font = UIFont (name: "AppleSDGothicNeo-Light", size: 14)
             
         case .iPhoneX:
-            cell.titleText.font = UIFont.systemFont(ofSize: 21.5)
-            cell.deadlineText.font = UIFont.systemFont(ofSize: 16)
+            cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 20.5)
+            cell.deadlineText.font = UIFont (name: "AppleSDGothicNeo-Light", size: 14)
             
         default:
             print("iPad or Unkown device")
-            cell.titleText.font = UIFont.systemFont(ofSize: 18.5)
-            cell.deadlineText.font = UIFont.systemFont(ofSize: 13)
+            cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 18.5)
+            cell.deadlineText.font = UIFont (name: "AppleSDGothicNeo-Light", size: 13)
             
         }
         
