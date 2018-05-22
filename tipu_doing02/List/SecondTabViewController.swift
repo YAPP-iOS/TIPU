@@ -36,6 +36,10 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refresh.addTarget(self, action: #selector(refresher), for: .valueChanged)
         tableview.addSubview(refresh)
+        
+        // tableview backgrond
+        tableview.backgroundColor = UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
