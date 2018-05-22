@@ -216,9 +216,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        if UIPasteboard.general.string != nil {
-            notificating()
-        }
+        notificating()
+//        var string = UIPasteboard.general.string
+//        var arr = string?.components(separatedBy: "\n")
+//        while (true) {
+//
+//            if let paster = arr[0] {
+//                if paster ==
+//            }
+//        }
+//        if UIPasteboard.general.string != nil {
+//            notificating()
+//        }
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -434,7 +443,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.scheduleLocalNotification()
                 
             case .denied:
-                //여기 alert로 알려주도록 하기 (예정)
                 print("Application Not Allowed to Display Notifications")
             }
         }
@@ -462,7 +470,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let error = error {
                 print("Unable to Add Notification Request (\(error), \(error.localizedDescription))")
             }
-            print("gooooooooooooood")
         }
         
     }

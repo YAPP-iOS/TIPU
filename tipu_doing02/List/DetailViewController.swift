@@ -10,7 +10,6 @@ import UIKit
 
 import UIKit
 import CoreData
-import PKHUD
 import SnapKit
 import Toaster
 class DetailViewController: UIViewController {
@@ -120,6 +119,7 @@ class DetailViewController: UIViewController {
             make.top.equalTo(120)
             make.height.equalTo(30)
             make.left.right.equalTo(25)
+            make.width.equalTo(superView!)
             
         }
         // 입금 기한
@@ -163,21 +163,18 @@ class DetailViewController: UIViewController {
             make.height.equalTo(1)
             make.width.equalTo(self.infoView).offset(-10)
             make.left.equalTo(self.text2_account)
-            make.right.equalTo(self.infoView).offset(-10)
             make.top.equalTo(self.text2_account).offset(40)
         }
         self.line_two.snp.makeConstraints { (make) -> Void in
             make.height.equalTo(1)
             make.width.equalTo(self.infoView).offset(-10)
             make.left.equalTo(self.text3_accountholder)
-            make.right.equalTo(self.infoView).offset(-10)
             make.top.equalTo(self.text3_accountholder).offset(40)
         }
         self.line_three.snp.makeConstraints { (make) -> Void in
             make.height.equalTo(1)
             make.width.equalTo(self.infoView).offset(-10)
             make.left.equalTo(self.text4_money)
-            make.right.equalTo(self.infoView).offset(-10)
             make.top.equalTo(self.text4_money).offset(40)
         }
         
@@ -196,7 +193,6 @@ class DetailViewController: UIViewController {
             let array = copy_accountNumber?.components(separatedBy: " | ")
             UIPasteboard.general.string = array![1]
             print("복사했음")
-            Toast(text: "계좌번호를 복사했습니다!", delay: 1.0).show()
 //            Toast(text: "계좌번호를 복사했습니다!").show()
         }
         
