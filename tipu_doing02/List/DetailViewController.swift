@@ -53,49 +53,77 @@ class DetailViewController: UIViewController {
         
         
         //기기에 따라 폰트 크기 다르게.
-        let label = UILabel()
-        
         let deviceType = UIDevice.current.deviceType
-        
+
         switch deviceType {
             
         case .iPhone4_4S:
-            text2_account.font = UIFont.systemFont(ofSize: 10)
-            text3_accountholder.font = UIFont.systemFont(ofSize: 10)
-            text4_money.font = UIFont.systemFont(ofSize: 10)
-            accountlabel.font = UIFont.systemFont(ofSize: 10)
-            accountholderlabel.font = UIFont.systemFont(ofSize: 10)
-            moneylabel.font = UIFont.systemFont(ofSize: 10)
+            titlelabel.font = UIFont (name: "HelveticaNeue-Bold", size: 30)
+            deadlinelabel.font = UIFont (name: "HelveticaNeue-Medium", size: 16)
+            text1.font = UIFont (name: "HelveticaNeue", size: 10)
+            text2_account.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 10)
+            text3_accountholder.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 10)
+            text4_money.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 10)
+            accountlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 11)
+            accountholderlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 11)
+            moneylabel.font = UIFont (name: "HelveticaNeue-Medium", size: 11)
             
         case .iPhones_5_5s_5c_SE:
-            titlelabel.font = UIFont.systemFont(ofSize: 32)
-            text2_account.font = UIFont.systemFont(ofSize: 13)
-            text3_accountholder.font = UIFont.systemFont(ofSize: 13)
-            text4_money.font = UIFont.systemFont(ofSize: 13)
-            accountlabel.font = UIFont.systemFont(ofSize: 13)
-            accountholderlabel.font = UIFont.systemFont(ofSize: 13)
-            moneylabel.font = UIFont.systemFont(ofSize: 13)
+            titlelabel.font = UIFont (name: "HelveticaNeue-Bold", size: 32)
+            deadlinelabel.font = UIFont (name: "HelveticaNeue-Medium", size: 18)
+            text1.font = UIFont (name: "HelveticaNeue", size: 12)
+            text2_account.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 12)
+            text3_accountholder.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 12)
+            text4_money.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 12)
+            accountlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 13)
+            accountholderlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 13)
+            moneylabel.font = UIFont (name: "HelveticaNeue-Medium", size: 13)
+            
             
         case .iPhones_6_6s_7_8:
-            label.font = UIFont.systemFont(ofSize: 14)
+            titlelabel.font = UIFont (name: "HelveticaNeue-Bold", size: 36)
+            deadlinelabel.font = UIFont (name: "HelveticaNeue-Medium", size: 22)
+            text1.font = UIFont (name: "HelveticaNeue", size: 16)
+            text2_account.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 15)
+            text3_accountholder.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 15)
+            text4_money.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 15)
+            accountlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
+            accountholderlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
+            moneylabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
             
         case .iPhones_6Plus_6sPlus_7Plus_8Plus:
-            titlelabel.font = UIFont.systemFont(ofSize: 43)
-            deadlinelabel.font = UIFont.systemFont(ofSize: 25)
-            text1.font = UIFont.systemFont(ofSize: 20)
-            text2_account.font = UIFont.systemFont(ofSize: 17)
-            text3_accountholder.font = UIFont.systemFont(ofSize: 17)
-            text4_money.font = UIFont.systemFont(ofSize: 17)
-            accountlabel.font = UIFont.systemFont(ofSize: 17)
-            accountholderlabel.font = UIFont.systemFont(ofSize: 17)
-            moneylabel.font = UIFont.systemFont(ofSize: 17)
+            titlelabel.font = UIFont (name: "HelveticaNeue-Bold", size: 38)
+            deadlinelabel.font = UIFont (name: "HelveticaNeue-Medium", size: 23)
+            text1.font = UIFont (name: "HelveticaNeue", size: 18)
+            text2_account.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 15)
+            text3_accountholder.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 15)
+            text4_money.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 15)
+            accountlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
+            accountholderlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
+            moneylabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
             
         case .iPhoneX:
-            label.font = UIFont.systemFont(ofSize: 18)
+            titlelabel.font = UIFont (name: "HelveticaNeue-Bold", size: 38)
+            deadlinelabel.font = UIFont (name: "HelveticaNeue-Medium", size: 23)
+            text1.font = UIFont (name: "HelveticaNeue", size: 18)
+            text2_account.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 15)
+            text3_accountholder.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 15)
+            text4_money.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 15)
+            accountlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
+            accountholderlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
+            moneylabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
             
         default:
             print("iPad or Unkown device")
-            label.font = UIFont.systemFont(ofSize: 20)
+            titlelabel.font = UIFont (name: "HelveticaNeue-Bold", size: 36)
+            deadlinelabel.font = UIFont (name: "HelveticaNeue-Medium", size: 22)
+            text1.font = UIFont (name: "HelveticaNeue", size: 16)
+            text2_account.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 15)
+            text3_accountholder.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 15)
+            text4_money.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 15)
+            accountlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
+            accountholderlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
+            moneylabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
             
         }
         titlelabel.adjustsFontSizeToFitWidth = true
@@ -114,7 +142,7 @@ class DetailViewController: UIViewController {
             make.top.equalTo(30)
             make.left.equalTo(30)
         }
-        // 티켓 제목 길이가 길어지면 넘어가는 문제;-; 우선 넘어가자  폰트를 키워야할듯
+        // 티켓 제목 길이가 길어지면 넘어가는 문제
         self.titlelabel.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(120)
             make.height.equalTo(30)
@@ -124,13 +152,13 @@ class DetailViewController: UIViewController {
         }
         // 입금 기한
         self.deadlinelabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(160)
+            make.top.equalTo(170)
             make.height.equalTo(25)
             make.left.right.equalTo(35)
         }
         //메세지
         self.text1.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(195)
+            make.top.equalTo(205)
             make.height.equalTo(10)
             make.left.right.equalTo(35)
         }
@@ -319,34 +347,6 @@ class DetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-}
-extension UIDevice {
-    
-    enum DeviceType: String {
-        case iPhone4_4S = "iPhone 4 or iPhone 4S"
-        case iPhones_5_5s_5c_SE = "iPhone 5, iPhone 5s, iPhone 5c or iPhone SE"
-        case iPhones_6_6s_7_8 = "iPhone 6, iPhone 6S, iPhone 7 or iPhone 8"
-        case iPhones_6Plus_6sPlus_7Plus_8Plus = "iPhone 6 Plus, iPhone 6S Plus, iPhone 7 Plus or iPhone 8 Plus"
-        case iPhoneX = "iPhone X"
-        case unknown = "iPadOrUnknown"
-    }
-    
-    var deviceType: DeviceType {
-        switch UIScreen.main.nativeBounds.height {
-        case 960:
-            return .iPhone4_4S
-        case 1136:
-            return .iPhones_5_5s_5c_SE
-        case 1334:
-            return .iPhones_6_6s_7_8
-        case 1920, 2208:
-            return .iPhones_6Plus_6sPlus_7Plus_8Plus
-        case 2436:
-            return .iPhoneX
-        default:
-            return .unknown
-        }
     }
 }
 

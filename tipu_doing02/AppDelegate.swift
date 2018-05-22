@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import EventKit
-import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -73,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 
 
-        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+    
         
         // 앱이 처음 시작될 때 실행
         if let theString = UIPasteboard.general.string {
@@ -216,18 +215,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        notificating()
-//        var string = UIPasteboard.general.string
-//        var arr = string?.components(separatedBy: "\n")
-//        while (true) {
-//
-//            if let paster = arr[0] {
-//                if paster ==
-//            }
-//        }
-//        if UIPasteboard.general.string != nil {
-//            notificating()
-//        }
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -425,73 +412,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    
-    func notificating(){
-        //local notification
-        UNUserNotificationCenter.current().getNotificationSettings { (notificationSettings) in
-            switch notificationSettings.authorizationStatus {
-            case .notDetermined:
-                // Request Authorization
-                self.requestAuthorization(completionHandler: { (success) in
-                    guard success else { return }
-                    // Schedule Local Notification
-                    self.scheduleLocalNotification()
-                    print("성공")
-                })
-            case .authorized:
-                // Schedule Local Notification
-                self.scheduleLocalNotification()
-                
-            case .denied:
-                print("Application Not Allowed to Display Notifications")
-            }
-        }
-    }
-    
-    private func scheduleLocalNotification() {
-        // Create Notification Content
-        let notificationContent = UNMutableNotificationContent()
-        
-        // Configure Notification Content
-        notificationContent.title = "TIPU"
-        notificationContent.body = "새 예매내역이 추가되었습니다."
-        print(notificationContent.body)
-        
-        // Add Trigger
-        let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 1.0, repeats: false)
-        
-        // Create Notification Request
-        let id = "insert"
-        
-        let notificationRequest = UNNotificationRequest(identifier: id, content: notificationContent, trigger: notificationTrigger)
-        
-        // Add Request to User Notification Center
-        UNUserNotificationCenter.current().add(notificationRequest) { (error) in
-            if let error = error {
-                print("Unable to Add Notification Request (\(error), \(error.localizedDescription))")
-            }
-        }
-        
-    }
-    
-    private func requestAuthorization(completionHandler: @escaping (_ success: Bool) -> ()) {
-        // Request Authorization
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge]) { (success, error) in
-            if let error = error {
-                print("Request Authorization Failed (\(error), \(error.localizedDescription))")
-            }
-            completionHandler(success)
-        }
-    }
-    
-}
-
-extension AppDelegate: UNUserNotificationCenterDelegate {
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert])
-    }
-    
 }
 
 

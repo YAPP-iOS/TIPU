@@ -382,7 +382,7 @@
                                             <rect key="frame" x="11" y="9" width="354" height="91"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공연 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obF-jx-ARC">
-                                                    <rect key="frame" x="112" y="15" width="204" height="29"/>
+                                                    <rect key="frame" x="110" y="21" width="204" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="204" id="hIU-3S-wyi"/>
                                                     </constraints>
@@ -391,7 +391,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJr-2G-7yl">
-                                                    <rect key="frame" x="91" y="0.0" width="1" height="96"/>
+                                                    <rect key="frame" x="91" y="0.0" width="1" height="100"/>
                                                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="Af4-UW-vPO">
@@ -408,7 +408,7 @@
                                                     <state key="normal" title="Button" image="not_paid"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="입금 기한" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjx-4W-89v">
-                                                    <rect key="frame" x="113" y="52" width="233" height="19"/>
+                                                    <rect key="frame" x="113" y="55" width="233" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="ix1-Za-qQI"/>
                                                     </constraints>
@@ -420,19 +420,19 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="HJr-2G-7yl" firstAttribute="top" secondItem="y6z-sr-cLH" secondAttribute="top" id="44F-dg-2Kd"/>
-                                                <constraint firstItem="obF-jx-ARC" firstAttribute="leading" secondItem="y6z-sr-cLH" secondAttribute="leading" constant="112" id="94A-s3-dG8"/>
-                                                <constraint firstItem="HJr-2G-7yl" firstAttribute="bottom" secondItem="rjx-4W-89v" secondAttribute="bottom" constant="25" id="Bg5-jH-EUG"/>
+                                                <constraint firstItem="obF-jx-ARC" firstAttribute="leading" secondItem="y6z-sr-cLH" secondAttribute="leading" constant="110" id="94A-s3-dG8"/>
+                                                <constraint firstItem="HJr-2G-7yl" firstAttribute="bottom" secondItem="rjx-4W-89v" secondAttribute="bottom" constant="26" id="Bg5-jH-EUG"/>
                                                 <constraint firstItem="gH8-bi-CF5" firstAttribute="top" secondItem="y6z-sr-cLH" secondAttribute="top" constant="19" id="JWB-fE-aQV"/>
-                                                <constraint firstItem="HJr-2G-7yl" firstAttribute="top" secondItem="obF-jx-ARC" secondAttribute="top" constant="-15" id="P83-rn-Xok"/>
-                                                <constraint firstItem="HJr-2G-7yl" firstAttribute="centerY" secondItem="Af4-UW-vPO" secondAttribute="centerY" constant="9" id="PFM-TM-Njn"/>
+                                                <constraint firstItem="HJr-2G-7yl" firstAttribute="top" secondItem="obF-jx-ARC" secondAttribute="top" constant="-21" id="P83-rn-Xok"/>
+                                                <constraint firstItem="HJr-2G-7yl" firstAttribute="centerY" secondItem="Af4-UW-vPO" secondAttribute="centerY" constant="11" id="PFM-TM-Njn"/>
                                                 <constraint firstItem="Af4-UW-vPO" firstAttribute="top" secondItem="y6z-sr-cLH" secondAttribute="top" constant="31" id="VZe-xT-kF8"/>
-                                                <constraint firstAttribute="trailing" secondItem="obF-jx-ARC" secondAttribute="trailing" constant="38" id="aSK-M3-dG3"/>
+                                                <constraint firstAttribute="trailing" secondItem="obF-jx-ARC" secondAttribute="trailing" constant="40" id="aSK-M3-dG3"/>
                                                 <constraint firstAttribute="trailing" secondItem="rjx-4W-89v" secondAttribute="trailing" constant="8" id="eCH-xT-s4G"/>
                                                 <constraint firstAttribute="bottom" secondItem="gH8-bi-CF5" secondAttribute="bottom" constant="17" id="h04-k7-ayK"/>
-                                                <constraint firstItem="rjx-4W-89v" firstAttribute="top" secondItem="obF-jx-ARC" secondAttribute="bottom" constant="8" id="h1l-Sy-Ro4"/>
-                                                <constraint firstItem="obF-jx-ARC" firstAttribute="leading" secondItem="HJr-2G-7yl" secondAttribute="trailing" constant="20" id="hfn-sC-Eq2"/>
+                                                <constraint firstItem="rjx-4W-89v" firstAttribute="top" secondItem="obF-jx-ARC" secondAttribute="bottom" constant="5" id="h1l-Sy-Ro4"/>
+                                                <constraint firstItem="obF-jx-ARC" firstAttribute="leading" secondItem="HJr-2G-7yl" secondAttribute="trailing" constant="18" id="hfn-sC-Eq2"/>
                                                 <constraint firstItem="gH8-bi-CF5" firstAttribute="leading" secondItem="y6z-sr-cLH" secondAttribute="leading" constant="22" id="koZ-SW-IIn"/>
-                                                <constraint firstItem="obF-jx-ARC" firstAttribute="leading" secondItem="rjx-4W-89v" secondAttribute="leading" constant="-1" id="tMN-nk-Won"/>
+                                                <constraint firstItem="obF-jx-ARC" firstAttribute="leading" secondItem="rjx-4W-89v" secondAttribute="leading" constant="-3" id="tMN-nk-Won"/>
                                                 <constraint firstAttribute="trailing" secondItem="Af4-UW-vPO" secondAttribute="trailing" constant="9" id="wGf-9l-qUL"/>
                                                 <constraint firstItem="HJr-2G-7yl" firstAttribute="leading" secondItem="gH8-bi-CF5" secondAttribute="trailing" constant="14" id="xWI-Yz-68Z"/>
                                             </constraints>
@@ -574,9 +574,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0000-00-00 (월)까지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaj-RJ-c6O">
-                                <rect key="frame" x="37" y="234" width="188" height="24"/>
+                                <rect key="frame" x="37" y="234" width="148" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -598,14 +598,14 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="공연제목" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D65-8c-ElL">
                                 <rect key="frame" x="37" y="156" width="260" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="36"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="입금을 완료해 주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZv-MM-csr">
                                 <rect key="frame" x="38" y="270" width="176" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -616,21 +616,21 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="계좌번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5i3-77-uD7">
                                         <rect key="frame" x="20" y="15" width="63" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="예금주" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hls-Kt-Amw">
                                         <rect key="frame" x="20" y="70" width="52" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="입금액" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KC9-mL-aan">
                                         <rect key="frame" x="20" y="123" width="52" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -647,14 +647,14 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" fixedFrame="YES" text="예금주" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfc-Wy-OgC">
                                         <rect key="frame" x="101" y="70" width="213" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="계좌번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="gVg-o6-JT2">
                                         <rect key="frame" x="101" y="15" width="213" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -666,7 +666,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="입금액" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08U-Av-nPc">
                                         <rect key="frame" x="101" y="123" width="213" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
