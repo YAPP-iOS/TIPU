@@ -245,7 +245,7 @@ class DetailViewController: UIViewController {
             if  deposit == true {
                 // 입금 완료
                 ticketimage.image = UIImage(named:"detail_paid")
-                self.view.backgroundColor = UIColor.black
+                self.view.backgroundColor = UIColor(red: CGFloat(44/255.0), green: CGFloat(45/255.0), blue: CGFloat(50/255.0), alpha: CGFloat(1.0))
                 depositbutton.backgroundColor = UIColor.white
                 depositbutton.setTitleColor(UIColor.black, for: UIControlState.normal)
                 
@@ -259,7 +259,7 @@ class DetailViewController: UIViewController {
                 text2_account.textColor = UIColor.white
                 text3_accountholder.textColor = UIColor.white
                 text4_money.textColor = UIColor.white
-                depositbutton.setTitle("입금을 완료하였습니다.", for: UIControlState.normal)
+                depositbutton.setTitle("입금 취소하기", for: UIControlState.normal)
                 
                 
             }
@@ -292,9 +292,10 @@ class DetailViewController: UIViewController {
             if  deposit == false {
                 // 입금 완료
                 print("입금 완료")
-                depositbutton.setTitle("입금을 완료하였습니다.", for: UIControlState.normal)
+                depositbutton.setTitle("입금 취소하기", for: UIControlState.normal)
                 ticketimage.image = UIImage(named:"detail_paid")
-                self.view.backgroundColor = UIColor.black
+                
+                self.view.backgroundColor = UIColor(red: CGFloat(44/255.0), green: CGFloat(45/255.0), blue: CGFloat(50/255.0), alpha: CGFloat(1.0))
                 depositbutton.backgroundColor = UIColor.white
                 depositbutton.setTitleColor(UIColor.darkGray, for: UIControlState.normal)
                 
