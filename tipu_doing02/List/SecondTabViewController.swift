@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import EventKit
-
+import UserNotifications
 class SecondTabViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet var tableview: UITableView!
@@ -37,9 +37,12 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         refresh.addTarget(self, action: #selector(refresher), for: .valueChanged)
         tableview.addSubview(refresh)
         
+
         // tableview backgrond
         tableview.backgroundColor = UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
         
+        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -197,6 +200,7 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
     //ticket button click 설정
     @IBAction func clickTicketImg(_ sender: UIButton) {
         let perform = self.perform[sender.tag]
+        notificating()
         if var deposit = perform.value(forKey: "deposit") as? Bool {
             if deposit == true {
                 deposit = false
@@ -224,5 +228,65 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         super.didReceiveMemoryWarning()
     }
     
+    func notificating(){
+        //local notification
+        UNUserNotificationCenter.current().getNotificationSettings { (notificationSettings) in
+            switch notificationSettings.authorizationStatus {
+            case .notDetermined:
+                // Request Authorization
+                self.requestAuthorization(completionHandler: { (success) in
+                    guard success else { return }
+                    // Schedule Local Notification
+                    self.scheduleLocalNotification()
+                    print("성공")
+                })
+            case .authorized:
+                // Schedule Local Notification
+                self.scheduleLocalNotification()
+                
+            case .denied:
+                //여기 alert로 알려주도록 하기 (예정)
+                print("Application Not Allowed to Display Notifications")
+            }
+        }
+    }
+    
+    private func scheduleLocalNotification() {
+        // Create Notification Content
+        let notificationContent = UNMutableNotificationContent()
+        
+        // Configure Notification Content
+        notificationContent.title = "TIPU"
+        notificationContent.body = "새 예매내역이 추가되었습니다."
+        print(notificationContent.body)
+        
+        // Add Trigger
+        let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 1.0, repeats: false)
+        
+        // Create Notification Request
+        let id = "insert"
+        
+        let notificationRequest = UNNotificationRequest(identifier: id, content: notificationContent, trigger: notificationTrigger)
+        
+        // Add Request to User Notification Center
+        UNUserNotificationCenter.current().add(notificationRequest) { (error) in
+            if let error = error {
+                print("Unable to Add Notification Request (\(error), \(error.localizedDescription))")
+            }
+            print("gooooooooooooood")
+        }
+        
+    }
+    
+    private func requestAuthorization(completionHandler: @escaping (_ success: Bool) -> ()) {
+        // Request Authorization
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge]) { (success, error) in
+            if let error = error {
+                print("Request Authorization Failed (\(error), \(error.localizedDescription))")
+            }
+            completionHandler(success)
+        }
+    }
     
 }
+
