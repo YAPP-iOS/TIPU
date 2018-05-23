@@ -47,7 +47,6 @@ class FirstTabViewController: UIViewController {
         print("refresh")
     }
     
-    
     // View did load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +72,6 @@ class FirstTabViewController: UIViewController {
     
     // 데이터 가져오기 위한 설정
     func getContext () -> NSManagedObjectContext {
-        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
     }
@@ -113,8 +111,6 @@ class FirstTabViewController: UIViewController {
     
     // 월, 연도
     func setupCalendarView(dateSegment : DateSegmentInfo){
-        
-    
         let formatter : DateFormatter = {
             let dateFormatter = DateFormatter()
             dateFormatter.timeZone = Calendar.current.timeZone
@@ -190,7 +186,6 @@ class FirstTabViewController: UIViewController {
     
     // 날짜에 해당 하는 티켓 정보 보여주기
     func handleCellEvents(cell: CustomCell, cellState: CellState){
-        
         let date : String = formatter.string(from : cellState.date)
         let parsedDate : String = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil) //2018-04-23
         
@@ -206,15 +201,12 @@ class FirstTabViewController: UIViewController {
             }
         }
         
-        
         // 이 셀의 날짜와 같은 티켓이, 디비에 없으면
         if(ticketsOfcurrenDate.count==0){
             cell.ticket.isHidden = true
             cell.dots.isHidden = true
         }else if(ticketsOfcurrenDate.count == 1){
-            // 이 셀의 날짜와 같은 티켓이, 디비에 하나면
             
-            // INFO
             let isFinished : Bool = (ticketsOfcurrenDate[0].value(forKey: "deposit") as? Bool)!
             cell.ticket.isHidden = false
             cell.ticket.textColor = UIColor(red: CGFloat(255/255.0), green: CGFloat(255/255.0), blue: CGFloat(255/255.0), alpha: CGFloat(1.0))
@@ -223,11 +215,10 @@ class FirstTabViewController: UIViewController {
                 cell.ticket.text = name
             }
             
+            // 지금 시간 기준으로 이전이면 백그라운드 회색, 지금 시간 기준으로 이후이면 입금처리 했으면 회색, 안했으면 핑크
             if(cellState.date < todaysDate  ){
-                // 지금 시간 기준으로 이전이면 백그라운드 회색
                 cell.ticket.backgroundColor = UIColor(red: CGFloat(187/255.0), green: CGFloat(186/255.0), blue: CGFloat(186/255.0), alpha: CGFloat(1.0))
             }else{
-                // 지금 시간 기준으로 이후이면 입금처리 했으면 회색, 안했으면 핑크
                 if(isFinished){
                     cell.ticket.backgroundColor = UIColor(red: CGFloat(187/255.0), green: CGFloat(186/255.0), blue: CGFloat(186/255.0), alpha: CGFloat(1.0))
                 }else{
@@ -235,7 +226,6 @@ class FirstTabViewController: UIViewController {
                 }
             }
         }else if(ticketsOfcurrenDate.count >= 2){
-            // 이 셀의 날짜와 같은 티켓이 디비에 두 개 이상이면
             
             //하나라도 입금 안한 티켓이 있으면 depositFlag=false
             var depositFlag : Bool = true
@@ -245,7 +235,6 @@ class FirstTabViewController: UIViewController {
                     break
                 }
             }
-
             
             // INFO
             cell.ticket.isHidden = false
@@ -256,15 +245,13 @@ class FirstTabViewController: UIViewController {
             //텍스트 색깔 : 흰색
             cell.ticket.textColor = UIColor(red: CGFloat(255/255.0), green: CGFloat(255/255.0), blue: CGFloat(255/255.0), alpha: CGFloat(1.0))
             
-            // 지금 시간 기준으로 이전
+            // 지금 시간 기준으로 이전 -  티켓 배경 : 회색
             if(cellState.date < todaysDate  ){
-                //티켓 배경 : 회색
+                
                 cell.ticket.backgroundColor = UIColor(red: CGFloat(187/255.0), green: CGFloat(186/255.0), blue: CGFloat(186/255.0), alpha: CGFloat(1.0))
                 cell.dots.isHidden = false
                 cell.dots.image = UIImage(named: "grayDots")
-            }
-            // 지금 시간 기준으로 이후
-            else{
+            }else{
                 cell.dots.isHidden = false
                 
                 // 하나라도 입금 안한 티켓이 있으면
@@ -379,8 +366,6 @@ extension FirstTabViewController: JTAppleCalendarViewDelegate{
         }
     }
 }
-
-
 
 extension UIStackView {
     func addBackground(color: UIColor) {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1uS-YO-BKm">
     <device id="retina5_5" orientation="portrait">
+
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,6 +21,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rkH-dc-XDM">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+
                                 <color key="backgroundColor" red="0.94090234230000003" green="0.94090234230000003" blue="0.94090234230000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="8ji-N5-KQx"/>
@@ -27,6 +29,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hgf-6U-1uJ">
                                 <rect key="frame" x="0.0" y="45.666666666666686" width="414" height="626.33333333333326"/>
+
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -49,6 +52,7 @@
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TQM-nk-Pd3">
                                                             <rect key="frame" x="91" y="0.0" width="1" height="102"/>
+
                                                             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
                                                         <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="ticketBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odQ-Gg-PPy" userLabel="Ticket Btn">
@@ -63,6 +67,7 @@
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="입금 기한" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVJ-f2-R8V">
                                                             <rect key="frame" x="113" y="55" width="238" height="19"/>
+
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="19" id="2OT-P1-Kmo"/>
                                                             </constraints>
@@ -182,6 +187,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="o2E-wF-85T" firstAttribute="top" secondItem="qs1-8a-Y0u" secondAttribute="top" id="0nG-o4-uW5"/>
+                                            <constraint firstItem="o2E-wF-85T" firstAttribute="leading" secondItem="qs1-8a-Y0u" secondAttribute="leading" id="kCl-rD-zdS"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -220,12 +229,14 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yc-gC-gey" userLabel="목">
                                         <rect key="frame" x="236.66666666666663" y="0.0" width="59" height="35"/>
+
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="금" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkB-6S-pwt" userLabel="금">
                                         <rect key="frame" x="295.66666666666669" y="0.0" width="59.333333333333314" height="35"/>
+
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -243,6 +254,7 @@
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZKU-h7-zBU" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
                                 <rect key="frame" x="0.0" y="110" width="414" height="626"/>
+
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="jIB-nf-ruP">
                                     <size key="itemSize" width="50" height="50"/>
@@ -378,12 +390,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HJr-2G-7yl">
                                                     <rect key="frame" x="91" y="0.0" width="1" height="95"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gH8-bi-CF5">
+
                                                     <rect key="frame" x="22" y="19" width="55" height="55"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button" image="not_paid"/>
@@ -391,6 +405,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="입금 기한" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjx-4W-89v">
                                                     <rect key="frame" x="113" y="50" width="233" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -457,6 +472,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jTG-Kp-MCh">
                                 <rect key="frame" x="0.0" y="64" width="414" height="1"/>
+
                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="L3R-WQ-Req"/>
@@ -464,12 +480,13 @@
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="UMX-4c-5n6" customClass="SegmentedControl" customModule="tipu_doing02" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="71" width="414" height="37"/>
+
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="Q8b-6s-aG4"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="공연 달력"/>
+                                    <segment title="공연달력"/>
                                     <segment title="공연리스트"/>
                                 </segments>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -479,6 +496,7 @@
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0j-JW-ReU">
                                 <rect key="frame" x="0.0" y="110" width="414" height="1"/>
+
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="BBF-o4-Q56"/>
@@ -502,7 +520,7 @@
                             <constraint firstItem="UMX-4c-5n6" firstAttribute="leading" secondItem="NXL-lg-cH0" secondAttribute="leading" id="NBw-qP-qtc"/>
                             <constraint firstItem="jTG-Kp-MCh" firstAttribute="leading" secondItem="SXg-0t-dWx" secondAttribute="leading" id="TCr-u6-qM1"/>
                             <constraint firstItem="XFQ-bk-rZY" firstAttribute="leading" secondItem="NXL-lg-cH0" secondAttribute="leading" id="TsN-wx-hHi"/>
-                            <constraint firstItem="XFQ-bk-rZY" firstAttribute="top" secondItem="i0j-JW-ReU" secondAttribute="bottom" constant="10" id="Z0C-iF-jl5"/>
+                            <constraint firstItem="XFQ-bk-rZY" firstAttribute="top" secondItem="i0j-JW-ReU" secondAttribute="bottom" id="Z0C-iF-jl5"/>
                             <constraint firstAttribute="trailing" secondItem="jTG-Kp-MCh" secondAttribute="trailing" id="c4d-FC-EHC"/>
                             <constraint firstItem="i0j-JW-ReU" firstAttribute="top" secondItem="jTG-Kp-MCh" secondAttribute="bottom" constant="45" id="d49-Hy-JKs"/>
                             <constraint firstItem="XFQ-bk-rZY" firstAttribute="bottom" secondItem="NXL-lg-cH0" secondAttribute="bottom" id="dLO-Kw-PBE"/>
@@ -531,6 +549,7 @@
                 <viewController id="fVw-TR-AYq" customClass="DetailViewController" customModule="tipu_doing02" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tPd-al-cP6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0000-00-00 (월)까지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaj-RJ-c6O">
@@ -562,10 +581,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="입금을 완료해 주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZv-MM-csr">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="입금을 완료해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZv-MM-csr">
                                 <rect key="frame" x="38" y="270" width="176" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>

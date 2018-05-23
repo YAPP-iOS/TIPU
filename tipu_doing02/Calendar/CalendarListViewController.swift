@@ -36,7 +36,7 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         
         //새로고침
         refresh = UIRefreshControl()
-        refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
+//        refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refresh.addTarget(self, action: #selector(refresher), for: .valueChanged)
         tableview.addSubview(refresh)
         
