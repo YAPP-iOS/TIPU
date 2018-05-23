@@ -51,6 +51,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red: CGFloat(247/255.0), green: CGFloat(82/255.0), blue: CGFloat(135/255.0), alpha: CGFloat(1.0))]
         UINavigationBar.appearance().isTranslucent = false
         
+        if self.eventStore == nil {
+            self.eventStore = EKEventStore()
+            self.eventStore!.requestAccess(to: EKEntityType.reminder, completion:
+                {(isAccessible,errors) in })
+        }
+        
         
         // 앱이 처음 시작될 때 실행
         if let theString = UIPasteboard.general.string {

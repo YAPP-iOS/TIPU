@@ -41,7 +41,7 @@ class FirstTabViewController: UIViewController {
     
     //예매하고 다시 돌아왔을 때
     @objc func refresher(_ sender: Any) {
-        calendarView.reloadData()
+        calendarView?.reloadData()
         self.fetchDatas()
         self.initCalendar(date : tempDate)
     }
@@ -57,7 +57,7 @@ class FirstTabViewController: UIViewController {
     // Appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        calendarView.reloadData()
+        calendarView?.reloadData()
         self.fetchDatas()
         self.initCalendar(date: tempDate)
         
