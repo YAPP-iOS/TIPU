@@ -136,10 +136,6 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // cell 스타일
         cell.cellView.snp.makeConstraints { (make) -> Void in
-//            make.width.equalToSuperview().offset(-30)
-//            make.left.equalToSuperview()
-//            make.top.equalToSuperview().offset(2)
-//            make.height.equalTo(40)
         }
         //티켓버튼
         cell.ticketBtn.snp.makeConstraints { (make) -> Void in
@@ -147,7 +143,7 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
             make.left.equalTo(20)
             make.top.equalToSuperview().offset(20)
         }
-//
+        
         //바
         cell.bar.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(1)
