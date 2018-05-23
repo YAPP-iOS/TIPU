@@ -12,7 +12,7 @@ import EventKit
 import SnapKit
 class CalendarListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
+
     @IBOutlet var date: UILabel!
     @IBOutlet var count: UILabel!
     @IBOutlet var tableview: UITableView!
@@ -36,7 +36,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         
         //새로고침
         refresh = UIRefreshControl()
-//        refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refresh.addTarget(self, action: #selector(refresher), for: .valueChanged)
         tableview.addSubview(refresh)
         
@@ -76,9 +75,10 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         
         // tableview backgrond
         tableview.backgroundColor = UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
-        
+    
     }
     
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return perform.count
     }
@@ -132,8 +132,7 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         
         self.tableview.reloadData()
     }
-    
-    
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "List Cell") as! ListTableViewCell
         
@@ -165,8 +164,10 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         
         // cell 스타일
         cell.cellView.layer.cornerRadius = 7
-        cell.backgroundColor = UIColor.gray
+        cell.backgroundColor = UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        cell.contentView.backgroundColor = UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
+
         
         let perform = self.perform[indexPath.row]
         var display: String = ""
