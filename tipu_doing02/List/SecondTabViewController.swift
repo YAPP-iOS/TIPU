@@ -173,7 +173,8 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         if let deadline = perform.value(forKey: "deadline") as? String {
             let text = deadline.components(separatedBy: " ")
-            sub = "입금기한 | "+text[1]+" "+text[2]+" 까지"
+            let kk = text[1].components(separatedBy: "-")
+            sub = "입금기한 | "+kk[0]+"."+kk[1]+"."+kk[2]+" "+text[2]+" 까지"
             
         }
         
