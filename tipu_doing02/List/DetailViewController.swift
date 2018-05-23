@@ -238,7 +238,9 @@ class DetailViewController: UIViewController {
             let aa = info.value(forKey: "deadline") as? String
             let ab = aa?.components(separatedBy: " ")
             if let text = ab {
-                deadlinelabel.text = text[1]+" "+text[2]+"까지"
+                let kk = text[1].components(separatedBy: "-")
+                deadlinelabel.text = kk[0]+"."+kk[1]+"."+kk[2]+" "+text[2]+"까지"
+                
             }
             accountlabel.text = info.value(forKey: "account") as? String
             accountholderlabel.text = info.value(forKey: "accountholder") as? String
