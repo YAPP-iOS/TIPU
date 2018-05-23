@@ -25,7 +25,6 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewDidLoad() {
-        print("Second VC viewdidload")
         super.viewDidLoad()
         
         tableview.delegate = self
@@ -45,7 +44,6 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print("SecondTabViewCon : viewWillDisappear")
         super.viewWillDisappear(animated)
     }
     
@@ -69,7 +67,6 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableview?.reloadData()
         
         refresh?.endRefreshing()
-        print("refresh")
     }
     
     // View가 보여질 때 자료를 DB에서 가져오도록 한다
@@ -91,8 +88,6 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
             print("Could not fetch. \(error), \(error.userInfo)") }
         self.tableview.reloadData()
         
-        print("viewdidappear")
-        
     }
     
     //테이블 뷰 업데이트~.~
@@ -103,7 +98,6 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
-            print("데이터 들어옴")
             tableview.insertRows(at: [newIndexPath!], with: .fade)
         case .delete:
             tableview.deleteRows(at: [indexPath!], with: .fade)
@@ -242,7 +236,6 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
             context.delete(perform[indexPath.row])
             do {
                 try context.save()
-                print("deleted!")
             } catch let error as NSError {
                 print("Could not delete \(error), \(error.userInfo)") }
             // 배열에서 해당 자료 삭제

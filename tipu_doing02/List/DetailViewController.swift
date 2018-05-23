@@ -209,26 +209,6 @@ class DetailViewController: UIViewController {
             make.bottom.equalTo(0)
         }
         
-        //계좌번호 long press시 copy되도록 함.
-        //accountlabel.translatesAutoresizingMaskIntoConstraints = false
-        //accountlabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        //accountlabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressLabel(longPressGestureRecognizer:)))
-        accountlabel.addGestureRecognizer(longPressGestureRecognizer)
-        accountlabel.isUserInteractionEnabled = true
-    }
-    
-    @objc private func longPressLabel (longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        if longPressGestureRecognizer.state == .began {
-            let copy_accountNumber = accountlabel.text
-            //계좌번호만 받기 위해서 자르기
-            print("dkssyd")
-            let array = copy_accountNumber?.components(separatedBy: " | ")
-            UIPasteboard.general.string = array![1]
-            Toast(text: "계좌번호를 복사했습니다!").show()
-            } else if longPressGestureRecognizer.state == .ended {
-            
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -298,7 +278,6 @@ class DetailViewController: UIViewController {
             
             if  deposit == false {
                 // 입금 완료
-                print("입금 완료")
                 depositbutton.setTitle("입금 취소하기", for: UIControlState.normal)
                 ticketimage.image = UIImage(named:"detail_paid")
                 
@@ -325,7 +304,6 @@ class DetailViewController: UIViewController {
             }
             else {
                 // 미입금
-                print("미입금")
                 depositbutton.setTitle("입금 완료하기", for: UIControlState.normal)
                 ticketimage.image = UIImage(named:"detail_not_paid")
                 self.view.backgroundColor = UIColor.white

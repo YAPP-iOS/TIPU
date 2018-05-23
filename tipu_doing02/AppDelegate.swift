@@ -128,7 +128,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     month = Int(alarmtime[2])
                     day = Int(alarmtime[3])
                     
-                    //                var c = arr[9].components(separatedBy: ["▶",":"])
                     let account = c[2] + " | " + arr[10]
                     object.setValue(account, forKey: "account")
                     
@@ -278,7 +277,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     month = Int(alarmtime[2])
                     day = Int(alarmtime[3])
                     
-                    //                var c = arr[9].components(separatedBy: ["▶",":"])
                     let account = c[2] + " | " + arr[10]
                     object.setValue(account, forKey: "account")
                     
@@ -351,11 +349,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }else{
                     print("가상 계좌 중복")
                 }
-
-                
             }
         }
-        
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {

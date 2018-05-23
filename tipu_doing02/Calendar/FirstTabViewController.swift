@@ -44,7 +44,6 @@ class FirstTabViewController: UIViewController {
         calendarView.reloadData()
         self.fetchDatas()
         self.initCalendar(date : tempDate)
-        print("refresh")
     }
     
     // View did load
@@ -61,12 +60,11 @@ class FirstTabViewController: UIViewController {
         calendarView.reloadData()
         self.fetchDatas()
         self.initCalendar(date: tempDate)
-        print("FirstTabViewCon : viewWillAppear")
+        
     }
     
     // Disappear
     override func viewWillDisappear(_ animated: Bool) {
-        print("FirstTabViewCon : viewWillDisappear")
         super.viewWillDisappear(animated)
     }
     

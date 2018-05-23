@@ -47,7 +47,6 @@ class ParentViewController: UIViewController {
     
     //viewDidLoad
     override func viewDidLoad() {
-        print("parentVC : viewDidLoad")
         super.viewDidLoad()
         
         segmentedControl.setupFonts()
@@ -69,14 +68,12 @@ class ParentViewController: UIViewController {
     
     // Appear
     override func viewWillAppear(_ animated: Bool) {
-        print("parentVC : viewWillAppear")
         super.viewWillAppear(animated)
     }
     
     
     // 세그먼트 컨트롤의 탭 이동
     @IBAction func switchTabs(_ sender: UISegmentedControl) {
-        print("parentVC : switchTabs")
         
         let duration: Double = 0.45
         
@@ -85,7 +82,6 @@ class ParentViewController: UIViewController {
             
             UIView.animate(withDuration: duration, animations: {
                 self.moveLeft(view: self.animatedLine)
-                print("move left")
             })
             flag = 0
             
@@ -96,7 +92,6 @@ class ParentViewController: UIViewController {
             //오른쪽으로
             UIView.animate(withDuration: duration) {
                 self.moveRight(view: self.animatedLine)
-                print("move right")
             }
             flag = 1
         }
@@ -107,8 +102,6 @@ class ParentViewController: UIViewController {
     
     // 현재 탭을 화면에 보여준다
     func displayCurrentTab(_ tabIndex: Int){
-        
-        print("parentVC : displayCurrentTab")
         
         if let vc = viewControllerForSelectedSegmentIndex(tabIndex) {
             
@@ -128,7 +121,6 @@ class ParentViewController: UIViewController {
     
     // 세그먼트의 인덱스에 맞는 뷰컨트롤러를 가져온다
     func viewControllerForSelectedSegmentIndex(_ index: Int) -> UIViewController? {
-        print("parentVC : viewControllerForSelectedSegmentIndex")
         var vc: UIViewController?
         switch index {
 
