@@ -33,14 +33,11 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // 새로고침
         refresh = UIRefreshControl()
-//        refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refresh.addTarget(self, action: #selector(refresher), for: .valueChanged)
         tableview.addSubview(refresh)
         
         // tableview backgrond
         tableview.backgroundColor = UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
-        
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -136,10 +133,6 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // cell 스타일
         cell.cellView.snp.makeConstraints { (make) -> Void in
-//            make.width.equalToSuperview().offset(-30)
-//            make.left.equalToSuperview()
-//            make.top.equalToSuperview().offset(2)
-//            make.height.equalTo(40)
         }
         //티켓버튼
         cell.ticketBtn.snp.makeConstraints { (make) -> Void in
@@ -147,7 +140,7 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
             make.left.equalTo(20)
             make.top.equalToSuperview().offset(20)
         }
-//
+        
         //바
         cell.bar.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(1)
@@ -235,6 +228,7 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.titleText.text = display
         cell.deadlineText.text = sub
         
+        cell.contentView.backgroundColor =  UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
         
         
         return cell

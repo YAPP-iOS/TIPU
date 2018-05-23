@@ -9,10 +9,10 @@
 import UIKit
 import CoreData
 import EventKit
-
+import SnapKit
 class CalendarListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
+
     @IBOutlet var date: UILabel!
     @IBOutlet var count: UILabel!
     @IBOutlet var tableview: UITableView!
@@ -75,10 +75,10 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         
         // tableview backgrond
         tableview.backgroundColor = UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
-        
-        
+    
     }
     
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return perform.count
     }
@@ -136,10 +136,38 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "List Cell") as! ListTableViewCell
         
+        //티켓버튼
+        cell.ticketBtn.snp.makeConstraints { (make) -> Void in
+            make.width.height.equalTo(55)
+            make.left.equalTo(20)
+            make.top.equalToSuperview().offset(20)
+        }
+        
+        //바
+        cell.bar.snp.makeConstraints { (make) -> Void in
+            make.width.equalTo(1)
+            make.height.equalToSuperview()
+            make.left.equalTo(cell.cellView).offset(90)
+            make.top.equalToSuperview()
+        }
+        cell.titleText.snp.makeConstraints { (make) -> Void in
+            make.top.equalToSuperview().offset(20)
+            make.left.equalTo(cell.bar).offset(20)
+            make.width.equalToSuperview().offset(-30)
+        }
+        cell.deadlineText.snp.makeConstraints { (make) -> Void in
+            make.top.equalToSuperview().offset(50)
+            make.left.equalTo(cell.bar).offset(25)
+            make.width.equalToSuperview().offset(-30)
+            
+        }
+        
         // cell 스타일
         cell.cellView.layer.cornerRadius = 7
         cell.backgroundColor = UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        cell.contentView.backgroundColor = UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
+
         
         let perform = self.perform[indexPath.row]
         var display: String = ""
@@ -174,11 +202,12 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         switch deviceType {
             
         case .iPhone4_4S:
-            cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 14.5)
+            cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 15)
             cell.deadlineText.font = UIFont (name: "AppleSDGothicNeo-Light", size: 10)
             
         case .iPhones_5_5s_5c_SE:
-            cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 15.5)
+            cell.titleText.sizeToFit()
+            cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 16.5)
             cell.deadlineText.font = UIFont (name: "AppleSDGothicNeo-Light", size: 12)
             
         case .iPhones_6_6s_7_8:
@@ -200,7 +229,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
             print("iPad or Unkown device")
             cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 18.5)
             cell.deadlineText.font = UIFont (name: "AppleSDGothicNeo-Light", size: 13)
-            
         }
         
         cell.ticketBtn?.addTarget(self, action: #selector(clickTicketBtn), for: .touchUpInside)
