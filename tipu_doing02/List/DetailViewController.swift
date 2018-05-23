@@ -46,6 +46,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //계좌번호 long press시 copy되도록 함.
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressLabel(longPressGestureRecognizer:)))
         accountlabel.addGestureRecognizer(longPressGestureRecognizer)
@@ -84,12 +85,12 @@ class DetailViewController: UIViewController {
             titlelabel.font = UIFont (name: "HelveticaNeue-Bold", size: 36)
             deadlinelabel.font = UIFont (name: "HelveticaNeue-Medium", size: 22)
             text1.font = UIFont (name: "HelveticaNeue", size: 16)
-            text2_account.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 15)
-            text3_accountholder.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 15)
-            text4_money.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 15)
-            accountlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
-            accountholderlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
-            moneylabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
+            text2_account.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 14)
+            text3_accountholder.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 14)
+            text4_money.font = UIFont (name: "AppleSDGothicNeo-Regular", size: 14)
+            accountlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 16)
+            accountholderlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 16)
+            moneylabel.font = UIFont (name: "HelveticaNeue-Medium", size: 16)
             
         case .iPhones_6Plus_6sPlus_7Plus_8Plus:
             titlelabel.font = UIFont (name: "HelveticaNeue-Bold", size: 38)
@@ -221,7 +222,9 @@ class DetailViewController: UIViewController {
             let array = copy_accountNumber?.components(separatedBy: " | ")
             UIPasteboard.general.string = array![1]
             print("복사했음")
-//            Toast(text: "계좌번호를 복사했습니다!").show()
+            Toast(text: "계좌번호를 복사했습니다!").show()
+        } else if longPressGestureRecognizer.state == .ended {
+            
         }
         
     }

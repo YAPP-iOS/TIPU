@@ -170,6 +170,39 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
                 cell.ticketBtn?.tag = Int(accountNum!)
             }
         }
+        let deviceType = UIDevice.current.deviceType
+        
+        switch deviceType {
+            
+        case .iPhone4_4S:
+            cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 14.5)
+            cell.deadlineText.font = UIFont (name: "AppleSDGothicNeo-Light", size: 10)
+            
+        case .iPhones_5_5s_5c_SE:
+            cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 15.5)
+            cell.deadlineText.font = UIFont (name: "AppleSDGothicNeo-Light", size: 12)
+            
+        case .iPhones_6_6s_7_8:
+            cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 18.5)
+            cell.deadlineText.font = UIFont (name: "AppleSDGothicNeo-Light", size: 13)
+            
+        case .iPhones_6Plus_6sPlus_7Plus_8Plus:
+            cell.titleText.font = UIFont.systemFont(ofSize: 20.5)
+            cell.deadlineText.font = UIFont.systemFont(ofSize: 14)
+            
+            cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 20.5)
+            cell.deadlineText.font = UIFont (name: "AppleSDGothicNeo-Light", size: 14)
+            
+        case .iPhoneX:
+            cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 20.5)
+            cell.deadlineText.font = UIFont (name: "AppleSDGothicNeo-Light", size: 14)
+            
+        default:
+            print("iPad or Unkown device")
+            cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 18.5)
+            cell.deadlineText.font = UIFont (name: "AppleSDGothicNeo-Light", size: 13)
+            
+        }
         
         cell.ticketBtn?.addTarget(self, action: #selector(clickTicketBtn), for: .touchUpInside)
         

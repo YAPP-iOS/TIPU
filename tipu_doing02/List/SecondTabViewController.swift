@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import EventKit
-
+import SnapKit
 class SecondTabViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet var tableview: UITableView!
@@ -40,8 +40,6 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         // tableview backgrond
         tableview.backgroundColor = UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
         
-        
-
 
     }
     
@@ -137,6 +135,38 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "List Cell") as! ListTableViewCell
         
         // cell 스타일
+        cell.cellView.snp.makeConstraints { (make) -> Void in
+//            make.width.equalToSuperview().offset(-30)
+//            make.left.equalToSuperview()
+//            make.top.equalToSuperview().offset(2)
+//            make.height.equalTo(40)
+        }
+        //티켓버튼
+        cell.ticketBtn.snp.makeConstraints { (make) -> Void in
+            make.width.height.equalTo(55)
+            make.left.equalTo(20)
+            make.top.equalToSuperview().offset(20)
+        }
+//
+        //바
+        cell.bar.snp.makeConstraints { (make) -> Void in
+            make.width.equalTo(1)
+            make.height.equalToSuperview()
+            make.left.equalTo(cell.cellView).offset(90)
+            make.top.equalToSuperview()
+        }
+        cell.titleText.snp.makeConstraints { (make) -> Void in
+            make.top.equalToSuperview().offset(20)
+            make.left.equalTo(cell.bar).offset(20)
+            make.width.equalToSuperview().offset(-30)
+        }
+        cell.deadlineText.snp.makeConstraints { (make) -> Void in
+            make.top.equalToSuperview().offset(50)
+            make.left.equalTo(cell.bar).offset(25)
+            make.width.equalToSuperview().offset(-30)
+
+        }
+       
         cell.cellView.layer.cornerRadius = 7
         cell.backgroundColor = UIColor.gray
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -174,6 +204,7 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.deadlineText.font = UIFont (name: "AppleSDGothicNeo-Light", size: 10)
             
         case .iPhones_5_5s_5c_SE:
+            cell.titleText.sizeToFit()
             cell.titleText.font = UIFont (name: "HelveticaNeue-Medium", size: 16.5)
             cell.deadlineText.font = UIFont (name: "AppleSDGothicNeo-Light", size: 12)
             
@@ -203,6 +234,8 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         
         cell.titleText.text = display
         cell.deadlineText.text = sub
+        
+        
         
         return cell
     }
