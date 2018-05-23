@@ -12,6 +12,7 @@ import UIKit
 import CoreData
 import SnapKit
 import Toaster
+import PKHUD
 class DetailViewController: UIViewController {
     
     var perform: [NSManagedObject] = []
@@ -46,12 +47,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //계좌번호 long press시 copy되도록 함.
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressLabel(longPressGestureRecognizer:)))
-        accountlabel.addGestureRecognizer(longPressGestureRecognizer)
-        accountlabel.isUserInteractionEnabled = true
-        
         
         //기기에 따라 폰트 크기 다르게.
         let deviceType = UIDevice.current.deviceType
@@ -213,20 +208,27 @@ class DetailViewController: UIViewController {
             make.height.equalTo(60)
             make.bottom.equalTo(0)
         }
+        
+        //계좌번호 long press시 copy되도록 함.
+        //accountlabel.translatesAutoresizingMaskIntoConstraints = false
+        //accountlabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        //accountlabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressLabel(longPressGestureRecognizer:)))
+        accountlabel.addGestureRecognizer(longPressGestureRecognizer)
+        accountlabel.isUserInteractionEnabled = true
     }
     
     @objc private func longPressLabel (longPressGestureRecognizer: UILongPressGestureRecognizer) {
         if longPressGestureRecognizer.state == .began {
             let copy_accountNumber = accountlabel.text
             //계좌번호만 받기 위해서 자르기
+            print("dkssyd")
             let array = copy_accountNumber?.components(separatedBy: " | ")
             UIPasteboard.general.string = array![1]
-            print("복사했음")
             Toast(text: "계좌번호를 복사했습니다!").show()
-        } else if longPressGestureRecognizer.state == .ended {
+            } else if longPressGestureRecognizer.state == .ended {
             
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
