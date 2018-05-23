@@ -9,7 +9,7 @@
 import UIKit
 
 class ListTableViewCell: UITableViewCell {
-
+    
     @IBOutlet var cellView: UIView!
     @IBOutlet var titleText: UILabel!
     @IBOutlet var deadlineText: UILabel!
@@ -19,6 +19,4 @@ class ListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
-    
 }

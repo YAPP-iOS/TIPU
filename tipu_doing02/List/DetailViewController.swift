@@ -7,12 +7,12 @@
 //
 
 import UIKit
-
 import UIKit
 import CoreData
 import SnapKit
 import Toaster
 import PKHUD
+
 class DetailViewController: UIViewController {
     
     var perform: [NSManagedObject] = []
@@ -27,22 +27,17 @@ class DetailViewController: UIViewController {
     @IBOutlet var line_one: UIView!
     @IBOutlet var line_two: UIView!
     @IBOutlet var line_three: UIView!
-    
-    
     @IBOutlet var titlelabel: UILabel!
     @IBOutlet var deadlinelabel: UILabel!
     @IBOutlet var accountlabel: UILabel!
     @IBOutlet var accountholderlabel: UILabel!
     @IBOutlet var moneylabel: UILabel!
-    
     @IBOutlet var infoView: UIView!
     @IBOutlet var ticketimage: UIImageView!
-    
     @IBOutlet var text1: UILabel!
     @IBOutlet var text2_account: UILabel!
     @IBOutlet var text3_accountholder: UILabel!
     @IBOutlet var text4_money: UILabel!
-    
     @IBOutlet var depositbutton: UIButton!
     
     override func viewDidLoad() {
@@ -50,7 +45,7 @@ class DetailViewController: UIViewController {
         
         //기기에 따라 폰트 크기 다르게.
         let deviceType = UIDevice.current.deviceType
-
+        
         switch deviceType {
             
         case .iPhone4_4S:
@@ -120,14 +115,13 @@ class DetailViewController: UIViewController {
             accountlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
             accountholderlabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
             moneylabel.font = UIFont (name: "HelveticaNeue-Medium", size: 17)
-            
         }
+        
         titlelabel.adjustsFontSizeToFitWidth = true
         deadlinelabel.adjustsFontSizeToFitWidth = true
         accountlabel.adjustsFontSizeToFitWidth = true
         accountholderlabel.adjustsFontSizeToFitWidth = true
         moneylabel.adjustsFontSizeToFitWidth = true
-        
         
         //snapkit
         let superView = self.view
@@ -138,26 +132,29 @@ class DetailViewController: UIViewController {
             make.top.equalTo(30)
             make.left.equalTo(30)
         }
+        
         // 티켓 제목 길이가 길어지면 넘어가는 문제
         self.titlelabel.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(120)
             make.height.equalTo(30)
             make.left.right.equalTo(25)
             make.width.equalTo(superView!)
-            
         }
+        
         // 입금 기한
         self.deadlinelabel.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(170)
             make.height.equalTo(25)
             make.left.right.equalTo(35)
         }
+        
         //메세지
         self.text1.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(205)
             make.height.equalTo(10)
             make.left.right.equalTo(35)
         }
+        
         //아래 상세 뷰
         self.infoView.snp.makeConstraints { (make) -> Void in
             switch deviceType {
@@ -220,13 +217,10 @@ class DetailViewController: UIViewController {
             if let text = ab {
                 let kk = text[1].components(separatedBy: "-")
                 deadlinelabel.text = kk[0]+"."+kk[1]+"."+kk[2]+" "+text[2]+"까지"
-                
             }
             accountlabel.text = info.value(forKey: "account") as? String
             accountholderlabel.text = info.value(forKey: "accountholder") as? String
             moneylabel.text = info.value(forKey: "money") as? String
-            
-            
             deposit = info.value(forKey: "deposit") as? Bool
             
             if  deposit == true {
@@ -247,10 +241,8 @@ class DetailViewController: UIViewController {
                 text3_accountholder.textColor = UIColor.white
                 text4_money.textColor = UIColor.white
                 depositbutton.setTitle("입금 취소하기", for: UIControlState.normal)
+            }else {
                 
-                
-            }
-            else {
                 // 미입금
                 ticketimage.image = UIImage(named:"detail_not_paid")
                 self.view.backgroundColor = UIColor.white
@@ -274,9 +266,9 @@ class DetailViewController: UIViewController {
     @IBAction func Buttonpressed(_ sender: UIButton) {
         
         if let info = detailinfo {
-            //deposit = info.value(forKey: "deposit") as? Bool
             
             if  deposit == false {
+                
                 // 입금 완료
                 depositbutton.setTitle("입금 취소하기", for: UIControlState.normal)
                 ticketimage.image = UIImage(named:"detail_paid")
@@ -284,7 +276,6 @@ class DetailViewController: UIViewController {
                 self.view.backgroundColor = UIColor(red: CGFloat(44/255.0), green: CGFloat(45/255.0), blue: CGFloat(50/255.0), alpha: CGFloat(1.0))
                 depositbutton.backgroundColor = UIColor.white
                 depositbutton.setTitleColor(UIColor.darkGray, for: UIControlState.normal)
-                
                 
                 titlelabel.textColor = UIColor.white
                 deadlinelabel.textColor = UIColor.white
@@ -301,8 +292,8 @@ class DetailViewController: UIViewController {
                 info.setValue(true, forKey: "deposit")
                 deposit = true
                 
-            }
-            else {
+            }else {
+                
                 // 미입금
                 depositbutton.setTitle("입금 완료하기", for: UIControlState.normal)
                 ticketimage.image = UIImage(named:"detail_not_paid")
@@ -322,17 +313,13 @@ class DetailViewController: UIViewController {
                 text3_accountholder.textColor = UIColor.black
                 text4_money.textColor = UIColor.black
                 
-                
                 info.setValue(false, forKey: "deposit")
                 deposit = false
             }
-            
         }
-        
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
-

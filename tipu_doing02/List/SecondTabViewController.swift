@@ -13,11 +13,10 @@ import SnapKit
 class SecondTabViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet var tableview: UITableView!
-    
     var perform: [NSManagedObject] = []
     var refresh: UIRefreshControl!
     var eventStore: EKEventStore?
-        let buttonBar = UIView()
+    let buttonBar = UIView()
     
     func getContext () -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -75,22 +74,18 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         let context = self.getContext()
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
         
-        
         //정렬
         let sortDescriptor = NSSortDescriptor (key: "saveDate", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         do {
             perform = try context.fetch(fetchRequest)
-            
-            
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)") }
         self.tableview.reloadData()
-        
     }
     
-    //테이블 뷰 업데이트~.~
+    //테이블 뷰 업데이트
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableview.beginUpdates()
     }
@@ -111,8 +106,6 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableview.endUpdates()
     }
-    //끝~~~~
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return perform.count
@@ -121,11 +114,10 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         return 100
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "List Cell") as! ListTableViewCell
         
-        // cell 스타일
+        //cell 스타일
         cell.cellView.snp.makeConstraints { (make) -> Void in
         }
         //티켓버튼
@@ -151,9 +143,9 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
             make.top.equalToSuperview().offset(50)
             make.left.equalTo(cell.bar).offset(25)
             make.width.equalToSuperview().offset(-30)
-
+            
         }
-       
+        
         cell.cellView.layer.cornerRadius = 7
         cell.backgroundColor = UIColor.gray
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -163,13 +155,11 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         var sub:String = ""
         if let nameLabel = perform.value(forKey: "name") as? String {
             display = nameLabel
-            
         }
         if let deadline = perform.value(forKey: "deadline") as? String {
             let text = deadline.components(separatedBy: " ")
             let kk = text[1].components(separatedBy: "-")
             sub = "입금기한 | "+kk[0]+"."+kk[1]+"."+kk[2]+" "+text[2]+" 까지"
-            
         }
         
         // cell button image 설정
@@ -183,6 +173,7 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
                 cell.ticketBtn.tag = indexPath.row
             }
         }
+        
         let deviceType = UIDevice.current.deviceType
         
         switch deviceType {
@@ -219,18 +210,16 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         cell.ticketBtn.addTarget(self, action: #selector(clickTicketImg), for: .touchUpInside)
-        
         cell.titleText.text = display
         cell.deadlineText.text = sub
-        
         cell.contentView.backgroundColor =  UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
-        
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            
             // Core Data 내의 해당 자료 삭제
             let context = getContext()
             context.delete(perform[indexPath.row])
@@ -238,11 +227,11 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
                 try context.save()
             } catch let error as NSError {
                 print("Could not delete \(error), \(error.userInfo)") }
+            
             // 배열에서 해당 자료 삭제
             perform.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
-            
         }
     }
     
@@ -268,7 +257,6 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
                     destination.detailinfo = perform[selectedIndex]
                 }
             }
-            
         }
     }
     
@@ -276,6 +264,7 @@ class SecondTabViewController: UIViewController, UITableViewDelegate, UITableVie
         super.didReceiveMemoryWarning()
     }
 }
+
 extension UIDevice {
     
     enum DeviceType: String {

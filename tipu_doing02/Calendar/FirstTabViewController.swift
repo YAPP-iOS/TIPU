@@ -76,7 +76,6 @@ class FirstTabViewController: UIViewController {
     
     // 데이터 가져오기
     func fetchDatas(){
-        
         let context = self.getContext()
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
         do {
@@ -87,7 +86,6 @@ class FirstTabViewController: UIViewController {
     
     // 일~토 색 설정
     func setWeekColor(){
-        
         weekView.addBackground(color: UIColor(red: CGFloat(250/255.0), green: CGFloat(250/255.0), blue: CGFloat(250/255.0), alpha: CGFloat(1.0)))
         
         sun.textColor = UIColor(red: CGFloat(156/255.0), green: CGFloat(156/255.0), blue: CGFloat(156/255.0), alpha: CGFloat(1.0))
@@ -245,13 +243,11 @@ class FirstTabViewController: UIViewController {
             
             // 지금 시간 기준으로 이전 -  티켓 배경 : 회색
             if(cellState.date < todaysDate  ){
-                
                 cell.ticket.backgroundColor = UIColor(red: CGFloat(187/255.0), green: CGFloat(186/255.0), blue: CGFloat(186/255.0), alpha: CGFloat(1.0))
                 cell.dots.isHidden = false
                 cell.dots.image = UIImage(named: "grayDots")
             }else{
                 cell.dots.isHidden = false
-                
                 // 하나라도 입금 안한 티켓이 있으면
                 if(depositFlag==false){
                     cell.ticket.backgroundColor = UIColor(red: CGFloat(252/255.0), green: CGFloat(82/255.0), blue: CGFloat(140/255.0), alpha: CGFloat(1.0))
@@ -262,9 +258,7 @@ class FirstTabViewController: UIViewController {
                 }
             }
         }
-        
     }
-    
     
     // 특정 날짜 선택하면 실행되는 메소드
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
@@ -283,7 +277,6 @@ class FirstTabViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
                 self.present(alert, animated: true)
             }
-            
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -294,9 +287,7 @@ class FirstTabViewController: UIViewController {
             vc?.curDate = willSendData!
         }
     }
-    
 }
-
 
 // DataSource
 extension FirstTabViewController: JTAppleCalendarViewDataSource {
@@ -307,7 +298,6 @@ extension FirstTabViewController: JTAppleCalendarViewDataSource {
         return parameters
     }
 }
-
 
 // Delegate
 extension FirstTabViewController: JTAppleCalendarViewDelegate{
@@ -351,9 +341,11 @@ extension FirstTabViewController: JTAppleCalendarViewDelegate{
             dateFormatter.dateFormat = "yyyy MM dd"
             return dateFormatter
         }()
+        
         let date : String = formatter.string(from : cellState.date)
         
-        let parsedDate : String = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil) //2018-04-23
+        let parsedDate : String = date.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil)
+        
         willSendData = parsedDate
         
         // 셀의 날짜가 이번달이면
@@ -372,5 +364,4 @@ extension UIStackView {
         subView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         insertSubview(subView, at: 0)
     }
-    
 }

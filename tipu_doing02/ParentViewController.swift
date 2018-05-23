@@ -35,7 +35,6 @@ class ParentViewController: UIViewController {
         return secondChildTabVC
     }()
     
-    
     //세그먼트 에니메이션
     func moveRight(view: UIView) {
         view.center.x += segmentedControl.frame.width / 2
@@ -63,7 +62,6 @@ class ParentViewController: UIViewController {
         
         //네비게이션 백 버튼 검정색으로
         self.navigationController?.navigationBar.tintColor = UIColor.black
-        
     }
     
     // Appear
@@ -71,25 +69,16 @@ class ParentViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
-    
     // 세그먼트 컨트롤의 탭 이동
     @IBAction func switchTabs(_ sender: UISegmentedControl) {
-        
         let duration: Double = 0.45
-        
         //에니메이션
         if(sender.selectedSegmentIndex==0 && flag == 1){
-            
             UIView.animate(withDuration: duration, animations: {
                 self.moveLeft(view: self.animatedLine)
             })
             flag = 0
-            
-        
         }else if(sender.selectedSegmentIndex==1 && flag == 0){
-            
-            
-            //오른쪽으로
             UIView.animate(withDuration: duration) {
                 self.moveRight(view: self.animatedLine)
             }
@@ -102,9 +91,7 @@ class ParentViewController: UIViewController {
     
     // 현재 탭을 화면에 보여준다
     func displayCurrentTab(_ tabIndex: Int){
-        
         if let vc = viewControllerForSelectedSegmentIndex(tabIndex) {
-            
             self.addChildViewController(vc)
             vc.didMove(toParentViewController: self)
             vc.view.frame = self.contentView.bounds
@@ -114,7 +101,6 @@ class ParentViewController: UIViewController {
             if(tabIndex==0){
                 let first = firstChildTabVC as! FirstTabViewController
                 first.refresher(self)
-                
             }
         }
     }
@@ -123,7 +109,6 @@ class ParentViewController: UIViewController {
     func viewControllerForSelectedSegmentIndex(_ index: Int) -> UIViewController? {
         var vc: UIViewController?
         switch index {
-
         case TabIndex.firstChildTab.rawValue :
             vc = firstChildTabVC
         case TabIndex.secondChildTab.rawValue :
@@ -131,11 +116,10 @@ class ParentViewController: UIViewController {
             
             let second = vc as! SecondTabViewController
             second.refresher((Any).self)
-
+            
         default:
             return nil
         }
-        
         return vc
     }
 }

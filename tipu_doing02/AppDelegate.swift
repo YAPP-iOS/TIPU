@@ -13,7 +13,6 @@ import EventKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    
     func getContext () -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
@@ -23,14 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var first: FirstTabViewController?
     var second: SecondTabViewController?
     var eventStore: EKEventStore?
-    
     var arr:[String] = []
-    
     var year:Int?
     var month:Int?
     var day:Int?
-    
-
     
     // 입금 기한
     func getCalcDate(year: Int, month: Int, day: Int, hour: Int, min: Int, sec: Int) -> Date {
@@ -46,33 +41,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         components.setValue(hour, for: Calendar.Component.hour)
         components.setValue(min, for: Calendar.Component.minute)
         components.setValue(sec, for: Calendar.Component.second)
-        
         let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
-        
-        
         return calendar.date(from: components)!
-        
     }
-    
-    
-    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-           
-        //To change Navigation Bar Background Color
         UINavigationBar.appearance().barTintColor = .white
-
-        //To change Back button title & icon color
-        //UINavigationBar.appearance().tintColor = .black
-
-        //To change Navigation Bar Title Color
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red: CGFloat(247/255.0), green: CGFloat(82/255.0), blue: CGFloat(135/255.0), alpha: CGFloat(1.0))]
         UINavigationBar.appearance().isTranslucent = false
         
-
-
-    
         
         // 앱이 처음 시작될 때 실행
         if let theString = UIPasteboard.general.string {
@@ -84,8 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let context = self.getContext()
                 let entity = NSEntityDescription.entity(forEntityName: "Perform", in: context)
                 
-                
-                //=========================================기존 코어데이터 디비
+                // 기존 코어데이터 디비
                 var datas: [NSManagedObject] = []
                 let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
                 do {
@@ -94,9 +71,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     print("fetch fail \(error), \(error.userInfo)") }
                 
                 
-                // ============================ㄱ{좌 중복 체크
+                // 계좌 중복 체크
                 var accountFlag: Bool = true
-                
                 var c = arr[9].components(separatedBy: ["▶",":"])
                 for data in datas{
                     if let account = data.value(forKey: "account") as? String {
@@ -109,6 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 // 가상계좌가 중복안되면
                 if(accountFlag){
+                    
                     // perform record를 새로 생성함
                     let object = NSManagedObject(entity: entity!, insertInto: context)
                     
@@ -131,7 +108,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let account = c[2] + " | " + arr[10]
                     object.setValue(account, forKey: "account")
                     
-                    
                     var d = arr[11].components(separatedBy: ["▶",":"])
                     let accountholder = d[2]
                     object.setValue(accountholder, forKey: "accountholder")
@@ -142,7 +118,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     // 클립보드 초기화
                     UIPasteboard.general.string = ""
-                    
                     
                     // 테이블뷰 자동 새로고침
                     let root = self.window?.rootViewController as! UINavigationController
@@ -169,7 +144,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         toastLabel.removeFromSuperview()
                     })
                     
-                    
                     do {
                         try context.save()
                     } catch let error as NSError {
@@ -182,7 +156,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         self.eventStore!.requestAccess(to: EKEntityType.reminder, completion:
                             {(isAccessible,errors) in })
                     }
-                    
                     
                     let reminder = EKReminder(eventStore: self.eventStore!)
                     reminder.title = "\(title) 입금을 완료해 주세요."
@@ -200,12 +173,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }else{
                     print("가상 계좌 중복")
                 }
-                
-                
             }
         }
-        
-        
         return true
     }
     
@@ -219,10 +188,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // 앱이 background에서 foreground로 이동 될때 실행 (아직 foreground에서 실행중이진 않음)
         
-        
-        //        first?.calendarView.reloadData()
-        
-        
         if let theString = UIPasteboard.general.string {
             arr = theString.components(separatedBy: "\n")
             
@@ -232,18 +197,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let context = self.getContext()
                 let entity = NSEntityDescription.entity(forEntityName: "Perform", in: context)
                 
-                
-                //=========================================기존 코어데이터 디비
+                // 기존 코어데이터 디비
                 var datas: [NSManagedObject] = []
                 let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
                 do {
                     datas = try context.fetch(fetchRequest)
                 } catch let error as NSError {
                     print("fetch fail \(error), \(error.userInfo)") }
-
                 
-                
-                // ============================계좌 중복 체크
+                // 계좌 중복 체크
                 var accountFlag: Bool = true
                 
                 var c = arr[9].components(separatedBy: ["▶",":"])
@@ -280,7 +242,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let account = c[2] + " | " + arr[10]
                     object.setValue(account, forKey: "account")
                     
-                    
                     var d = arr[11].components(separatedBy: ["▶",":"])
                     let accountholder = d[2]
                     object.setValue(accountholder, forKey: "accountholder")
@@ -291,7 +252,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     // 클립보드 초기화
                     UIPasteboard.general.string = ""
-                    
                     
                     // 테이블뷰 자동 새로고침
                     let root = self.window?.rootViewController as! UINavigationController
@@ -318,7 +278,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         toastLabel.removeFromSuperview()
                     })
                     
-                    
                     do {
                         try context.save()
                     } catch let error as NSError {
@@ -332,7 +291,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             {(isAccessible,errors) in })
                     }
                     
-                    
                     let reminder = EKReminder(eventStore: self.eventStore!)
                     reminder.title = "\(title) 입금을 완료해 주세요."
                     reminder.calendar = self.eventStore!.defaultCalendarForNewReminders()
@@ -345,7 +303,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     } catch {
                         NSLog("알람 설정 실패")
                     }
-                    
                 }else{
                     print("가상 계좌 중복")
                 }
@@ -362,36 +319,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
     
-    // MARK: - Core Data stack
-    
     lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-         */
         let container = NSPersistentContainer(name: "ListDesign")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
         return container
     }()
-    
-    // MARK: - Core Data Saving support
     
     func saveContext () {
         let context = persistentContainer.viewContext
@@ -400,13 +337,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 try context.save()
                 
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
     }
 }
-
-

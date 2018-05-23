@@ -12,7 +12,6 @@ import EventKit
 import SnapKit
 class CalendarListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-
     @IBOutlet var date: UILabel!
     @IBOutlet var count: UILabel!
     @IBOutlet var tableview: UITableView!
@@ -33,7 +32,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         tableview.delegate = self
         tableview.dataSource = self
         
-        
         //새로고침
         refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(refresher), for: .valueChanged)
@@ -42,7 +40,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         // navagation bar
         self.navigationItem.title = "TIPU"
         self.navigationController?.navigationBar.backgroundColor = UIColor.clear
-        
         
         // get data from DB
         let context = self.getContext()
@@ -62,7 +59,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         // reload
         self.tableview.reloadData()
         
-        
         // 날짜, 개수
         let arr = curDate.components(separatedBy: "-")
         let monthStr = arr[1]
@@ -72,13 +68,10 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         self.date.text = "\(monthInt)월 \(dateInt)일"
         self.count.text = "총 \(perform.count) 개"
         
-        
         // tableview backgrond
         tableview.backgroundColor = UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
-    
     }
     
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return perform.count
     }
@@ -100,11 +93,12 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         
         do {
             perform = try context.fetch(fetchRequest)
-            
         } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)") }
-        self.tableview?.reloadData()
+            print("Could not fetch. \(error), \(error.userInfo)")
+            
+        }
         
+        self.tableview?.reloadData()
         
         // 이 앱을 통해 저장한 이전의 모든 알림 삭제
         refresh.endRefreshing()
@@ -118,7 +112,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Perform")
         fetchRequest.predicate = NSPredicate(format: "deadline contains[c] %@", curDate)
         
-        
         //정렬
         let sortDescriptor = NSSortDescriptor (key: "saveDate", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -127,12 +120,11 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
             perform = try context.fetch(fetchRequest)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
-            
         }
         
         self.tableview.reloadData()
     }
-        
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "List Cell") as! ListTableViewCell
         
@@ -159,7 +151,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
             make.top.equalToSuperview().offset(50)
             make.left.equalTo(cell.bar).offset(25)
             make.width.equalToSuperview().offset(-30)
-            
         }
         
         // cell 스타일
@@ -167,14 +158,15 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         cell.backgroundColor = UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         cell.contentView.backgroundColor = UIColor(red: CGFloat(242/255.0), green: CGFloat(242/255.0), blue: CGFloat(242/255.0), alpha: CGFloat(1.0))
-
         
         let perform = self.perform[indexPath.row]
         var display: String = ""
         var sub:String = ""
+        
         if let nameLabel = perform.value(forKey: "name") as? String {
             display = nameLabel
         }
+        
         if let deadline = perform.value(forKey: "deadline") as? String {
             let text = deadline.components(separatedBy: " ")
             let kk = text[1].components(separatedBy: "-")
@@ -185,7 +177,6 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         let account_origin: String = perform.value(forKey: "account") as! String
         let array = account_origin.components(separatedBy: " | ")
         let accountNum = Int(array[1])
-        
         
         // cell button image 설정
         if let image = perform.value(forKey: "deposit") as? Bool {
@@ -198,6 +189,7 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
                 cell.ticketBtn?.tag = Int(accountNum!)
             }
         }
+        
         let deviceType = UIDevice.current.deviceType
         
         switch deviceType {
@@ -233,12 +225,12 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
         }
         
         cell.ticketBtn?.addTarget(self, action: #selector(clickTicketBtn), for: .touchUpInside)
-        
         cell.titleText.text = display
         cell.deadlineText.text = sub
         
         return cell
     }
+    
     @IBAction func clickTicketBtn(_ sender: UIButton) {
         let context = getContext()
         let accountNum = String(sender.tag)
@@ -265,18 +257,15 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
                 print(error)
             }
             self.tableview.reloadData()
-            
         }
         catch{
             print(error)
         }
-        
     }
     
-    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
         if editingStyle == .delete {
+            
             // Core Data 내의 해당 자료 삭제
             let context = getContext()
             context.delete(perform[indexPath.row])
@@ -290,9 +279,7 @@ class CalendarListViewController: UIViewController, UITableViewDelegate, UITable
             
             // 테이블 뷰 개수
             self.count.text = "총 \(Int(String(self.count.text![2]))!-1) 개"
-            
         } else if editingStyle == .insert {
-            
         }
     }    
     
