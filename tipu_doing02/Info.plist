@@ -25,9 +25,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
-	<string>$(PRODUCT_NAME) user your calendar.</string>
+	<string>달력으로 보여주기 위해 사용합니다.</string>
 	<key>NSRemindersUsageDescription</key>
-	<string>$(PRODUCT_NAME) reminders use.</string>
+	<string>입금시간을 잊지 않도록 푸쉬 알림을 제공합니다.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
