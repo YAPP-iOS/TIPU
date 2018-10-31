@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 // 계좌 중복 체크
                 var accountFlag: Bool = true
-                var c = arr[9].components(separatedBy: ["▶",":"])
+                var c = arr[8].components(separatedBy: ["▶",":"])
                 for data in datas{
                     if let account = data.value(forKey: "account") as? String {
                         if(account.contains(c[2] + " | " + arr[10])){
@@ -98,11 +98,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     object.setValue(Date(), forKey: "saveDate")
                     object.setValue(false, forKey: "deposit")
                     
-                    var a = arr[5].components(separatedBy: ["▶",":"])
+                    var a = arr[4].components(separatedBy: ["▶",":"])
                     let title = a[2]
                     object.setValue(title, forKey: "name")
                     
-                    var b = arr[7].components(separatedBy: ["▶",":"])
+                    var b = arr[6].components(separatedBy: ["▶",":"])
                     let deadline = b[2]
                     object.setValue(deadline, forKey: "deadline")
                     
@@ -111,14 +111,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     month = Int(alarmtime[2])
                     day = Int(alarmtime[3])
                     
-                    let account = c[2] + " | " + arr[10]
+                    let account = c[2] + " | " + arr[9]
                     object.setValue(account, forKey: "account")
                     
-                    var d = arr[11].components(separatedBy: ["▶",":"])
+                    var d = arr[10].components(separatedBy: ["▶",":"])
                     let accountholder = d[2]
                     object.setValue(accountholder, forKey: "accountholder")
                     
-                    var e = arr[12].components(separatedBy: ["▶",":"])
+                    var e = arr[11].components(separatedBy: ["▶",":"])
                     let money = e[2]
                     object.setValue(money, forKey: "money")
                     
@@ -214,10 +214,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // 계좌 중복 체크
                 var accountFlag: Bool = true
                 
-                var c = arr[9].components(separatedBy: ["▶",":"])
+                var c = arr[8].components(separatedBy: ["▶",":"])
                 for data in datas{
                     if let account = data.value(forKey: "account") as? String {
-                        if(account.contains(c[2] + " | " + arr[10])){
+                        if(account.contains(c[2] + " | " + arr[9])){
                             accountFlag = false
                             break
                         }
@@ -232,11 +232,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     object.setValue(Date(), forKey: "saveDate")
                     object.setValue(false, forKey: "deposit")
                     
-                    var a = arr[5].components(separatedBy: ["▶",":"])
+                    var a = arr[4].components(separatedBy: ["▶",":"])
                     let title = a[2]
                     object.setValue(title, forKey: "name")
                     
-                    var b = arr[7].components(separatedBy: ["▶",":"])
+                    var b = arr[6].components(separatedBy: ["▶",":"])
                     let deadline = b[2]
                     object.setValue(deadline, forKey: "deadline")
                     
@@ -245,14 +245,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     month = Int(alarmtime[2])
                     day = Int(alarmtime[3])
                     
-                    let account = c[2] + " | " + arr[10]
+                    let account = c[2] + " | " + arr[9]
                     object.setValue(account, forKey: "account")
                     
-                    var d = arr[11].components(separatedBy: ["▶",":"])
+                    var d = arr[10].components(separatedBy: ["▶",":"])
                     let accountholder = d[2]
                     object.setValue(accountholder, forKey: "accountholder")
                     
-                    var e = arr[12].components(separatedBy: ["▶",":"])
+                    var e = arr[11].components(separatedBy: ["▶",":"])
                     let money = e[2]
                     object.setValue(money, forKey: "money")
                     
